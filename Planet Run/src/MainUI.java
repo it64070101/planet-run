@@ -1,19 +1,20 @@
 import java.awt.*;
 import javax.swing.*;
-// import java.awt.event.*;
+import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import java.util.*;
 
-public class MainUI extends JPanel {
+public class MainUI extends JPanel implements ActionListener{
     private JFrame fr;
     private JPanel pAll, pShip, pHuntingGround, pSectors, pGadget, pRest, pLabel, pButton, pMaketool, pComponent,
-            pRocket;
+            pRocket, pHuntAll, pSec, pInmain;
     private JButton noseCone, shockcord, recoveryWadding, leftFin, rightFin;
     private JButton sectorA, sectorB, sectorC, sectorD, rest, maketool;
     private JButton huntingGround0, huntingGround1;
     // private JButton gun, axe, hammer, pick, hook;
     private JTextField dayTxt, foodTxt, starTxt, triangleTxt, squareTxt, circleTxt, title1;
-    private ImageIcon rockcone, rockleft, rockright, rockbase, rockbody;
+    private ImageIcon rockcone, rockleft, rockright, rockbase, rockbody, sec1, sec2, sec3, sec4, ani1, ani2, queSym;
     private JDesktopPane dp1;
     private JInternalFrame inf1, inf2, inf3, inf4, inf5, inf6, inf7;
 
@@ -60,29 +61,49 @@ public class MainUI extends JPanel {
         pShip.add(leftFin, BorderLayout.WEST);
         pShip.add(rightFin, BorderLayout.EAST);
         // noseCone.setBackground(Color.BLACK);
-
-        sectorA = new JButton("Explore this Sector");
-        sectorB = new JButton("Explore this Sector");
-        sectorC = new JButton("Explore this Sector");
-        sectorD = new JButton("Explore this Sector");
+        queSym = new ImageIcon("images/ques.png");
+        sec1 = new ImageIcon("images/Sec1.png");
+        sec2 = new ImageIcon("images/Sec2.png");
+        sec3 = new ImageIcon("images/Sec1.png");
+        sec4 = new ImageIcon("images/Sec1.png");
+        sectorA = new JButton("Explore this Sector", queSym);
+        sectorB = new JButton("Explore this Sector", queSym);
+        sectorC = new JButton("Explore this Sector", queSym);
+        sectorD = new JButton("Explore this Sector", queSym);
+        sectorA.setBackground(Color.GRAY);
         rest = new JButton("Rest");
         maketool = new JButton("Make Tool");
 
         rest.setPreferredSize(new Dimension(100, 50));
         maketool.setPreferredSize(new Dimension(100, 50));
 
-        pSectors.setLayout(new GridLayout(2, 2));
+        
+
+        pSectors.setLayout(new GridLayout(4, 1, 50,50));
         pSectors.add(sectorA);
         pSectors.add(sectorB);
         pSectors.add(sectorC);
         pSectors.add(sectorD);
+        pSectors.setBackground(new Color(0,0,0,0));
+        pSec = new JPanel();
+        pSec.setLayout(new FlowLayout());
+        pSec.add(pSectors);
+        pSec.setAlignmentX(Component.LEFT_ALIGNMENT);
+        pSec.setBackground(new Color(0,0,0,0));
 
-        huntingGround0 = new JButton("Fight this Animal");
-        huntingGround1 = new JButton("Fight this Animal");
+        ani1 = new ImageIcon("images/Ani.png");
+        ani2 = new ImageIcon("images/Ani.png");
+        huntingGround0 = new JButton("Fight this Animal", ani1);
+        huntingGround1 = new JButton("Fight this Animal", ani2);
 
-        pHuntingGround.setLayout(new GridLayout(2, 1));
+        pHuntingGround.setLayout(new GridLayout(2, 1, 50,50));
         pHuntingGround.add(huntingGround0);
         pHuntingGround.add(huntingGround1);
+        pHuntingGround.setBackground(new Color(0,0,0,0));
+        pHuntAll = new JPanel();
+        pHuntAll.setLayout(new FlowLayout());
+        pHuntAll.add(pHuntingGround);
+        pHuntAll.setBackground(new Color(0,0,0,0));
 
         dayTxt = new JTextField("Day: 0");
         foodTxt = new JTextField("Food: 0");
@@ -148,6 +169,11 @@ public class MainUI extends JPanel {
         inf1.add(pComponent);
         dp1.add(inf1);
 
+        pInmain = new JPanel();
+        pInmain.setLayout(new GridLayout(1,3,50,50));
+        pInmain.add(pSec);      pInmain.add(pRocket);   pInmain.add(pHuntAll);
+        pInmain.setBackground(new Color(0,0,0,0));
+
         // rocket panel
         pRocket.setLayout(new BorderLayout(5,40));
         pRocket.add(pAll, BorderLayout.NORTH);
@@ -156,36 +182,98 @@ public class MainUI extends JPanel {
 
         pAll.setLocation(30, 30);
         fr.setLayout(new FlowLayout());
+        fr.add(pInmain);
         // fr.add(pAll);
-        fr.add(pRocket);
-        fr.add(pRocket);
+        // fr.add(pRocket);
+        // fr.add(pSectors, FlowLayout.LEFT);
+        // fr.add(pHuntingGround);
         // fr.add(pComponent);
         fr.getContentPane().setBackground(Color.darkGray);
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fr.setSize(1080, 960);
+        fr.setSize(1280, 960);
         // fr.pack();
         fr.setLocationRelativeTo(null);
         fr.setVisible(true);
         // fr.setResizable(false);
 
+        maketool.addActionListener(this);
+        sectorA.addActionListener(this);
+        sectorB.addActionListener(this);
+        sectorC.addActionListener(this);
+        sectorD.addActionListener(this);
+        huntingGround0.addActionListener(this);
+        huntingGround1.addActionListener(this);
     }
 
     public static void main(String[] args) {
-        new MainUI();
+        MainUI mainUI = new MainUI();
+        // mainUI.run();
+        // Thread n1 = new Thread(mainUI);
+        // n1.start();
     }
 
-    public void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g; // cast for java2
+//     public void paintComponent(Graphics g) {
+        // Graphics2D g2 = (Graphics2D) g; // cast for java2
         // my graphics:
-        g2.setColor(Color.GREEN);
+        // g2.setColor(Color.GREEN);
         // g2.drawCircle(g, 30, 30, 20);
-        g2.fillRect(10, 10, 200, 50);
+        // g2.fillRect(10, 10, 200, 50);
         // g2.setColor(new Color(0,0,255));
-        g2.drawString("Hello World", 10, 10);
+        // g2.drawString("Hello World", 10, 10);
 
-        super.paintComponent(g);
-    }
+//         super.paintComponent(g);
+//     }
     // public void drawCircle(Graphics cg, int xCenter, int yCenter, int r) {
     // cg.drawOval(xCenter-r, yCenter-r, 2*r, 2*r);
     // }
+
+@Override
+public void actionPerformed(ActionEvent e) {
+        if(e.getSource().equals(maketool)){
+                new Maketool();
+        }
+        else if(e.getSource().equals(sectorA)){
+                sectorA.setIcon(sec1);
+                sectorA.setText("SectorsAAAA");
+                // sectorA.setEnabled(false);
+        }
+        else if(e.getSource().equals(sectorB)){
+                sectorB.setIcon(sec2);
+                sectorB.setText("SectorsBBBB");
+                // sectorB.setEnabled(false);
+        }
+        else if(e.getSource().equals(sectorC)){
+                sectorC.setIcon(sec1);
+                sectorC.setText("SectorsCCCC");
+                // sectorC.setEnabled(false);
+        }
+        else if(e.getSource().equals(sectorD)){
+                sectorD.setIcon(sec1);
+                sectorD.setText("SectorsDDDD");
+                // sectorD.setEnabled(false);
+        }
+        else if(e.getSource().equals(huntingGround0)){
+                huntingGround0.setEnabled(false);
+                huntingGround0.setText("Animal Killed!");
+        }
+        else if(e.getSource().equals(huntingGround1)){
+                huntingGround1.setEnabled(false);
+                huntingGround1.setText("Animal Killed!");
+        }
+        
+}
+
+// public void run() {
+//         while(fr.isValid()){
+//             try{
+//                 pSectors.setLocation(pSectors.getLocation().x+((int)(Math.random()* 20)-10), pSectors.getLocation().y+((int)(Math.random()* 20)-10));
+//                 Thread.sleep(100);
+//             }
+//             catch (InterruptedException ex){
+//                     ex.printStackTrace();
+//                 }
+//             }
+//         }
+
+    
 }
