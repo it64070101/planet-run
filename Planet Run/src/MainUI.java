@@ -1,13 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author User
- */
-
 import java.awt.*;
 import javax.swing.*;
 // import java.awt.event.*;
@@ -40,11 +30,11 @@ public class MainUI extends JPanel {
         pButton = new JPanel();
         pComponent = new JPanel();
         pRocket = new JPanel();
-        rockcone = new ImageIcon("rockcone.png");
-        rockleft = new ImageIcon("rockleft.png");
-        rockright = new ImageIcon("rockright.png");
-        rockbase = new ImageIcon("rockbase.png");
-        rockbody = new ImageIcon("rockbody.png");
+        rockcone = new ImageIcon("images/rockcone.png");
+        rockleft = new ImageIcon("images/rockleft.png");
+        rockright = new ImageIcon("images/rockright.png");
+        rockbase = new ImageIcon("images/rockbase.png");
+        rockbody = new ImageIcon("images/rockbody.png");
 
         BorderLayout layout01 = new BorderLayout();
         // layout01.setBackground(Color.BLACK);

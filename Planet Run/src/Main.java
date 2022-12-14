@@ -1,12 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author User
- */
 public class Main {
     
     private int day;
@@ -58,12 +49,12 @@ public class Main {
         pick = new Gadget("Pick", 7, sectorB, "+1 Energy When Gathering Square");
         hook = new Gadget("Hook", 7, null, "83% to get 1 food");
 
-        animalDeck[0] = new Animal("Bird King", 5, 3, 1);
-        animalDeck[1] = new Animal("Double Dog", 4, 3, 2);
-        animalDeck[2] = new Animal("Fourleg", 6, 4, 1);
-        animalDeck[3] = new Animal("Fishman", 7, 4, 2);
-        animalDeck[4] = new Animal("Snailbox", 8, 5, 1);
-        animalDeck[5] = new Animal("rhinocow", 9, 5, 2);
+        animalDeck[0] = new BirdKing();
+        animalDeck[1] = new DoubleDog();
+        animalDeck[2] = new Fourleg();
+        animalDeck[3] = new Fishman();
+        animalDeck[4] = new Snailbox();
+        animalDeck[5] = new Rhinocow();
         
         System.out.println(day);
         
@@ -77,8 +68,9 @@ public class Main {
             // ========== DRAW ==========
             System.out.println(animalDeck);
             if (huntingGround.length < 2){
-                huntingGround[huntingGround.length - 1] = animalDeck[animalDeck.length - 1];
-                animalDeck[animalDeck.length-1] = null;
+                int randomDraw = (int)(Math.random()*10)%(animalDeck.length-1);
+                huntingGround[huntingGround.length - 1] = animalDeck[randomDraw];
+                animalDeck[randomDraw] = null;
             }
             System.out.print("Hunting Ground: ");
             for (int i=0;i<2;i++){

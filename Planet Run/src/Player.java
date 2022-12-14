@@ -1,19 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author User
- */
 public class Player {
     private int HP;
     private int energy;
+    private int food;
 
     public Player() {
         HP = 4;
         energy = 3;
+        food = 2;
     }
 
     public int getHP() {
@@ -30,6 +23,14 @@ public class Player {
 
     public void setEnergy(int energy) {
         this.energy = energy;
+    }
+
+    public int getFood() {
+        return food;
+    }
+
+    public void setFood(int food) {
+        this.food = food;
     }
     
     public void eat(int food){
