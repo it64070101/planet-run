@@ -45,6 +45,9 @@ public class MainUI extends JPanel {
         rockbase = new ImageIcon("rockbase.png");
         rockbody = new ImageIcon("rockbody.png");
         
+        BorderLayout layout01 = new BorderLayout();
+        // layout01.setBackground(Color.BLACK);
+
         noseCone = new JButton(rockcone);
         shockcord = new JButton(rockbody);
         recoveryWadding = new JButton(rockbase);
@@ -155,9 +158,9 @@ public class MainUI extends JPanel {
 
 
         pAll.setLocation(30, 30);
-        fr.setLayout(new BorderLayout());
+        fr.setLayout(layout01);
         fr.add(pLabel, BorderLayout.NORTH);
-        fr.add(dp1);
+        fr.add(dp1, BorderLayout.CENTER);
         // fr.add(pComponent);
         fr.getContentPane().setBackground(Color.BLACK);
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
