@@ -19,7 +19,7 @@ public class Storage {
         circle = new Resource("circle", 0);
         triangle = new Resource("triangle", 0);
         square = new Resource("square", 0);
-        star = new Resource("star", 0);
+        star = new Resource("star", 8);
     }
     
 }

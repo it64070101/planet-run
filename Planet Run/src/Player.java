@@ -43,10 +43,19 @@ public class Player {
         else{
             System.out.println("Fail to explore.");
         }
+        Player.energy -= amount;
     }
     
-    public void fix(Part part){
-        
+    public static boolean fix(Part part){
+        if (part.check()){
+            System.out.println("Fix "+part.getName()+" Successful.");
+            Player.energy--;
+            return true;
+        }
+        else{
+            System.out.println("Can't Fix "+part.getName());
+            return false;
+        }
     }
     
     public void hunting(Animal animal){
@@ -64,11 +73,11 @@ public class Player {
         
     }
     
-    public void rest(int energy){
+    public static void rest(int energy){
         Player.energy -= energy;
         Player.HP += energy;
     }
-
+    
     @Override
     public String toString() {
         return "Player:" + " HP: " + HP + ", Energy: " + energy;

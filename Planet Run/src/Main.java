@@ -2,12 +2,12 @@ import java.util.*;
 
 public class Main {
     
-    private int day;
-    private int score;
-    private Animal[] huntingGround;
-    private Animal[] animalDeck;
+    public static int day;
+    public static int score;
+    public static Animal[] huntingGround;
+    public static Animal[] animalDeck;
     
-    private Player player;
+//    private Player player;
 
 //    Resource food;
 //    Resource triangle;
@@ -27,12 +27,12 @@ public class Main {
     Gadget hook;
 
     public Main() {
-        day = 0;
+        day = 20;
         
         huntingGround = new Animal[2];
         animalDeck = new Animal[6];
         
-        player = new Player("");
+//        player = new Player("");
         
 //        food = new Resource("Food", 2);
 //        triangle = new Resource("Triangle", 0);
@@ -44,6 +44,8 @@ public class Main {
 //        sectorB = new Sector("Sector B", 3, Storage.circle);
 //        sectorC = new Sector("Sector C", 3, Storage.square);
 //        sectorD = new Sector("Sector D", 3, Storage.star);
+        
+        
 
         gun = new Gadget("Gun", 7, Area.D, "+1 Energy When Hunting");
         axe = new Gadget("Axe", 7, Area.C, "+1 Energy When Gathering Triangle");
@@ -58,10 +60,7 @@ public class Main {
         animalDeck[4] = new Snailbox();
         animalDeck[5] = new Rhinocow();
         
-        System.out.println(day);
-        
         while(Player.HP > 0){
-            System.out.println(player);
             System.out.println("Day: "+day);
             // ========== UPKEEP ==========
             if (hook.isObtained() && Dice.rollAgainst(1, 2)){
@@ -119,6 +118,12 @@ public class Main {
     }
 
     public void chooseAction(int action){
+        System.out.println("How many engergy");
+        int num = 1;
+        while (num > Player.energy){
+            System.out.println("energy not enough.");
+            num--;
+        }
         switch (action){
             case 0:
                 //explore new sector
@@ -143,7 +148,15 @@ public class Main {
     }
     
     public static void main(String[] args) {
-        new Main();
+        new Player("Christopher");
+        new Storage();
+        new Area();
+        new Ship();
+        day = 20;
+        
+        huntingGround = new Animal[2];
+        animalDeck = new Animal[6];
+        new MainUI();
     }
     
 }

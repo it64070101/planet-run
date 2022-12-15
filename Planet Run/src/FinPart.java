@@ -9,9 +9,19 @@
  */
 public class FinPart extends Part{
 
+    public FinPart(String name) {
+        super(name);
+    }
+    
     @Override
     public boolean check() {
-        return (Storage.star.getAmount() >= 4);
+        if (Storage.star.getAmount() >= 4){
+            Storage.star.consume(4);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
 }

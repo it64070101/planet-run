@@ -9,9 +9,21 @@
  */
 public class BodyPart extends Part{
 
+    public BodyPart(String name) {
+        super(name);
+    }
+    
     @Override
     public boolean check() {
-        return (Storage.triangle.getAmount() >= 1 && Storage.circle.getAmount() >= 1 && Storage.square.getAmount() >= 1);
+        if (Storage.triangle.getAmount() >= 1 && Storage.circle.getAmount() >= 1 && Storage.square.getAmount() >= 1){
+            Storage.triangle.consume(1);
+            Storage.circle.consume(1);
+            Storage.square.consume(1);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
 }
