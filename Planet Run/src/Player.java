@@ -1,57 +1,27 @@
 public class Player {
-    private int HP;
-    private int energy;
-    private int food;
+    public static int HP;
+    public static int energy;
+    public static String name;
 
-    public Player() {
+
+    public Player(String name) {
+        Player.name = name;
         HP = 4;
         energy = 3;
-        food = 2;
-    }
-
-    public int getHP() {
-        return HP;
-    }
-
-    public void setHP(int HP) {
-        this.HP = HP;
-    }
-
-    public int getEnergy() {
-        return energy;
-    }
-
-    public void setEnergy(int energy) {
-        this.energy = energy;
-    }
-
-    public int getFood() {
-        return food;
-    }
-
-    public void setFood(int food) {
-        this.food = food;
     }
     
-    public void eat(int food){
+    public static void eat(int food){
         switch (food) {
-            case 0:
-                setEnergy(2);
-                setHP(getHP()-1);
-                break;
-            case 1:
-                setEnergy(2);
-                break;
-            case 2:
-                setEnergy(3);
-                break;
-            case 4:
-                setEnergy(4);
-                break;
-            case 6:
-                setEnergy(6);
-                break;
-            default:
+            case 0 -> {
+                energy = 2;
+                HP--;
+            }
+            case 1 -> energy = 2;
+            case 2 -> energy = 3;
+            case 4 -> energy = 4;
+            case 6 -> energy = 6;
+            default -> {
+            }
         }
     }
     
@@ -95,8 +65,8 @@ public class Player {
     }
     
     public void rest(int energy){
-        setEnergy(getEnergy()-energy);
-        setHP(getHP()+energy);
+        Player.energy -= energy;
+        Player.HP += energy;
     }
 
     @Override

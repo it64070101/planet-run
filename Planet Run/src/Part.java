@@ -1,6 +1,7 @@
-public class Part {
+public abstract class Part {
     private String name;
     private boolean fixed;
-    private Resource requirement;
+//    private Resource requirement;
+    public abstract boolean check();
     
 }

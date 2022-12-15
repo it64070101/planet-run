@@ -37,11 +37,11 @@ public abstract class Animal {
         this.damage = damage;
     }
 
-    public void isAttacked(int playerAttack, Player player) {
+    public void isAttacked(int playerAttack) {
         if(playerAttack >= getRating()){
-            player.setFood(player.getFood() + getFoodDrop());
+            Storage.food.gain(getFoodDrop());
         }else{
-            player.setHP(player.getHP() - getDamage());
+            Player.HP = Player.HP - getDamage();
         }
     }
 
