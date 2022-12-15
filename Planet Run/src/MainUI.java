@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.text.ParseException;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.border.EmptyBorder;
+
 import java.util.*;
 
 public class MainUI extends JPanel implements ActionListener {
@@ -69,8 +71,8 @@ public class MainUI extends JPanel implements ActionListener {
         queSym = new ImageIcon("images/ques.png");
         sec1 = new ImageIcon("images/Sec1.png");
         sec2 = new ImageIcon("images/Sec2.png");
-        sec3 = new ImageIcon("images/Sec1.png");
-        sec4 = new ImageIcon("images/Sec1.png");
+        sec3 = new ImageIcon("images/Sec3.png");
+        sec4 = new ImageIcon("images/Sec4.png");
         sectorA = new JButton("Explore this Sector", queSym);
         sectorB = new JButton("Explore this Sector", queSym);
         sectorC = new JButton("Explore this Sector", queSym);
@@ -78,6 +80,10 @@ public class MainUI extends JPanel implements ActionListener {
 //        sectorA.setBackground(Color.GRAY);
         rest = new JButton("Rest");
         maketool = new JButton("Make Tool");
+        sectorA.setPreferredSize(new Dimension(250, 160));
+        sectorB.setPreferredSize(new Dimension(250, 160));
+        sectorC.setPreferredSize(new Dimension(250, 160));
+        sectorD.setPreferredSize(new Dimension(250, 160));
 
         rest.setPreferredSize(new Dimension(100, 50));
         maketool.setPreferredSize(new Dimension(100, 50));
@@ -102,6 +108,8 @@ public class MainUI extends JPanel implements ActionListener {
         pHuntingGround.setLayout(new GridLayout(2, 1, 50, 50));
         pHuntingGround.add(huntingGround0);
         pHuntingGround.add(huntingGround1);
+        huntingGround0.setPreferredSize(new Dimension(350, 220));
+        huntingGround1.setPreferredSize(new Dimension(350, 220));
         pHuntingGround.setBackground(new Color(0, 0, 0, 0));
         pHuntAll = new JPanel();
         pHuntAll.setLayout(new FlowLayout());
@@ -186,6 +194,8 @@ public class MainUI extends JPanel implements ActionListener {
         pInmain.add(pRocket);
         pInmain.add(pHuntAll);
         pInmain.setBackground(new Color(0, 0, 0, 0));
+        pInmain.setBorder(new EmptyBorder(100,20,20,20));
+        // pInmain.setFill(true);
 
         // rocket panel
         pRocket.setLayout(new BorderLayout(5, 40));
@@ -207,6 +217,7 @@ public class MainUI extends JPanel implements ActionListener {
         // fr.pack();
         fr.setLocationRelativeTo(null);
         fr.setVisible(true);
+        fr.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
         // fr.setResizable(false);
 
         maketool.addActionListener(this);
@@ -222,6 +233,8 @@ public class MainUI extends JPanel implements ActionListener {
         recoveryWadding.addActionListener(this);
         leftFin.addActionListener(this);
         rightFin.addActionListener(this);
+
+        // fr.setFill(true);
     }
 
     public static void main(String[] args) {
@@ -260,12 +273,12 @@ public class MainUI extends JPanel implements ActionListener {
             // sectorB.setEnabled(false);
         }
         else if (e.getSource().equals(sectorC)) {
-            sectorC.setIcon(sec1);
+            sectorC.setIcon(sec3);
             sectorC.setText("SectorsCCCC");
             // sectorC.setEnabled(false);
         }
         else if (e.getSource().equals(sectorD)) {
-            sectorD.setIcon(sec1);
+            sectorD.setIcon(sec4);
             sectorD.setText("SectorsDDDD");
             // sectorD.setEnabled(false);
         }
