@@ -166,7 +166,7 @@ public class Main {
         //     e.printStackTrace();
         //     }
         //     SwingUtilities.invokeLater(() -> { MainUI frame = new MainUI(); });
-        // Thread n1 = new Thread(mainUI);
+        // Thread n1 = new Thread(frame);
         // n1.start();
     }
     
