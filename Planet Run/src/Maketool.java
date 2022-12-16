@@ -14,6 +14,7 @@ public class Maketool{
         pGadget = new JPanel();
         fr = new JFrame();
 
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         imgAxe = new ImageIcon("src/images/Axe.png");
         imgGun = new ImageIcon("src/images/Gun.png");
         imgHammer = new ImageIcon("src/images/Hammer.png");
@@ -41,7 +42,7 @@ public class Maketool{
         fr.setVisible(true);
         fr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         fr.setSize(300, 780);
-        fr.setLocation(1000,30);
+        fr.setLocation((int) (screenSize.width-(screenSize.width/7.5)),(int) (screenSize.height-(screenSize.height/1.1)));
         fr.setResizable(false);
         fr.getContentPane().setBackground(Color.BLACK);
     }
