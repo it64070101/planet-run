@@ -165,6 +165,28 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
         pLabel.add(triangleTxt);
         pLabel.add(squareTxt);
         pLabel.add(circleTxt);
+        pLabel.setBackground(new Color(24, 39, 71));
+        
+        dayTxt.setBackground(new Color(24, 39, 71));
+        dayTxt.setForeground(new Color(245, 213, 174));
+        foodTxt.setBackground(new Color(24, 39, 71));
+        foodTxt.setForeground(new Color(245, 213, 174));
+        starTxt.setBackground(new Color(24, 39, 71));
+        starTxt.setForeground(new Color(245, 213, 174));
+        triangleTxt.setBackground(new Color(24, 39, 71));
+        triangleTxt.setForeground(new Color(245, 213, 174));
+        squareTxt.setBackground(new Color(24, 39, 71));
+        squareTxt.setForeground(new Color(245, 213, 174));
+        circleTxt.setBackground(new Color(24, 39, 71));
+        circleTxt.setForeground(new Color(245, 213, 174));
+        title1.setBackground(new Color(24, 39, 71));
+        title1.setForeground(new Color(245, 213, 174));
+        HPTxt.setBackground(new Color(24, 39, 71));
+        HPTxt.setForeground(new Color(245, 213, 174));
+        energyTxt.setBackground(new Color(24, 39, 71));
+        energyTxt.setForeground(new Color(245, 213, 174));
+        name.setBackground(new Color(24, 39, 71));
+        name.setForeground(new Color(245, 213, 174));
 
         dayTxt.setEditable(false);
         HPTxt.setEditable(false);
@@ -185,6 +207,8 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
         pAll.setLayout(new FlowLayout(FlowLayout.CENTER));
         pAll.add(pLabel);
         pAll.setSize(100, 100);
+        pAll.setBackground(new Color(24, 39, 71));
+        pAll.setForeground(new Color(254, 194, 96));
 
         // pComponent.setLayout(new BorderLayout(20, 100));
         // pComponent.setBackground(Color.BLACK);
@@ -225,7 +249,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
 
         pAll.setLocation(30, 30);
         
-        fr.getContentPane().setBackground(Color.darkGray);
+        fr.getContentPane().setBackground(new Color(0,0,0,0));
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         fr.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -264,29 +288,12 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
         rightFin.addActionListener(this);
         exit.addActionListener(this);
 
-        // fr.setFill(true);
     }
 
     public static void main(String[] args) {
         MainUI mainUI = new MainUI();
-        // mainUI.run();
-        // Thread n1 = new Thread(mainUI);
-        // n1.start();
     }
 
-//     public void paintComponent(Graphics g) {
-    // Graphics2D g2 = (Graphics2D) g; // cast for java2
-    // my graphics:
-    // g2.setColor(Color.GREEN);
-    // g2.drawCircle(g, 30, 30, 20);
-    // g2.fillRect(10, 10, 200, 50);
-    // g2.setColor(new Color(0,0,255));
-    // g2.drawString("Hello World", 10, 10);
-//         super.paintComponent(g);
-//     }
-    // public void drawCircle(Graphics cg, int xCenter, int yCenter, int r) {
-    // cg.drawOval(xCenter-r, yCenter-r, 2*r, 2*r);
-    // }
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(maketool)) {
@@ -428,15 +435,4 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
         
     }
 
-// public void run() {
-//         while(true){
-//             try{
-//                 pSec.setLocation(pSec.getLocation().x+((int)(Math.random()* 20)-10), pSec.getLocation().y+((int)(Math.random()* 20)-10));
-//                 Thread.sleep(1000);
-//             }
-//             catch (InterruptedException ex){
-//                     ex.printStackTrace();
-//                 }
-//             }
-//         }
 }
