@@ -11,19 +11,18 @@ import javax.swing.plaf.DimensionUIResource;
 
 import java.util.*;
 
-public class MainUI extends JPanel implements ActionListener{
+public class MainUI extends JPanel implements ActionListener, Runnable{
 
     private JFrame fr;
     private JPanel pAll, pShip, pHuntingGround, pSectors, pGadget, pRest, pLabel, pButton, pMaketool, pComponent,
-            pRocket, pHuntAll, pSec, pInmain, pInRocket;
+            pRocket, pHuntAll, pSec, pInmain, pInRocket, showclock;
     private JButton noseCone, shockcord, recoveryWadding, leftFin, rightFin;
     private JButton sectorA, sectorB, sectorC, sectorD, rest, maketool;
     private JButton huntingGround0, huntingGround1;
     private JButton exit;
     private JTextField dayTxt, foodTxt, starTxt, triangleTxt, squareTxt, circleTxt, title1, HPTxt, energyTxt;
     private ImageIcon rockcone, rockleft, rockright, rockbase, rockbody, sec1, sec2, sec3, sec4, ani1, ani2, queSym;
-    private JLabel name;
-
+    private JLabel name, clockshow;
     public MainUI() {
         fr = new JFrame("Planet Run");
 
@@ -38,11 +37,11 @@ public class MainUI extends JPanel implements ActionListener{
         pComponent = new JPanel();
         pInRocket = new JPanel();
         pRocket = new JPanel();
-        rockcone = new ImageIcon("images/rockcone.png");
-        rockleft = new ImageIcon("images/rockleft.png");
-        rockright = new ImageIcon("images/rockright.png");
-        rockbase = new ImageIcon("images/rockbase.png");
-        rockbody = new ImageIcon("images/rockbody.png");
+        rockcone = new ImageIcon("src/images/rockcone.png");
+        rockleft = new ImageIcon("src/images/rockleft.png");
+        rockright = new ImageIcon("src/images/rockright.png");
+        rockbase = new ImageIcon("src/images/rockbase.png");
+        rockbody = new ImageIcon("src/images/rockbody.png");
 
         // BorderLayout layout01 = new BorderLayout();
         // layout01.setBackground(Color.BLACK);
@@ -69,11 +68,11 @@ public class MainUI extends JPanel implements ActionListener{
         pShip.add(rightFin, BorderLayout.EAST);
         
         
-        queSym = new ImageIcon("images/ques.png");
-        sec1 = new ImageIcon("images/Sec1.png");
-        sec2 = new ImageIcon("images/Sec2.png");
-        sec3 = new ImageIcon("images/Sec3.png");
-        sec4 = new ImageIcon("images/Sec4.png");
+        queSym = new ImageIcon("src/images/ques.png");
+        sec1 = new ImageIcon("src/images/Sec1.png");
+        sec2 = new ImageIcon("src/images/Sec2.png");
+        sec3 = new ImageIcon("src/images/Sec3.png");
+        sec4 = new ImageIcon("src/images/Sec4.png");
         sectorA = new JButton("Explore this Sector", queSym);
         sectorB = new JButton("Explore this Sector", queSym);
         sectorC = new JButton("Explore this Sector", queSym);
@@ -105,8 +104,8 @@ public class MainUI extends JPanel implements ActionListener{
         pSec.setAlignmentX(Component.LEFT_ALIGNMENT);
         pSec.setBackground(new Color(0, 0, 0, 0));
 
-        ani1 = new ImageIcon("images/Ani1.png");
-        ani2 = new ImageIcon("images/Ani2.png");
+        ani1 = new ImageIcon("src/images/Ani1.png");
+        ani2 = new ImageIcon("src/images/Ani2.png");
         huntingGround0 = new JButton("Fight this Animal", ani1);
         huntingGround1 = new JButton("Fight this Animal", ani2);
         pHuntingGround.setLayout(new GridLayout(2, 1, 50, 50));
@@ -177,18 +176,28 @@ public class MainUI extends JPanel implements ActionListener{
         // pInmain.setBackground(Color.darkGray);
         // pInmain.setBorder(new EmptyBorder(20,20,20,20));
 
+        showclock = new JPanel();
+        clockshow = new JLabel("");
+        showclock.setForeground(new Color(80,80,80));
+        showclock.add(clockshow);
+        showclock.setSize(200,200);
+        showclock.setBackground(Color.CYAN);
+        
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        pSec.setBounds(25,25,300,screenSize.height);
-        pRocket.setBounds(450,25,600,750);
-        pHuntAll.setBounds(1000,25,600,750);
+        pSec.setBounds((int) (screenSize.width-(screenSize.width/1.075)),(int) (screenSize.height-(screenSize.height/1.1)), 250,1000);
+        pRocket.setBounds((int) (screenSize.width-(screenSize.width/1.345)),(int) (screenSize.height-(screenSize.height/1.1)), 600,750);
+        pHuntAll.setBounds((int) (screenSize.width-(screenSize.width/2.375)),(int) (screenSize.height-(screenSize.height/1.1)), 500,500);
+        fr.add(showclock);
+        showclock.setBounds((int) (screenSize.width-(screenSize.width/1.5)),(int) (screenSize.height-(screenSize.height/1.225)), 300,60);
         exit = new JButton("exit");
         exit.setBounds((screenSize.width-250),(screenSize.height-75),250,75);
 
         // rocket panel
-        pRocket.setLayout(new BorderLayout(100,100));
+        pRocket.setLayout(new BorderLayout(150,180));
         pRocket.add(pAll, BorderLayout.NORTH);
         pRocket.add(pButton, BorderLayout.CENTER);
         pRocket.setBackground(Color.darkGray);
+       
 
         pAll.setLocation(30, 30);
         
@@ -214,6 +223,8 @@ public class MainUI extends JPanel implements ActionListener{
         fr.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
         fr.setResizable(false);
 
+
+        
         maketool.addActionListener(this);
         sectorA.addActionListener(this);
         sectorB.addActionListener(this);
@@ -361,6 +372,31 @@ public class MainUI extends JPanel implements ActionListener{
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+    
+    public void run(){
+        int count = 0;
+        int sec = 0;
+        int min = 0;
+        int hour = 0; 
+        
+        while (true){
+            clockshow.setFont(new Font("Tahoma", Font.PLAIN, 32));
+            clockshow.setText(String.format("%02d", hour)+" : "+ String.format("%02d", min)+ " : " + String.format("%02d", sec));
+            System.out.println(sec);
+            try{
+            Thread.sleep(1000);
+            count++;
+            sec = count%60;
+            min = (count/60)%60;
+            hour = count/3600;
+        }
+        catch(InterruptedException ex){
+            ex.printStackTrace();
+        }
+        }
+      
+        
     }
 
 // public void run() {

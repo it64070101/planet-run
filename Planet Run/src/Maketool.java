@@ -14,11 +14,11 @@ public class Maketool{
         pGadget = new JPanel();
         fr = new JFrame();
 
-        imgAxe = new ImageIcon("images/Axe.png");
-        imgGun = new ImageIcon("images/Gun.png");
-        imgHammer = new ImageIcon("images/Hammer.png");
-        imgPick = new ImageIcon("images/Pickaxe.png");
-        imgHook = new ImageIcon("images/Hook.png");
+        imgAxe = new ImageIcon("src/images/Axe.png");
+        imgGun = new ImageIcon("src/images/Gun.png");
+        imgHammer = new ImageIcon("src/images/Hammer.png");
+        imgPick = new ImageIcon("src/images/Pickaxe.png");
+        imgHook = new ImageIcon("src/images/Hook.png");
 
         gun = new JButton("Make Gun", imgGun);
         axe = new JButton("Make Axe", imgAxe);
