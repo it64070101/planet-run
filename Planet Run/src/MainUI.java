@@ -169,31 +169,42 @@ public class MainUI extends JPanel implements ActionListener{
         // pComponent.setBackground(Color.BLACK);
         // pComponent.add(pButton, BorderLayout.CENTER);
 
-        pInmain = new JPanel();
-        pInmain.setLayout(new GridLayout(1, 3, 50, 50));
-        pInmain.add(pSec);
-        pInmain.add(pRocket);
-        pInmain.add(pHuntAll);
-        pInmain.setBackground(new Color(0, 0, 0, 0));
-        pInmain.setBorder(new EmptyBorder(20,20,20,20));
+        // pInmain = new JPanel();
+        // pInmain.setLayout(new GridLayout(1, 3, 50, 50));
+        // pInmain.add(pSec);
+        // pInmain.add(pRocket);
+        // pInmain.add(pHuntAll);
+        // pInmain.setBackground(Color.darkGray);
+        // pInmain.setBorder(new EmptyBorder(20,20,20,20));
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        pSec.setBounds(25,25,300,screenSize.height);
+        pRocket.setBounds(450,25,600,750);
+        pHuntAll.setBounds(1000,25,600,750);
+        exit = new JButton("exit");
+        exit.setBounds((screenSize.width-250),(screenSize.height-75),250,75);
 
         // rocket panel
         pRocket.setLayout(new BorderLayout(100,100));
         pRocket.add(pAll, BorderLayout.NORTH);
         pRocket.add(pButton, BorderLayout.CENTER);
-        pRocket.setBackground(new Color(0, 0, 0, 0));
+        pRocket.setBackground(Color.darkGray);
 
         pAll.setLocation(30, 30);
-        fr.setLayout(new FlowLayout());
-        fr.add(pInmain);
+        
         fr.getContentPane().setBackground(Color.darkGray);
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         fr.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         fr.setSize(screenSize.width, screenSize.height);
         fr.setUndecorated(true);
-        fr.setBounds(0,0,screenSize.width, screenSize.height);
+        fr.setLayout(null);
+        fr.add(exit);
+        fr.add(pSec);
+        fr.add(pRocket);
+        fr.add(pHuntAll);
+        
+        
         fr.setLocationRelativeTo(null);
         fr.setVisible(true);
 
@@ -216,6 +227,7 @@ public class MainUI extends JPanel implements ActionListener{
         recoveryWadding.addActionListener(this);
         leftFin.addActionListener(this);
         rightFin.addActionListener(this);
+        exit.addActionListener(this);
 
         // fr.setFill(true);
     }
@@ -308,6 +320,9 @@ public class MainUI extends JPanel implements ActionListener{
             if (Player.fix(Ship.rightFin)){
                 rightFin.setEnabled(false);
             }
+        }
+        else if (e.getSource().equals(exit)){
+            System.exit(0);
         }
         update();
 
