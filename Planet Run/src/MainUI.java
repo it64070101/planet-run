@@ -57,6 +57,12 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
         recoveryWadding.setPreferredSize(new Dimension(100, 100));
         leftFin.setPreferredSize(new Dimension(100, 100));
         rightFin.setPreferredSize(new Dimension(100, 100));
+        
+        noseCone.setBackground(new Color(98, 79, 130));
+        shockcord.setBackground(new Color(98, 79, 130));
+        recoveryWadding.setBackground(new Color(98, 79, 130));
+        leftFin.setBackground(new Color(98, 79, 130));
+        rightFin.setBackground(new Color(98, 79, 130));
 
         pShip.setLayout(new BorderLayout(5, 5));
         pShip.setBackground(Color.BLACK);
@@ -81,16 +87,30 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
         sectorB.setPreferredSize(new Dimension(250, 160));
         sectorC.setPreferredSize(new Dimension(250, 160));
         sectorD.setPreferredSize(new Dimension(250, 160));
+        sectorA.setFont(new Font("Ink Free", Font.BOLD, 15));
+        sectorB.setFont(new Font("Ink Free", Font.BOLD, 15));
+        sectorC.setFont(new Font("Ink Free", Font.BOLD, 15));
+        sectorD.setFont(new Font("Ink Free", Font.BOLD, 15));
         sectorA.setBackground(new Color(63, 0, 113));
         sectorB.setBackground(new Color(63, 0, 113));
         sectorC.setBackground(new Color(63, 0, 113));
         sectorD.setBackground(new Color(63, 0, 113));
+        sectorA.setForeground(new Color(198, 151, 73));
+        sectorB.setForeground(new Color(198, 151, 73));
+        sectorC.setForeground(new Color(198, 151, 73));
+        sectorD.setForeground(new Color(198, 151, 73));
 
         rest = new JButton("Rest");
         rest.setPreferredSize(new Dimension(100, 50));
+        rest.setBackground(new Color(63, 59, 108));
+        rest.setForeground(new Color(163, 199, 214));
+        rest.setFont(new Font("Ink Free", Font.BOLD, 35));
         
         maketool = new JButton("Make Tool");
         maketool.setPreferredSize(new Dimension(100, 50));
+        maketool.setBackground(new Color(63, 59, 108));
+        maketool.setForeground(new Color(163, 199, 214));
+        maketool.setFont(new Font("Ink Free", Font.BOLD, 35));
 
         pSectors.setLayout(new GridLayout(4, 1, 50, 50));
         pSectors.add(sectorA);
@@ -115,9 +135,11 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
         huntingGround1.setPreferredSize(new Dimension(350, 220));
         huntingGround0.setBackground(new Color(63, 0, 113));
         huntingGround0.setForeground(new Color(255,255,255));
+        huntingGround0.setFont(new Font("Ink Free", Font.BOLD, 20));
         huntingGround1.setBackground(new Color(63, 0, 113));
         huntingGround1.setForeground(new Color(255,255,255));
         pHuntingGround.setBackground(new Color(0, 0, 0, 0));
+        huntingGround1.setFont(new Font("Ink Free", Font.BOLD, 20));
         pHuntAll = new JPanel();
         pHuntAll.setLayout(new FlowLayout());
         pHuntAll.add(pHuntingGround);
@@ -178,10 +200,10 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
 
         showclock = new JPanel();
         clockshow = new JLabel("");
-        showclock.setForeground(new Color(80,80,80));
+        showclock.setForeground(new Color(234, 234, 234));
         showclock.add(clockshow);
         showclock.setSize(200,200);
-        showclock.setBackground(Color.CYAN);
+        showclock.setBackground(new Color(249, 102, 102));
         
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         pSec.setBounds((int) (screenSize.width-(screenSize.width/1.075)),(int) (screenSize.height-(screenSize.height/1.1)), 250,1000);
@@ -190,13 +212,15 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
         fr.add(showclock);
         showclock.setBounds((int) (screenSize.width-(screenSize.width/1.5)),(int) (screenSize.height-(screenSize.height/1.225)), 300,60);
         exit = new JButton("exit");
-        exit.setBounds((screenSize.width-250),(screenSize.height-75),250,75);
+        exit.setBounds((screenSize.width-325),(screenSize.height-150),250,75);
+        exit.setBackground(new Color(220, 95, 0));
+        exit.setForeground(new Color(238, 238, 238));
 
         // rocket panel
         pRocket.setLayout(new BorderLayout(150,180));
         pRocket.add(pAll, BorderLayout.NORTH);
         pRocket.add(pButton, BorderLayout.CENTER);
-        pRocket.setBackground(Color.darkGray);
+        pRocket.setBackground(new Color(0,0,0,0));
        
 
         pAll.setLocation(30, 30);
@@ -272,28 +296,28 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
             sectorA.setIcon(sec1);
             sectorA.setBackground(new Color(69, 60, 103));
             sectorA.setForeground(new Color(242, 247, 161));
-            sectorA.setText("SectorsAAAA");
+            sectorA.setText("Sectors A");
             // sectorA.setEnabled(false);
         }
         else if (e.getSource().equals(sectorB)) {
             sectorB.setIcon(sec2);
             sectorB.setBackground(new Color(69, 60, 103));
             sectorB.setForeground(new Color(242, 247, 161));
-            sectorB.setText("SectorsBBBB");
+            sectorB.setText("Sectors B");
             // sectorB.setEnabled(false);
         }
         else if (e.getSource().equals(sectorC)) {
             sectorC.setIcon(sec3);
             sectorC.setBackground(new Color(69, 60, 103));
             sectorC.setForeground(new Color(242, 247, 161));
-            sectorC.setText("SectorsCCCC");
+            sectorC.setText("Sectors C");
             // sectorC.setEnabled(false);
         }
         else if (e.getSource().equals(sectorD)) {
             sectorD.setIcon(sec4);
             sectorD.setBackground(new Color(69, 60, 103));
             sectorD.setForeground(new Color(242, 247, 161));
-            sectorD.setText("SectorsDDDD");
+            sectorD.setText("Sectors D");
             // sectorD.setEnabled(false);
         }
         else if (e.getSource().equals(huntingGround0)) {
@@ -310,26 +334,31 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
         else if (e.getSource().equals(noseCone)){
             if (Player.fix(Ship.noseCone)){
                 noseCone.setEnabled(false);
+                noseCone.setBackground(new Color(159, 115, 171));
             }
         }
         else if (e.getSource().equals(shockcord)){
             if (Player.fix(Ship.shockcord)){
                 shockcord.setEnabled(false);
+                shockcord.setBackground(new Color(159, 115, 171));
             }
         }
         else if (e.getSource().equals(recoveryWadding)){
             if (Player.fix(Ship.recoveryWadding)){
                 recoveryWadding.setEnabled(false);
+                recoveryWadding.setBackground(new Color(159, 115, 171));
             }
         }
         else if (e.getSource().equals(leftFin)){
             if (Player.fix(Ship.leftFin)){
                 leftFin.setEnabled(false);
+                leftFin.setBackground(new Color(159, 115, 171));
             }
         }
         else if (e.getSource().equals(rightFin)){
             if (Player.fix(Ship.rightFin)){
                 rightFin.setEnabled(false);
+                rightFin.setBackground(new Color(159, 115, 171));
             }
         }
         else if (e.getSource().equals(exit)){
