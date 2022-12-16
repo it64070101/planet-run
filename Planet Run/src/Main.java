@@ -1,5 +1,8 @@
 import java.util.*;
 
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+
 public class Main {
     
     public static int day;
@@ -156,7 +159,15 @@ public class Main {
         
         huntingGround = new Animal[2];
         animalDeck = new Animal[6];
-        new MainUI();
+        MainUI frame = new MainUI();
+        // try {
+        //     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        //     } catch (Exception e) {
+        //     e.printStackTrace();
+        //     }
+        //     SwingUtilities.invokeLater(() -> { MainUI frame = new MainUI(); });
+        // Thread n1 = new Thread(mainUI);
+        // n1.start();
     }
     
 }

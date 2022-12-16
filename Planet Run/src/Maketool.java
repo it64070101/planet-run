@@ -41,7 +41,7 @@ public class Maketool{
         fr.setVisible(true);
         fr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         fr.setSize(300, 780);
-        fr.setLocation(800,30);
+        fr.setLocation(1000,30);
         fr.setResizable(false);
         fr.getContentPane().setBackground(Color.BLACK);
     }

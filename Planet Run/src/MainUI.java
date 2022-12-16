@@ -87,6 +87,10 @@ public class MainUI extends JPanel implements ActionListener {
 
         rest.setPreferredSize(new Dimension(100, 50));
         maketool.setPreferredSize(new Dimension(100, 50));
+        sectorA.setBackground(new Color(63, 0, 113));
+        sectorB.setBackground(new Color(63, 0, 113));
+        sectorC.setBackground(new Color(63, 0, 113));
+        sectorD.setBackground(new Color(63, 0, 113));
 
         pSectors.setLayout(new GridLayout(4, 1, 50, 50));
         pSectors.add(sectorA);
@@ -100,8 +104,8 @@ public class MainUI extends JPanel implements ActionListener {
         pSec.setAlignmentX(Component.LEFT_ALIGNMENT);
         pSec.setBackground(new Color(0, 0, 0, 0));
 
-        ani1 = new ImageIcon("images/Ani.png");
-        ani2 = new ImageIcon("images/Ani.png");
+        ani1 = new ImageIcon("images/Ani1.png");
+        ani2 = new ImageIcon("images/Ani2.png");
         huntingGround0 = new JButton("Fight this Animal", ani1);
         huntingGround1 = new JButton("Fight this Animal", ani2);
 
@@ -110,6 +114,10 @@ public class MainUI extends JPanel implements ActionListener {
         pHuntingGround.add(huntingGround1);
         huntingGround0.setPreferredSize(new Dimension(350, 220));
         huntingGround1.setPreferredSize(new Dimension(350, 220));
+        huntingGround0.setBackground(new Color(63, 0, 113));
+        huntingGround0.setForeground(new Color(255,255,255));
+        huntingGround1.setBackground(new Color(63, 0, 113));
+        huntingGround1.setForeground(new Color(255,255,255));
         pHuntingGround.setBackground(new Color(0, 0, 0, 0));
         pHuntAll = new JPanel();
         pHuntAll.setLayout(new FlowLayout());
@@ -194,7 +202,7 @@ public class MainUI extends JPanel implements ActionListener {
         pInmain.add(pRocket);
         pInmain.add(pHuntAll);
         pInmain.setBackground(new Color(0, 0, 0, 0));
-        pInmain.setBorder(new EmptyBorder(100,20,20,20));
+        pInmain.setBorder(new EmptyBorder(20,20,20,20));
         // pInmain.setFill(true);
 
         // rocket panel
@@ -213,7 +221,8 @@ public class MainUI extends JPanel implements ActionListener {
         // fr.add(pComponent);
         fr.getContentPane().setBackground(Color.darkGray);
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fr.setSize(1280, 960);
+        // fr.setSize(1080, 960);
+        fr.setMinimumSize(new Dimension(1600, 900));
         // fr.pack();
         fr.setLocationRelativeTo(null);
         fr.setVisible(true);
@@ -264,21 +273,29 @@ public class MainUI extends JPanel implements ActionListener {
         }
         else if (e.getSource().equals(sectorA)) {
             sectorA.setIcon(sec1);
+            sectorA.setBackground(new Color(69, 60, 103));
+            sectorA.setForeground(new Color(242, 247, 161));
             sectorA.setText("SectorsAAAA");
             // sectorA.setEnabled(false);
         }
         else if (e.getSource().equals(sectorB)) {
             sectorB.setIcon(sec2);
+            sectorB.setBackground(new Color(69, 60, 103));
+            sectorB.setForeground(new Color(242, 247, 161));
             sectorB.setText("SectorsBBBB");
             // sectorB.setEnabled(false);
         }
         else if (e.getSource().equals(sectorC)) {
             sectorC.setIcon(sec3);
+            sectorC.setBackground(new Color(69, 60, 103));
+            sectorC.setForeground(new Color(242, 247, 161));
             sectorC.setText("SectorsCCCC");
             // sectorC.setEnabled(false);
         }
         else if (e.getSource().equals(sectorD)) {
             sectorD.setIcon(sec4);
+            sectorD.setBackground(new Color(69, 60, 103));
+            sectorD.setForeground(new Color(242, 247, 161));
             sectorD.setText("SectorsDDDD");
             // sectorD.setEnabled(false);
         }
@@ -358,10 +375,10 @@ public class MainUI extends JPanel implements ActionListener {
     }
 
 // public void run() {
-//         while(fr.isValid()){
+//         while(true){
 //             try{
-//                 pSectors.setLocation(pSectors.getLocation().x+((int)(Math.random()* 20)-10), pSectors.getLocation().y+((int)(Math.random()* 20)-10));
-//                 Thread.sleep(100);
+//                 sectorA.setLocation(sectorA.getLocation().x+((int)(Math.random()* 20)-10), sectorA.getLocation().y+((int)(Math.random()* 20)-10));
+//                 Thread.sleep(1000);
 //             }
 //             catch (InterruptedException ex){
 //                     ex.printStackTrace();
