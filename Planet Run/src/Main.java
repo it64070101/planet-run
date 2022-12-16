@@ -121,7 +121,7 @@ public class Main {
     }
 
     public void chooseAction(int action){
-        System.out.println("How many engergy");
+        System.out.println("How many energy?");
         int num = 1;
         while (num > Player.energy){
             System.out.println("energy not enough.");
