@@ -7,6 +7,7 @@ import java.text.ParseException;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.DimensionUIResource;
 
 import java.util.*;
 
@@ -18,11 +19,9 @@ public class MainUI extends JPanel implements ActionListener{
     private JButton noseCone, shockcord, recoveryWadding, leftFin, rightFin;
     private JButton sectorA, sectorB, sectorC, sectorD, rest, maketool;
     private JButton huntingGround0, huntingGround1;
-    // private JButton gun, axe, hammer, pick, hook;
+    private JButton exit;
     private JTextField dayTxt, foodTxt, starTxt, triangleTxt, squareTxt, circleTxt, title1, HPTxt, energyTxt;
     private ImageIcon rockcone, rockleft, rockright, rockbase, rockbody, sec1, sec2, sec3, sec4, ani1, ani2, queSym;
-    // private JDesktopPane dp1;
-    // private JInternalFrame inf1, inf2, inf3, inf4, inf5, inf6, inf7;
     private JLabel name;
 
     public MainUI() {
@@ -189,11 +188,20 @@ public class MainUI extends JPanel implements ActionListener{
         fr.add(pInmain);
         fr.getContentPane().setBackground(Color.darkGray);
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fr.setMinimumSize(new Dimension(1366, 768));
+
+        fr.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        fr.setSize(screenSize.width, screenSize.height);
+        fr.setUndecorated(true);
+        fr.setBounds(0,0,screenSize.width, screenSize.height);
+        fr.setLocationRelativeTo(null);
+        fr.setVisible(true);
+
+        
         fr.setLocationRelativeTo(null);
         fr.setVisible(true);
         fr.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
-        // fr.setResizable(false);
+        fr.setResizable(false);
 
         maketool.addActionListener(this);
         sectorA.addActionListener(this);
