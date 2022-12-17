@@ -2,15 +2,18 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Maketool implements ActionListener{
+public class Maketool implements ActionListener, WindowListener{
 
     private JFrame fr;
+    private JFrame toolBtn;
     // private JLabel la1, la2, la3, la4, la5;
     private JPanel pGadget;
     private JButton gun, axe, hammer, pick, hook;
     private ImageIcon imgAxe, imgGun, imgHammer, imgPick, imgHook;
 
-    public Maketool(){
+    public Maketool(JFrame mainFr){
+        this.toolBtn = mainFr;
+        this.toolBtn.setEnabled(false);
         pGadget = new JPanel();
         fr = new JFrame();
 
@@ -75,31 +78,82 @@ public class Maketool implements ActionListener{
         hammer.addActionListener(this);
         pick.addActionListener(this);
         hook.addActionListener(this);
+        fr.addWindowListener(this);
     }
     public static void main(String[] args) {
-        new Maketool();
+//        new Maketool();
     }
     
     public void actionPerformed(ActionEvent e){
         if (e.getSource().equals(gun)){
-            gun.setEnabled(false);
-            gun.setText("Sold!");
+            if (Player.construction(ToolBox.gun, MainUI.sliderInput())){
+                gun.setEnabled(false);
+                gun.setText("Obtained");
+            }
         }
         else if (e.getSource().equals(axe)){
-            axe.setEnabled(false);
-            axe.setText("Sold!");
+            if (Player.construction(ToolBox.axe, MainUI.sliderInput())){
+                axe.setEnabled(false);
+                axe.setText("Obtained");
+            }
         }
         else if (e.getSource().equals(hammer)){
-            hammer.setEnabled(false);
-            hammer.setText("Sold!");
+            if (Player.construction(ToolBox.hammer, MainUI.sliderInput())){
+                hammer.setEnabled(false);
+                hammer.setText("Obtained");
+            }
         }
         else if (e.getSource().equals(pick)){
-            pick.setEnabled(false);
-            pick.setText("Sold!");
+            if (Player.construction(ToolBox.pick, MainUI.sliderInput())){
+                pick.setEnabled(false);
+                pick.setText("Obtained");
+            }
         }
         else if (e.getSource().equals(hook)){
-            hook.setEnabled(false);
-            hook.setText("Sold!");
+            if (Player.construction(ToolBox.hook, MainUI.sliderInput())){
+                hook.setEnabled(false);
+                hook.setText("Obtained");
+            }
         }
+        MainUI.update();
     }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+        this.toolBtn.setEnabled(false);
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        this.toolBtn.setEnabled(true);
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    
 }

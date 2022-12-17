@@ -1,8 +1,8 @@
 public class Dice {
     private static int face;
 
-    public Dice() {
-        this.face = 6;
+    public Dice(int face) {
+        this.face = face;
     }
 
     public int getFace() {
@@ -22,6 +22,8 @@ public class Dice {
     }
     
     public static boolean rollAgainst(int amount, int target){
-        return roll(amount) >= target;
+        int roll = roll(amount);
+        System.out.println(roll+", "+target);
+        return roll >= target;
     }
 }
