@@ -17,9 +17,9 @@ public class MainHome extends JPanel implements ActionListener {
 
     public int px = 0, py = 0;
 
-    public MainHome(){
+    public MainHome(JFrame fr){
         // MainHome p = new MainHome();
-//        fr = new JFrame();
+        this.fr = fr;
         p1 = new JPanel();
         p1.setLayout(new GridLayout(5,1,5,10));
         p2 = new JPanel();
@@ -71,8 +71,9 @@ public class MainHome extends JPanel implements ActionListener {
     }
 
     public static void main(String[] args) {
-        MainHome p = new MainHome();
+        System.out.println("i am working!");
         JFrame fr = new JFrame();
+        MainHome p = new MainHome(fr);
         fr.setMinimumSize(new Dimension(1600, 900));
         fr.setLocationRelativeTo(null);
         fr.setVisible(true);
@@ -85,8 +86,17 @@ public class MainHome extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e){
         if(e.getSource().equals(bStart)){
-            new MainUI();
-            // fr.dispose();
+            new Dice(6);
+            new Player("Chokchai");
+            new Storage();
+            new Area();
+            new Ship();
+            new ToolBox();
+            
+            MainUI frame = new MainUI();
+            Thread n1 = new Thread(frame);
+            n1.start();
+            fr.dispose();
         }
         else if(e.getSource().equals(bConti)){
             

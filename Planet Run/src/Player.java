@@ -72,8 +72,23 @@ public class Player {
         }
     }
     
-    public void hunting(Animal animal){
-        
+    public static void hunting(Animal animal, int amount){
+        if (Dice.rollAgainst(amount*10, animal.getRating())){
+            JOptionPane.showMessageDialog(null, "Hunting succeeded. You got "+animal.getFoodDrop()+" foods!.");
+            animal.setIsAlive(false);
+            Storage.food.gain(animal.getFoodDrop());
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Hunting failed. You took "+animal.getDamage()+" damages!.");
+            Player.HP = Player.HP - animal.getDamage();
+        }
+        Player.energy -= amount;
+
+        // if(playerAttack >= getRating()){
+        //     Storage.food.gain(getFoodDrop());
+        // }else{
+        //     Player.HP = Player.HP - getDamage();
+        // }
     }
     
     public static boolean construction(Gadget gadget, int amount){

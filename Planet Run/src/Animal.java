@@ -3,12 +3,14 @@ public abstract class Animal {
     private int rating;
     private int foodDrop;
     private int damage;
+    private boolean isAlive;
 
-    public Animal(String name, int rating, int foodDrop, int damage) {
+    public Animal(String name, int rating, int foodDrop, int damage , boolean isAlive) {
         this.name = name;
         this.rating = rating;
         this.foodDrop = foodDrop;
         this.damage = damage;
+        this.isAlive = true;
     }
 
     // getter setter no one cares
@@ -37,12 +39,11 @@ public abstract class Animal {
         this.damage = damage;
     }
 
-    public void isAttacked(int playerAttack) {
-        if(playerAttack >= getRating()){
-            Storage.food.gain(getFoodDrop());
-        }else{
-            Player.HP = Player.HP - getDamage();
-        }
+    public boolean getIsAlive() {
+        return isAlive;
+    }
+    public void setIsAlive(Boolean state) {
+        this.isAlive = state;
     }
 
     @Override

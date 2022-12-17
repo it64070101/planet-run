@@ -23,7 +23,7 @@ public class Dice {
     
     public static boolean rollAgainst(int amount, int target){
         int roll = roll(amount);
-        System.out.println(roll+", "+target);
+        // System.out.println(roll+", "+target);
         return roll >= target;
     }
 }

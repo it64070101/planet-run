@@ -17,11 +17,11 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     private static JPanel pAll, pShip, pHuntingGround, pSectors, pGadget, pRest, pLabel, pButton, pMaketool, pComponent,
             pRocket, pHuntAll, pSec, pInmain, pInRocket, showclock;
     private static JButton noseCone, shockcord, recoveryWadding, leftFin, rightFin;
-    private static JButton sectorA, sectorB, sectorC, sectorD, rest, maketool;
+    private static JButton sector1, sector2, sector3, sector4, rest, maketool;
     private static JButton huntingGround0, huntingGround1;
     private static JButton exit;
     private static JTextField dayTxt, foodTxt, starTxt, triangleTxt, squareTxt, circleTxt, title1, HPTxt, energyTxt;
-    private static ImageIcon rockcone, rockleft, rockright, rockbase, rockbody, sec1, sec2, sec3, sec4, ani1, ani2, queSym;
+    private static ImageIcon rockcone, rockleft, rockright, rockbase, rockbody, sec1, sec2, sec3, sec4, ani1, ani2,ani3, ani4,ani5, ani6, queSym;
     private static JLabel name, clockshow;
 
     private static JPanel pInput, pEnergy, pEat;
@@ -36,12 +36,9 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     public static Animal[] animalDeck;
 
     public MainUI() {
-//<<<<<<< Updated upstream
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenDPI = Toolkit.getDefaultToolkit().getScreenResolution();
         double scaleTest = (double)96/screenDPI;
-        System.out.println(screenDPI+ " hey " + scaleTest);
-//=======
         day = 0;
 
         huntingGround = new Animal[2];
@@ -53,8 +50,53 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         animalDeck[3] = new Fishman();
         animalDeck[4] = new Snailbox();
         animalDeck[5] = new Rhinocow();
-        
-//>>>>>>> Stashed changes
+
+        ani1 = new ImageIcon("src/images/Ani1.png");
+        ani2 = new ImageIcon("src/images/Ani2.png");
+        ani3 = new ImageIcon("src/images/Ani3.png");
+        ani4 = new ImageIcon("src/images/Ani4.png");
+        ani5 = new ImageIcon("src/images/Ani5.png");
+        ani6 = new ImageIcon("src/images/Ani6.png");
+
+        while(huntingGround[0] == null){
+            int redrawing = (int) (Math.random() * 10) % 6;
+            huntingGround[0] = animalDeck[redrawing];
+            animalDeck[redrawing] = null;
+            if(huntingGround[0] instanceof BirdKing){
+                huntingGround0 = new JButton("Fight this Animal", ani1);
+            }else if (huntingGround[0] instanceof DoubleDog){
+                huntingGround0 = new JButton("Fight this Animal", ani2);
+            }else if (huntingGround[0] instanceof Fourleg){
+                huntingGround0 = new JButton("Fight this Animal", ani3);
+            }else if (huntingGround[0] instanceof Fishman){
+                huntingGround0 = new JButton("Fight this Animal", ani4);
+            }else if (huntingGround[0] instanceof Snailbox){
+                huntingGround0 = new JButton("Fight this Animal", ani5);
+            }else if (huntingGround[0] instanceof Rhinocow){
+                huntingGround0 = new JButton("Fight this Animal", ani6);
+            }  
+        }
+        while(huntingGround[1] == null){
+            int redrawing = (int) (Math.random() * 10) % 6;
+            huntingGround[1] = animalDeck[redrawing];
+            animalDeck[redrawing] = null;
+            if(huntingGround[1] instanceof BirdKing){
+                huntingGround1 = new JButton("Fight this Animal", ani1);
+            }else if (huntingGround[1] instanceof DoubleDog){
+                huntingGround1 = new JButton("Fight this Animal", ani2);
+            }else if (huntingGround[1] instanceof Fourleg){
+                huntingGround1 = new JButton("Fight this Animal", ani3);
+            }else if (huntingGround[1] instanceof Fishman){
+                huntingGround1 = new JButton("Fight this Animal", ani4);
+            }else if (huntingGround[1] instanceof Snailbox){
+                huntingGround1 = new JButton("Fight this Animal", ani5);
+            }else if (huntingGround[1] instanceof Rhinocow){
+                huntingGround1 = new JButton("Fight this Animal", ani6);
+            }
+        }
+        System.out.println("Animal 1 : " + huntingGround[0]);
+        System.out.println("Animal 2 : " + huntingGround[1]);
+
         fr = new JFrame("Planet Run");
 
         pAll = new JPanel();
@@ -80,27 +122,21 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         leftFin = new JButton(rockleft);
         rightFin = new JButton(rockright);
 
-        noseCone.setPreferredSize(new Dimension((int)(100*scaleTest), (int)(100*scaleTest)));
-        shockcord.setPreferredSize(new Dimension((int)(150*scaleTest), (int)(200*scaleTest)));
-        recoveryWadding.setPreferredSize(new Dimension(100, 100));
-//<<<<<<< Updated upstream
-        leftFin.setPreferredSize(new Dimension((int)(100*scaleTest), (int)(100*scaleTest)));
-        rightFin.setPreferredSize(new Dimension((int)(100*scaleTest), (int)(100*scaleTest)));
-        
-//=======
-        leftFin.setPreferredSize(new Dimension(100, 100));
-        rightFin.setPreferredSize(new Dimension(100, 100));
+        noseCone.setPreferredSize(new Dimension(screenScale(100), screenScale(100)));
+        shockcord.setPreferredSize(new Dimension(screenScale(150), screenScale(200)));
+        recoveryWadding.setPreferredSize(new Dimension(screenScale(100), screenScale(100)));
+        leftFin.setPreferredSize(new Dimension(screenScale(100), screenScale(100)));
+        rightFin.setPreferredSize(new Dimension(screenScale(100), screenScale(100)));
 
-//>>>>>>> Stashed changes
         noseCone.setBackground(new Color(98, 79, 130));
         shockcord.setBackground(new Color(98, 79, 130));
         recoveryWadding.setBackground(new Color(98, 79, 130));
         leftFin.setBackground(new Color(98, 79, 130));
         rightFin.setBackground(new Color(98, 79, 130));
 
-        pShip.setLayout(new BorderLayout(5, 5));
+        pShip.setLayout(new BorderLayout(screenScale(5), screenScale(5)));
         pShip.setBackground(Color.BLACK);
-        pShip.setSize((int)(128*scaleTest), (int)(128*scaleTest));
+        pShip.setSize(screenScale(128), screenScale(128));
         pShip.add(noseCone, BorderLayout.NORTH);
         pShip.add(shockcord, BorderLayout.CENTER);
         pShip.add(recoveryWadding, BorderLayout.SOUTH);
@@ -108,56 +144,49 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pShip.add(rightFin, BorderLayout.EAST);
 
         queSym = new ImageIcon("src/images/ques.png");
-        sec1 = new ImageIcon("src/images/Sec1.png");
-        sec2 = new ImageIcon("src/images/Sec2.png");
-        sec3 = new ImageIcon("src/images/Sec3.png");
-        sec4 = new ImageIcon("src/images/Sec4.png");
-        sectorA = new JButton("Explore this Sector", queSym);
-        sectorB = new JButton("Explore this Sector", queSym);
-        sectorC = new JButton("Explore this Sector", queSym);
-        sectorD = new JButton("Explore this Sector", queSym);
-//<<<<<<< Updated upstream
-        sectorA.setPreferredSize(new Dimension((int)(250*scaleTest), (int)(160*scaleTest)));
-        sectorB.setPreferredSize(new Dimension((int)(250*scaleTest), (int)(160*scaleTest)));
-        sectorC.setPreferredSize(new Dimension((int)(250*scaleTest), (int)(160*scaleTest)));
-        sectorD.setPreferredSize(new Dimension((int)(250*scaleTest), (int)(160*scaleTest)));
-        sectorA.setFont(new Font("Ink Free", Font.BOLD, (int)(15*scaleTest)));
-        sectorB.setFont(new Font("Ink Free", Font.BOLD, (int)(15*scaleTest)));
-        sectorC.setFont(new Font("Ink Free", Font.BOLD, (int)(15*scaleTest)));
-        sectorD.setFont(new Font("Ink Free", Font.BOLD, (int)(15*scaleTest)));
-        sectorA.setBackground(new Color(63, 0, 113));
-        sectorB.setBackground(new Color(63, 0, 113));
-        sectorC.setBackground(new Color(63, 0, 113));
-        sectorD.setBackground(new Color(63, 0, 113));
-        sectorA.setForeground(new Color(198, 151, 73));
-        sectorB.setForeground(new Color(198, 151, 73));
-        sectorC.setForeground(new Color(198, 151, 73));
-        sectorD.setForeground(new Color(198, 151, 73));
-//=======
-//>>>>>>> Stashed changes
+        sec1 = new ImageIcon("src/images/Forest.png");
+        sec2 = new ImageIcon("src/images/Desert.png");
+        sec3 = new ImageIcon("src/images/Mountain.png");
+        sec4 = new ImageIcon("src/images/Altar.png");
+        sector1 = new JButton("Explore this Sector", queSym);
+        sector2 = new JButton("Explore this Sector", queSym);
+        sector3 = new JButton("Explore this Sector", queSym);
+        sector4 = new JButton("Explore this Sector", queSym);
+
+        sector1.setPreferredSize(new Dimension(screenScale(250), screenScale(160)));
+        sector2.setPreferredSize(new Dimension(screenScale(250), screenScale(160)));
+        sector3.setPreferredSize(new Dimension(screenScale(250), screenScale(160)));
+        sector4.setPreferredSize(new Dimension(screenScale(250), screenScale(160)));
+        sector1.setFont(new Font("Ink Free", Font.BOLD, screenScale(15)));
+        sector2.setFont(new Font("Ink Free", Font.BOLD, screenScale(15)));
+        sector3.setFont(new Font("Ink Free", Font.BOLD, screenScale(15)));
+        sector4.setFont(new Font("Ink Free", Font.BOLD, screenScale(15)));
+        sector1.setBackground(new Color(63, 0, 113));
+        sector2.setBackground(new Color(63, 0, 113));
+        sector3.setBackground(new Color(63, 0, 113));
+        sector4.setBackground(new Color(63, 0, 113));
+        sector1.setForeground(new Color(198, 151, 73));
+        sector2.setForeground(new Color(198, 151, 73));
+        sector3.setForeground(new Color(198, 151, 73));
+        sector4.setForeground(new Color(198, 151, 73));
 
         rest = new JButton("Rest");
-        rest.setPreferredSize(new Dimension((int)(100*scaleTest), (int)(50*scaleTest)));
+        rest.setPreferredSize(new Dimension(screenScale(100), screenScale(50)));
         rest.setBackground(new Color(63, 59, 108));
         rest.setForeground(new Color(163, 199, 214));
-//<<<<<<< Updated upstream
-        rest.setFont(new Font("Ink Free", Font.BOLD, (int)(35*scaleTest)));
-        
-//=======
-        rest.setFont(new Font("Ink Free", Font.BOLD, 35));
+        rest.setFont(new Font("Ink Free", Font.BOLD, screenScale(35)));
 
-//>>>>>>> Stashed changes
         maketool = new JButton("Make Tool");
-        maketool.setPreferredSize(new Dimension((int)(100*scaleTest), (int)(50*scaleTest)));
+        maketool.setPreferredSize(new Dimension(screenScale(100), screenScale(50)));
         maketool.setBackground(new Color(63, 59, 108));
         maketool.setForeground(new Color(163, 199, 214));
-        maketool.setFont(new Font("Ink Free", Font.BOLD, (int)(35*scaleTest)));
+        maketool.setFont(new Font("Ink Free", Font.BOLD, screenScale(35)));
 
-        pSectors.setLayout(new GridLayout(4, 1, 50, 50));
-        pSectors.add(sectorA);
-        pSectors.add(sectorB);
-        pSectors.add(sectorC);
-        pSectors.add(sectorD);
+        pSectors.setLayout(new GridLayout(4, 1, screenScale(50), screenScale(50)));
+        pSectors.add(sector1);
+        pSectors.add(sector2);
+        pSectors.add(sector3);
+        pSectors.add(sector4);
         pSectors.setBackground(new Color(0, 0, 0, 0));
         pSec = new JPanel();
         pSec.setLayout(new FlowLayout());
@@ -165,27 +194,20 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pSec.setAlignmentX(Component.LEFT_ALIGNMENT);
         pSec.setBackground(new Color(0, 0, 0, 0));
 
-        ani1 = new ImageIcon("src/images/Ani1.png");
-        ani2 = new ImageIcon("src/images/Ani2.png");
-        huntingGround0 = new JButton("Fight this Animal", ani1);
-        huntingGround1 = new JButton("Fight this Animal", ani2);
-        pHuntingGround.setLayout(new GridLayout(2, 1, (int)(50*scaleTest), (int)(50*scaleTest)));
+        pHuntingGround.setLayout(new GridLayout(2, 1, screenScale(50), screenScale(50)));
         pHuntingGround.add(huntingGround0);
         pHuntingGround.add(huntingGround1);
-        huntingGround0.setPreferredSize(new Dimension((int)(350*scaleTest), (int)(220*scaleTest)));
-        huntingGround1.setPreferredSize(new Dimension((int)(350*scaleTest), (int)(220*scaleTest)));
+        huntingGround0.setPreferredSize(new Dimension(screenScale(350), screenScale(220)));
+        huntingGround1.setPreferredSize(new Dimension(screenScale(350), screenScale(220)));
         huntingGround0.setBackground(new Color(63, 0, 113));
-//<<<<<<< Updated upstream
+
         huntingGround0.setForeground(new Color(255,255,255));
-        huntingGround0.setFont(new Font("Ink Free", Font.BOLD, (int)(20*scaleTest)));
-//=======
-        huntingGround0.setForeground(new Color(255, 255, 255));
-        huntingGround0.setFont(new Font("Ink Free", Font.BOLD, 20));
-//>>>>>>> Stashed changes
+        huntingGround0.setFont(new Font("Ink Free", Font.BOLD, screenScale(20)));
+
         huntingGround1.setBackground(new Color(63, 0, 113));
         huntingGround1.setForeground(new Color(255, 255, 255));
         pHuntingGround.setBackground(new Color(0, 0, 0, 0));
-        huntingGround1.setFont(new Font("Ink Free", Font.BOLD, (int)(20*scaleTest)));
+        huntingGround1.setFont(new Font("Ink Free", Font.BOLD, screenScale(20)));
         pHuntAll = new JPanel();
         pHuntAll.setLayout(new FlowLayout());
         pHuntAll.add(pHuntingGround);
@@ -208,7 +230,6 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         slider.setPaintLabels(true);
         slider.setPaintTicks(true);
 
-        //=========================================================================================================================================
         pLabel.add(name);
         pLabel.add(dayTxt);
         pLabel.add(HPTxt);
@@ -250,7 +271,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         squareTxt.setEditable(false);
         circleTxt.setEditable(false);
 
-        pButton.setLayout(new BorderLayout(5, 5));
+        pButton.setLayout(new BorderLayout(screenScale(5), screenScale(5)));
         pButton.setBackground(Color.BLACK);
         pButton.add(maketool, BorderLayout.NORTH);
         pButton.add(pShip, BorderLayout.CENTER);
@@ -258,7 +279,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 
         pAll.setLayout(new FlowLayout(FlowLayout.CENTER));
         pAll.add(pLabel);
-        pAll.setSize(100, 100);
+        pAll.setSize(screenScale(100), screenScale(100));
         pAll.setBackground(new Color(24, 39, 71));
         pAll.setForeground(new Color(254, 194, 96));
 
@@ -266,39 +287,27 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         clockshow = new JLabel("");
         showclock.setForeground(new Color(234, 234, 234));
         showclock.add(clockshow);
-        showclock.setSize(200, 200);
+        showclock.setSize(screenScale(200), screenScale(200));
         showclock.setBackground(new Color(249, 102, 102));
-//<<<<<<< Updated upstream
         
-        
-        pSec.setBounds((int) ((screenSize.width-(screenSize.width/1.075))*scaleTest),(int) ((screenSize.height-(screenSize.height/1.1))*scaleTest), (int)(250*scaleTest),(int)(1000*scaleTest));
-        pRocket.setBounds((int) ((screenSize.width-(screenSize.width/1.345))*scaleTest),(int) ((screenSize.height-(screenSize.height/1.1))*scaleTest), (int)(700*scaleTest),(int)(850*scaleTest));
-        pHuntAll.setBounds((int) ((screenSize.width-(screenSize.width/3.25))*scaleTest),(int) ((screenSize.height-(screenSize.height/1.1))*scaleTest), (int)(500*scaleTest),(int)(500*scaleTest));
+        pSec.setBounds(screenScale(0),screenScale(50), screenScale(450),screenScale(1000));
+        pRocket.setBounds(screenScale(500),screenScale(50), screenScale(650),screenScale(850));
+        pHuntAll.setBounds(screenScale(500+700),screenScale(50), screenScale(500),screenScale(500));
         fr.add(showclock);
-        showclock.setBounds((int) ((screenSize.width-(screenSize.width/1.5))*scaleTest),(int) ((screenSize.height-(screenSize.height/1.225))*scaleTest), (int)(300*scaleTest),(int)(60*scaleTest));
+        showclock.setBounds(screenScale(500+350-150),screenScale(150), screenScale(250),screenScale(60));
         exit = new JButton("exit");
-        exit.setBounds((int) ((screenSize.width-325)*scaleTest),(int) ((screenSize.height-150)*scaleTest),(int) (250*scaleTest),(int) (75*scaleTest));
-//=======
+        exit.setBounds(screenScale(500+700+15+175),screenScale(825),screenScale(200),screenScale(75));
 
-//        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        pSec.setBounds((int) (screenSize.width - (screenSize.width / 1.075)), (int) (screenSize.height - (screenSize.height / 1.1)), 250, 1000);
-        pRocket.setBounds((int) (screenSize.width - (screenSize.width / 1.345)), (int) (screenSize.height - (screenSize.height / 1.1)), 600, 750);
-        pHuntAll.setBounds((int) (screenSize.width - (screenSize.width / 2.375)), (int) (screenSize.height - (screenSize.height / 1.1)), 500, 500);
-        fr.add(showclock);
-        showclock.setBounds((int) (screenSize.width - (screenSize.width / 1.5)), (int) (screenSize.height - (screenSize.height / 1.225)), 300, 60);
-        exit = new JButton("exit");
-        exit.setBounds((screenSize.width - 325), (screenSize.height - 150), 250, 75);
-//>>>>>>> Stashed changes
         exit.setBackground(new Color(220, 95, 0));
         exit.setForeground(new Color(238, 238, 238));
 
         // rocket panel
-        pRocket.setLayout(new BorderLayout(150, 180));
+        pRocket.setLayout(new BorderLayout(screenScale(150),screenScale(180)));
         pRocket.add(pAll, BorderLayout.NORTH);
         pRocket.add(pButton, BorderLayout.CENTER);
         pRocket.setBackground(new Color(0, 0, 0, 0));
 
-        pAll.setLocation(30, 30);
+        pAll.setLocation(screenScale(30), screenScale(30));
 
         update();
 
@@ -323,10 +332,10 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         fr.setResizable(false);
 
         maketool.addActionListener(this);
-        sectorA.addActionListener(this);
-        sectorB.addActionListener(this);
-        sectorC.addActionListener(this);
-        sectorD.addActionListener(this);
+        sector1.addActionListener(this);
+        sector2.addActionListener(this);
+        sector3.addActionListener(this);
+        sector4.addActionListener(this);
         huntingGround0.addActionListener(this);
         huntingGround1.addActionListener(this);
         rest.addActionListener(this);
@@ -377,56 +386,64 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 
     }
 
-    public static void main(String[] args) {
-        new Dice(6);
-        new Player("Chokchai");
-        new Storage();
-        new Area();
-        new Ship();
-        new ToolBox();
-        day = 0;
-
-        huntingGround = new Animal[2];
-        animalDeck = new Animal[6];
-        MainUI frame = new MainUI();
-        Thread n1 = new Thread(frame);
-        n1.start();
-    }
+//    public static void main(String[] args) {
+//        new Dice(6);
+//        new Player("Chokchai");
+//        new Storage();
+//        new Area();
+//        new Ship();
+//        new ToolBox();
+//        day = 0;
+//
+//        huntingGround = new Animal[2];
+//        animalDeck = new Animal[6];
+//        MainUI frame = new MainUI();
+//        Thread n1 = new Thread(frame);
+//        n1.start();
+//    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(maketool)) {
             new Maketool(fr);
-        } else if (e.getSource().equals(sectorA)) {
+        } else if (e.getSource().equals(sector1)) {
             if (!Area.A.isExplored()) {
                 Player.explore(Area.A, sliderInput());
             } else {
                 Player.gather(Area.A, sliderInput());
             }
-        } else if (e.getSource().equals(sectorB)) {
+        } else if (e.getSource().equals(sector2)) {
             if (!Area.B.isExplored()) {
                 Player.explore(Area.B, sliderInput());
             } else {
                 Player.gather(Area.B, sliderInput());
             }
-        } else if (e.getSource().equals(sectorC)) {
+        } else if (e.getSource().equals(sector3)) {
             if (!Area.C.isExplored()) {
                 Player.explore(Area.C, sliderInput());
             } else {
                 Player.gather(Area.C, sliderInput());
             }
-        } else if (e.getSource().equals(sectorD)) {
+        } else if (e.getSource().equals(sector4)) {
             if (!Area.D.isExplored()) {
                 Player.explore(Area.D, sliderInput());
             } else {
                 Player.gather(Area.D, sliderInput());
             }
         } else if (e.getSource().equals(huntingGround0)) {
-            huntingGround0.setEnabled(false);
-            huntingGround0.setText("Animal Killed!");
+            Player.hunting(huntingGround[0], sliderInput());
+            if(!huntingGround[0].getIsAlive()){
+                huntingGround0.setEnabled(false);
+                huntingGround0.setText("Animal Killed!");
+                huntingGround[0] = null;
+            }
         } else if (e.getSource().equals(huntingGround1)) {
-            huntingGround1.setEnabled(false);
-            huntingGround1.setText("Animal Killed!");
+            Player.hunting(huntingGround[1], sliderInput());
+            if(!huntingGround[1].getIsAlive()){
+                huntingGround1.setEnabled(false);
+                huntingGround1.setText("Animal Killed!");
+                huntingGround[1] = null;
+            }
         } else if (e.getSource().equals(rest)) {
             Player.rest(sliderInput());
         } else if (e.getSource().equals(noseCone)) {
@@ -478,6 +495,55 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             } else {
                 JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.");
                 update();
+                boolean animalDeckIsEmpty = (animalDeck[0] == null) && (animalDeck[1] == null) && (animalDeck[2] == null) && (animalDeck[3] == null) && (animalDeck[4] == null) && (animalDeck[5] == null);
+                if(animalDeckIsEmpty){
+                    animalDeck[0] = new BirdKing();
+                    animalDeck[1] = new DoubleDog();
+                    animalDeck[2] = new Fourleg();
+                    animalDeck[3] = new Fishman();
+                    animalDeck[4] = new Snailbox();
+                    animalDeck[5] = new Rhinocow();
+                }
+                while(huntingGround[0] == null){
+                    int redrawing = (int) (Math.random() * 10) % 6;
+                    huntingGround[0] = animalDeck[redrawing];
+                    animalDeck[redrawing] = null;
+                    if(huntingGround[0] instanceof BirdKing){
+                        huntingGround0.setIcon(ani1);
+                    }else if (huntingGround[0] instanceof DoubleDog){
+                        huntingGround0.setIcon(ani2);
+                    }else if (huntingGround[0] instanceof Fourleg){
+                        huntingGround0.setIcon(ani3);
+                    }else if (huntingGround[0] instanceof Fishman){
+                        huntingGround0.setIcon(ani4);
+                    }else if (huntingGround[0] instanceof Snailbox){
+                        huntingGround0.setIcon(ani5);
+                    }else if (huntingGround[0] instanceof Rhinocow){
+                        huntingGround0.setIcon(ani6);
+                    }
+                    huntingGround0.setEnabled(true);
+                }
+                while(huntingGround[1] == null){
+                    int redrawing = (int) (Math.random() * 10) % 6;
+                    huntingGround[1] = animalDeck[redrawing];
+                    animalDeck[redrawing] = null;
+                    if(huntingGround[1] instanceof BirdKing){
+                        huntingGround1.setIcon(ani1);
+                    }else if (huntingGround[1] instanceof DoubleDog){
+                        huntingGround1.setIcon(ani2);
+                    }else if (huntingGround[1] instanceof Fourleg){
+                        huntingGround1.setIcon(ani3);
+                    }else if (huntingGround[1] instanceof Fishman){
+                        huntingGround1.setIcon(ani4);
+                    }else if (huntingGround[1] instanceof Snailbox){
+                        huntingGround1.setIcon(ani5);
+                    }else if (huntingGround[1] instanceof Rhinocow){
+                        huntingGround1.setIcon(ani6);
+                    }
+                    huntingGround1.setEnabled(true);
+                }
+                System.out.println("Animal 1 : " + huntingGround[0]);
+                System.out.println("Animal 2 : " + huntingGround[1]);
             }
         }
 
@@ -493,10 +559,10 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         title1.setText("Planet Run!");
         HPTxt.setText("HP: " + Player.HP);
         energyTxt.setText("Energy: " + Player.energy);
-        sectorDiscover(Area.A, sectorA);
-        sectorDiscover(Area.B, sectorB);
-        sectorDiscover(Area.C, sectorC);
-        sectorDiscover(Area.D, sectorD);
+        sectorDiscover(Area.A, sector1);
+        sectorDiscover(Area.B, sector2);
+        sectorDiscover(Area.C, sector3);
+        sectorDiscover(Area.D, sector4);
     }
 
     public static int sliderInput() {
@@ -516,6 +582,9 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         if (Storage.food.getAmount() < 1) {
             num = 0;
         } else {
+            if (max > 6){
+                max = 6;
+            }
             slider.setMaximum(max);
             slider.setMinimum(0);
             howMany.setText("How many food do you want to eat ? ");
@@ -529,7 +598,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 
     public static void sectorDiscover(Sector sector, JButton secBtn) {
         if (sector.isExplored()) {
-            secBtn.setIcon(sec1);
+            secBtn.setIcon(new ImageIcon("src/images/"+sector.getName()+".png"));
             secBtn.setBackground(new Color(69, 60, 103));
             secBtn.setForeground(new Color(242, 247, 161));
             secBtn.setText(sector.getName());
@@ -560,7 +629,6 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         while (true) {
             clockshow.setFont(new Font("Tahoma", Font.PLAIN, 32));
             clockshow.setText(String.format("%02d", hour) + " : " + String.format("%02d", min) + " : " + String.format("%02d", sec));
-//            System.out.println(sec);
             try {
                 Thread.sleep(1000);
                 count++;
@@ -571,6 +639,12 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
                 ex.printStackTrace();
             }
         }
+    }
+    
+    public static int screenScale(double pixel){
+        int screenDPI = Toolkit.getDefaultToolkit().getScreenResolution();
+        double scaleTest = (double)96/screenDPI;
+        return (int)(pixel*scaleTest);
     }
 
     public static void select() {
