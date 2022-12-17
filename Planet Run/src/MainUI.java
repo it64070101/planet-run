@@ -24,6 +24,10 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
     private ImageIcon rockcone, rockleft, rockright, rockbase, rockbody, sec1, sec2, sec3, sec4, ani1, ani2, queSym;
     private JLabel name, clockshow;
     public MainUI() {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int screenDPI = Toolkit.getDefaultToolkit().getScreenResolution();
+        double scaleTest = (double)96/screenDPI;
+        System.out.println(screenDPI+ " hey " + scaleTest);
         fr = new JFrame("Planet Run");
 
         pAll = new JPanel();
@@ -52,11 +56,11 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
         leftFin = new JButton(rockleft);
         rightFin = new JButton(rockright);
 
-        noseCone.setPreferredSize(new Dimension(100, 100));
-        shockcord.setPreferredSize(new Dimension(150, 200));
+        noseCone.setPreferredSize(new Dimension((int)(100*scaleTest), (int)(100*scaleTest)));
+        shockcord.setPreferredSize(new Dimension((int)(150*scaleTest), (int)(200*scaleTest)));
         recoveryWadding.setPreferredSize(new Dimension(100, 100));
-        leftFin.setPreferredSize(new Dimension(100, 100));
-        rightFin.setPreferredSize(new Dimension(100, 100));
+        leftFin.setPreferredSize(new Dimension((int)(100*scaleTest), (int)(100*scaleTest)));
+        rightFin.setPreferredSize(new Dimension((int)(100*scaleTest), (int)(100*scaleTest)));
         
         noseCone.setBackground(new Color(98, 79, 130));
         shockcord.setBackground(new Color(98, 79, 130));
@@ -66,7 +70,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
 
         pShip.setLayout(new BorderLayout(5, 5));
         pShip.setBackground(Color.BLACK);
-        pShip.setSize(128, 128);
+        pShip.setSize((int)(128*scaleTest), (int)(128*scaleTest));
         pShip.add(noseCone, BorderLayout.NORTH);
         pShip.add(shockcord, BorderLayout.CENTER);
         pShip.add(recoveryWadding, BorderLayout.SOUTH);
@@ -83,14 +87,14 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
         sectorB = new JButton("Explore this Sector", queSym);
         sectorC = new JButton("Explore this Sector", queSym);
         sectorD = new JButton("Explore this Sector", queSym);
-        sectorA.setPreferredSize(new Dimension(250, 160));
-        sectorB.setPreferredSize(new Dimension(250, 160));
-        sectorC.setPreferredSize(new Dimension(250, 160));
-        sectorD.setPreferredSize(new Dimension(250, 160));
-        sectorA.setFont(new Font("Ink Free", Font.BOLD, 15));
-        sectorB.setFont(new Font("Ink Free", Font.BOLD, 15));
-        sectorC.setFont(new Font("Ink Free", Font.BOLD, 15));
-        sectorD.setFont(new Font("Ink Free", Font.BOLD, 15));
+        sectorA.setPreferredSize(new Dimension((int)(250*scaleTest), (int)(160*scaleTest)));
+        sectorB.setPreferredSize(new Dimension((int)(250*scaleTest), (int)(160*scaleTest)));
+        sectorC.setPreferredSize(new Dimension((int)(250*scaleTest), (int)(160*scaleTest)));
+        sectorD.setPreferredSize(new Dimension((int)(250*scaleTest), (int)(160*scaleTest)));
+        sectorA.setFont(new Font("Ink Free", Font.BOLD, (int)(15*scaleTest)));
+        sectorB.setFont(new Font("Ink Free", Font.BOLD, (int)(15*scaleTest)));
+        sectorC.setFont(new Font("Ink Free", Font.BOLD, (int)(15*scaleTest)));
+        sectorD.setFont(new Font("Ink Free", Font.BOLD, (int)(15*scaleTest)));
         sectorA.setBackground(new Color(63, 0, 113));
         sectorB.setBackground(new Color(63, 0, 113));
         sectorC.setBackground(new Color(63, 0, 113));
@@ -101,16 +105,16 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
         sectorD.setForeground(new Color(198, 151, 73));
 
         rest = new JButton("Rest");
-        rest.setPreferredSize(new Dimension(100, 50));
+        rest.setPreferredSize(new Dimension((int)(100*scaleTest), (int)(50*scaleTest)));
         rest.setBackground(new Color(63, 59, 108));
         rest.setForeground(new Color(163, 199, 214));
-        rest.setFont(new Font("Ink Free", Font.BOLD, 35));
+        rest.setFont(new Font("Ink Free", Font.BOLD, (int)(35*scaleTest)));
         
         maketool = new JButton("Make Tool");
-        maketool.setPreferredSize(new Dimension(100, 50));
+        maketool.setPreferredSize(new Dimension((int)(100*scaleTest), (int)(50*scaleTest)));
         maketool.setBackground(new Color(63, 59, 108));
         maketool.setForeground(new Color(163, 199, 214));
-        maketool.setFont(new Font("Ink Free", Font.BOLD, 35));
+        maketool.setFont(new Font("Ink Free", Font.BOLD, (int)(35*scaleTest)));
 
         pSectors.setLayout(new GridLayout(4, 1, 50, 50));
         pSectors.add(sectorA);
@@ -128,18 +132,18 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
         ani2 = new ImageIcon("src/images/Ani2.png");
         huntingGround0 = new JButton("Fight this Animal", ani1);
         huntingGround1 = new JButton("Fight this Animal", ani2);
-        pHuntingGround.setLayout(new GridLayout(2, 1, 50, 50));
+        pHuntingGround.setLayout(new GridLayout(2, 1, (int)(50*scaleTest), (int)(50*scaleTest)));
         pHuntingGround.add(huntingGround0);
         pHuntingGround.add(huntingGround1);
-        huntingGround0.setPreferredSize(new Dimension(350, 220));
-        huntingGround1.setPreferredSize(new Dimension(350, 220));
+        huntingGround0.setPreferredSize(new Dimension((int)(350*scaleTest), (int)(220*scaleTest)));
+        huntingGround1.setPreferredSize(new Dimension((int)(350*scaleTest), (int)(220*scaleTest)));
         huntingGround0.setBackground(new Color(63, 0, 113));
         huntingGround0.setForeground(new Color(255,255,255));
-        huntingGround0.setFont(new Font("Ink Free", Font.BOLD, 20));
+        huntingGround0.setFont(new Font("Ink Free", Font.BOLD, (int)(20*scaleTest)));
         huntingGround1.setBackground(new Color(63, 0, 113));
         huntingGround1.setForeground(new Color(255,255,255));
         pHuntingGround.setBackground(new Color(0, 0, 0, 0));
-        huntingGround1.setFont(new Font("Ink Free", Font.BOLD, 20));
+        huntingGround1.setFont(new Font("Ink Free", Font.BOLD, (int)(20*scaleTest)));
         pHuntAll = new JPanel();
         pHuntAll.setLayout(new FlowLayout());
         pHuntAll.add(pHuntingGround);
@@ -229,14 +233,14 @@ public class MainUI extends JPanel implements ActionListener, Runnable{
         showclock.setSize(200,200);
         showclock.setBackground(new Color(249, 102, 102));
         
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        pSec.setBounds((int) (screenSize.width-(screenSize.width/1.075)),(int) (screenSize.height-(screenSize.height/1.1)), 250,1000);
-        pRocket.setBounds((int) (screenSize.width-(screenSize.width/1.345)),(int) (screenSize.height-(screenSize.height/1.1)), 600,750);
-        pHuntAll.setBounds((int) (screenSize.width-(screenSize.width/2.375)),(int) (screenSize.height-(screenSize.height/1.1)), 500,500);
+        
+        pSec.setBounds((int) ((screenSize.width-(screenSize.width/1.075))*scaleTest),(int) ((screenSize.height-(screenSize.height/1.1))*scaleTest), (int)(250*scaleTest),(int)(1000*scaleTest));
+        pRocket.setBounds((int) ((screenSize.width-(screenSize.width/1.345))*scaleTest),(int) ((screenSize.height-(screenSize.height/1.1))*scaleTest), (int)(700*scaleTest),(int)(850*scaleTest));
+        pHuntAll.setBounds((int) ((screenSize.width-(screenSize.width/3.25))*scaleTest),(int) ((screenSize.height-(screenSize.height/1.1))*scaleTest), (int)(500*scaleTest),(int)(500*scaleTest));
         fr.add(showclock);
-        showclock.setBounds((int) (screenSize.width-(screenSize.width/1.5)),(int) (screenSize.height-(screenSize.height/1.225)), 300,60);
+        showclock.setBounds((int) ((screenSize.width-(screenSize.width/1.5))*scaleTest),(int) ((screenSize.height-(screenSize.height/1.225))*scaleTest), (int)(300*scaleTest),(int)(60*scaleTest));
         exit = new JButton("exit");
-        exit.setBounds((screenSize.width-325),(screenSize.height-150),250,75);
+        exit.setBounds((int) ((screenSize.width-325)*scaleTest),(int) ((screenSize.height-150)*scaleTest),(int) (250*scaleTest),(int) (75*scaleTest));
         exit.setBackground(new Color(220, 95, 0));
         exit.setForeground(new Color(238, 238, 238));
 
