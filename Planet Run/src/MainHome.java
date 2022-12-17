@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.util.concurrent.Flow;
 import java.awt.Graphics2D;
 import java.awt.Graphics;
 
@@ -11,75 +10,82 @@ public class MainHome extends JPanel implements ActionListener {
     private JFrame fr;
     private JPanel p1, p2;
     private JLabel title1;
-    private static JLabel test;
     private JButton bStart, bConti, bHow, bExit;
 
     Image backgroundimg;
-    Image ani;
+    Image ani1,ani2,ani3,ani4;
 
     public int px = 0, py = 0;
 
     public MainHome(){
         // MainHome p = new MainHome();
-        fr = new JFrame();
+//        fr = new JFrame();
         p1 = new JPanel();
+        p1.setLayout(new GridLayout(5,1,5,10));
         p2 = new JPanel();
+        p2.setLayout(new BorderLayout());
         bStart = new JButton("Start");
         bConti = new JButton("Continue");
         bHow = new JButton("How to Play");
         bExit = new JButton("Exit");
-        title1 = new JLabel("Planet run the Boardgame, with JAVA");
-
-        title1.setHorizontalAlignment(JLabel.CENTER);
-        title1.setVerticalAlignment(JLabel.CENTER);
-        bStart.setPreferredSize(new Dimension(150, 50));
-
-        p1.setLayout(new GridLayout(4,1,5,5));
-        p1.add(bStart); p1.add(bConti); 
-        p1.add(bHow); p1.add(bExit); 
-
-        // p2.setSize(200,200);
-        p2.setBorder(new EmptyBorder(100, 10, 10, 10));
-        title1.setFont(new Font("Ink Free", Font.BOLD, 50));
-        title1.setForeground(new Color(0,255,255));
-        p2.add(title1);
-
-        fr.setLayout(new FlowLayout());
-        fr.add(p2, BorderLayout.NORTH);       
-        fr.add(p1, BorderLayout.PAGE_END);
-        // fr.add(p);
-
-        fr.setSize(1080, 960);
-        fr.setLocationRelativeTo(null);
-        fr.setVisible(true);
-        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        // fr.setContentPane(new JLabel(new ImageIcon("images/spacetest.jpg")));
+        p1.setBackground(new Color(0,0,0,0));
+        p2.setBackground(new Color(0,0,0,0));
+        
+        bStart.setPreferredSize(new Dimension(450,80));
+        bConti.setPreferredSize(new Dimension(450,80));
+        bHow.setPreferredSize(new Dimension(450,80));
+        bExit.setPreferredSize(new Dimension(450,80));
+        
+        bStart.setFont(new Font("Ink Free", Font.BOLD, 25));
+        bStart.setBackground(new Color(192, 96, 161));
+        bStart.setForeground(new Color(240, 202, 163));
+        bConti.setFont(new Font("Ink Free", Font.BOLD, 25));
+        bConti.setBackground(new Color(192, 96, 161));
+        bConti.setForeground(new Color(240, 202, 163));
+        bHow.setFont(new Font("Ink Free", Font.BOLD, 25));
+        bHow.setBackground(new Color(192, 96, 161));
+        bHow.setForeground(new Color(240, 202, 163));
+        bExit.setFont(new Font("Ink Free", Font.BOLD, 25));
+        bExit.setBackground(new Color(192, 96, 161));
+        bExit.setForeground(new Color(240, 202, 163));
+        
+        p1.add(bStart); p1.add(bConti);
+        p1.add(bHow); p1.add(bExit);    p1.add(new JLabel());
+        p2.add(p1, BorderLayout.SOUTH);
+        
+        setSize(512, 512);
+        setOpaque(false);
+        setLayout(new GridLayout(1,3));
+//        p1.setBounds(50,50, 500, 500);
+        add(new JLabel());
+        add(p2); 
+        add(new JLabel());
+//        p1.setBounds(50,50, 500, 500);
 
-        // bStart.addActionListener(this);
-        // bConti.addActionListener(this);
-        // bHow.addActionListener(this);
-        // bExit.addActionListener(this);
+         bStart.addActionListener(this);
+         bConti.addActionListener(this);
+         bHow.addActionListener(this);
+         bExit.addActionListener(this);
+//        addKeyListener(this);
     }
 
     public static void main(String[] args) {
         MainHome p = new MainHome();
-        test = new JLabel("TTTT");
-        // test.setForeground(Color.WHITE);
         JFrame fr = new JFrame();
-        fr.setSize(1600, 900);
+        fr.setMinimumSize(new Dimension(1600, 900));
         fr.setLocationRelativeTo(null);
         fr.setVisible(true);
-        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fr.add(test);
+        fr.setResizable(false);
         fr.add(p);
-        fr.setVisible(true);
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+        
+    
 
     public void actionPerformed(ActionEvent e){
         if(e.getSource().equals(bStart)){
-            new Main();
+            new MainUI();
             // fr.dispose();
         }
         else if(e.getSource().equals(bConti)){
@@ -89,16 +95,30 @@ public class MainHome extends JPanel implements ActionListener {
             
         }
         else if(e.getSource().equals(bExit)){
-            fr.dispose();
+            System.exit(0);
+            
         }
     }
 
     public void paintComponent(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
-        ani = new ImageIcon("src/images/Ani1.png").getImage();
-        backgroundimg = new ImageIcon("images/spacetest.jpg").getImage();
+        Graphics2D gString = (Graphics2D) g;
+        ani1 = new ImageIcon("src/images/Ani1.png").getImage();
+        ani2 = new ImageIcon("src/images/Ani2.png").getImage();
+        backgroundimg = new ImageIcon("src/images/spacetest01.jpg").getImage();
         g2D.drawImage(backgroundimg, 0, 0, null);
-        g2D.drawImage(ani, 1,1, null);
+        g2D.drawImage(ani1, 1,1, null);
+        g2D.drawImage(ani2, 1450,1, null);
+        gString.setFont(new Font("Ink Free", Font.BOLD, 70));
+        gString.setColor(new Color(252, 249, 190));
+        gString.drawString("Planet run the BoardGame with Java", 190, 180);
+        
+        
+        
         }
+
+  
+    
+
     
 }
