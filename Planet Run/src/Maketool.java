@@ -25,10 +25,15 @@ public class Maketool implements ActionListener, WindowListener{
         imgHook = new ImageIcon("src/images/Hook.png");
 
         gun = new JButton("Make Gun", imgGun);
+        checkObtained(ToolBox.gun,gun);
         axe = new JButton("Make Axe", imgAxe);
+        checkObtained(ToolBox.axe,axe);
         hammer = new JButton("Make Hammer", imgHammer);
+        checkObtained(ToolBox.hammer,hammer);
         pick = new JButton("Make Pick", imgPick);
+        checkObtained(ToolBox.pick,pick);
         hook = new JButton("Make Hook", imgHook);
+        checkObtained(ToolBox.hook,hook);
         
         gun.setBackground(new Color(76, 103, 147));
         axe.setBackground(new Color(76, 103, 147));
@@ -79,9 +84,13 @@ public class Maketool implements ActionListener, WindowListener{
         pick.addActionListener(this);
         hook.addActionListener(this);
         fr.addWindowListener(this);
-    }
-    public static void main(String[] args) {
-//        new Maketool();
+    }   
+    
+    public static void checkObtained(Gadget gadget, JButton btt){
+        if(gadget.isObtained()){
+            btt.setEnabled(false);
+            btt.setText("Obtained");
+        }
     }
     
     public void actionPerformed(ActionEvent e){
@@ -116,6 +125,7 @@ public class Maketool implements ActionListener, WindowListener{
             }
         }
         MainUI.update();
+        MainUI.endOfDay();
     }
 
     @Override

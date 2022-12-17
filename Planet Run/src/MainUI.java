@@ -18,10 +18,10 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             pRocket, pHuntAll, pSec, pInmain, pInRocket, showclock;
     private static JButton noseCone, shockcord, recoveryWadding, leftFin, rightFin;
     private static JButton sector1, sector2, sector3, sector4, rest, maketool;
-    private static JButton huntingGround0, huntingGround1;
+    public static JButton huntingGround0, huntingGround1;
     private static JButton exit;
     private static JTextField dayTxt, foodTxt, starTxt, triangleTxt, squareTxt, circleTxt, title1, HPTxt, energyTxt;
-    private static ImageIcon rockcone, rockleft, rockright, rockbase, rockbody, sec1, sec2, sec3, sec4, ani1, ani2,ani3, ani4,ani5, ani6, queSym;
+    public static ImageIcon rockcone, rockleft, rockright, rockbase, rockbody, sec1, sec2, sec3, sec4, ani1, ani2,ani3, ani4,ani5, ani6, queSym;
     private static JLabel name, clockshow;
 
     private static JPanel pInput, pEnergy, pEat;
@@ -94,8 +94,6 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
                 huntingGround1 = new JButton("Fight this Animal", ani6);
             }
         }
-        System.out.println("Animal 1 : " + huntingGround[0]);
-        System.out.println("Animal 2 : " + huntingGround[1]);
 
         fr = new JFrame("Planet Run");
 
@@ -498,74 +496,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             JOptionPane.showMessageDialog(null, "Your HP is below than 1. You lose.");
             System.exit(0);
         }
-        if (Player.energy < 1) {
-
-            JOptionPane.showMessageDialog(null, "End day, choose what to eat.");
-            Player.eat(sliderInput(Storage.food.getAmount()));
-            if (Player.HP < 1) {
-                JOptionPane.showMessageDialog(null, "Your HP is below than 1. You lose.");
-                System.exit(0);
-            }
-            Main.day++;
-            if (Main.day > 15) {
-                JOptionPane.showMessageDialog(null, "Your 15th day is end.");
-                JOptionPane.showMessageDialog(null, "Your score is: ");
-                System.exit(0);
-            } else {
-                JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.");
-                update();
-                boolean animalDeckIsEmpty = (animalDeck[0] == null) && (animalDeck[1] == null) && (animalDeck[2] == null) && (animalDeck[3] == null) && (animalDeck[4] == null) && (animalDeck[5] == null);
-                if(animalDeckIsEmpty){
-                    animalDeck[0] = new BirdKing();
-                    animalDeck[1] = new DoubleDog();
-                    animalDeck[2] = new Fourleg();
-                    animalDeck[3] = new Fishman();
-                    animalDeck[4] = new Snailbox();
-                    animalDeck[5] = new Rhinocow();
-                }
-                while(huntingGround[0] == null){
-                    int redrawing = (int) (Math.random() * 10) % 6;
-                    huntingGround[0] = animalDeck[redrawing];
-                    animalDeck[redrawing] = null;
-                    if(huntingGround[0] instanceof BirdKing){
-                        huntingGround0.setIcon(ani1);
-                    }else if (huntingGround[0] instanceof DoubleDog){
-                        huntingGround0.setIcon(ani2);
-                    }else if (huntingGround[0] instanceof Fourleg){
-                        huntingGround0.setIcon(ani3);
-                    }else if (huntingGround[0] instanceof Fishman){
-                        huntingGround0.setIcon(ani4);
-                    }else if (huntingGround[0] instanceof Snailbox){
-                        huntingGround0.setIcon(ani5);
-                    }else if (huntingGround[0] instanceof Rhinocow){
-                        huntingGround0.setIcon(ani6);
-                    }
-                    huntingGround0.setEnabled(true);
-                }
-                while(huntingGround[1] == null){
-                    int redrawing = (int) (Math.random() * 10) % 6;
-                    huntingGround[1] = animalDeck[redrawing];
-                    animalDeck[redrawing] = null;
-                    if(huntingGround[1] instanceof BirdKing){
-                        huntingGround1.setIcon(ani1);
-                    }else if (huntingGround[1] instanceof DoubleDog){
-                        huntingGround1.setIcon(ani2);
-                    }else if (huntingGround[1] instanceof Fourleg){
-                        huntingGround1.setIcon(ani3);
-                    }else if (huntingGround[1] instanceof Fishman){
-                        huntingGround1.setIcon(ani4);
-                    }else if (huntingGround[1] instanceof Snailbox){
-                        huntingGround1.setIcon(ani5);
-                    }else if (huntingGround[1] instanceof Rhinocow){
-                        huntingGround1.setIcon(ani6);
-                    }
-                    huntingGround1.setEnabled(true);
-                }
-                System.out.println("Animal 1 : " + huntingGround[0]);
-                System.out.println("Animal 2 : " + huntingGround[1]);
-            }
-        }
-
+        endOfDay();
     }
 
     public static void update() {
@@ -601,8 +532,8 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         if (Storage.food.getAmount() < 1) {
             num = 0;
         } else {
-            if (max > 6){
-                max = 6;
+            if (max > 4){
+                max = 4;
             }
             slider.setMaximum(max);
             slider.setMinimum(0);
@@ -687,6 +618,80 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 
     public static void eating() {
         JOptionPane.showMessageDialog(null, pInput);
+    }
+    
+    public static void endOfDay(){
+        if (Player.energy < 1) {
+
+            JOptionPane.showMessageDialog(null, "End day, choose what to eat.");
+            Player.eat(sliderInput(Storage.food.getAmount()));
+            if (Player.HP < 1) {
+                JOptionPane.showMessageDialog(null, "Your HP is below than 1. You lose.");
+                System.exit(0);
+            }
+            Main.day++;
+            if (Main.day > 15) {
+                JOptionPane.showMessageDialog(null, "Your 15th day is end.");
+                JOptionPane.showMessageDialog(null, "Your score is: ");
+                System.exit(0);
+            } else {
+                JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.");
+                if (ToolBox.hook.isObtained() && Dice.rollAgainst(1, 2)) {
+                    JOptionPane.showMessageDialog(null, "You gain 1 food from hook.");
+                    Storage.food.gain(1);
+                }
+                update();
+                boolean animalDeckIsEmpty = (animalDeck[0] == null) && (animalDeck[1] == null) && (animalDeck[2] == null) && (animalDeck[3] == null) && (animalDeck[4] == null) && (animalDeck[5] == null);
+                if(animalDeckIsEmpty){
+                    animalDeck[0] = new BirdKing();
+                    animalDeck[1] = new DoubleDog();
+                    animalDeck[2] = new Fourleg();
+                    animalDeck[3] = new Fishman();
+                    animalDeck[4] = new Snailbox();
+                    animalDeck[5] = new Rhinocow();
+                }
+                while(huntingGround[0] == null){
+                    int redrawing = (int) (Math.random() * 10) % 6;
+                    huntingGround[0] = animalDeck[redrawing];
+                    animalDeck[redrawing] = null;
+                    if(huntingGround[0] instanceof BirdKing){
+                        huntingGround0.setIcon(ani1);
+                    }else if (huntingGround[0] instanceof DoubleDog){
+                        huntingGround0.setIcon(ani2);
+                    }else if (huntingGround[0] instanceof Fourleg){
+                        huntingGround0.setIcon(ani3);
+                    }else if (huntingGround[0] instanceof Fishman){
+                        huntingGround0.setIcon(ani4);
+                    }else if (huntingGround[0] instanceof Snailbox){
+                        huntingGround0.setIcon(ani5);
+                    }else if (huntingGround[0] instanceof Rhinocow){
+                        huntingGround0.setIcon(ani6);
+                    }
+                    huntingGround0.setEnabled(true);
+                    huntingGround0.setText("Fight this Animal!");
+                }
+                while(huntingGround[1] == null){
+                    int redrawing = (int) (Math.random() * 10) % 6;
+                    huntingGround[1] = animalDeck[redrawing];
+                    animalDeck[redrawing] = null;
+                    if(huntingGround[1] instanceof BirdKing){
+                        huntingGround1.setIcon(ani1);
+                    }else if (huntingGround[1] instanceof DoubleDog){
+                        huntingGround1.setIcon(ani2);
+                    }else if (huntingGround[1] instanceof Fourleg){
+                        huntingGround1.setIcon(ani3);
+                    }else if (huntingGround[1] instanceof Fishman){
+                        huntingGround1.setIcon(ani4);
+                    }else if (huntingGround[1] instanceof Snailbox){
+                        huntingGround1.setIcon(ani5);
+                    }else if (huntingGround[1] instanceof Rhinocow){
+                        huntingGround1.setIcon(ani6);
+                    }
+                    huntingGround1.setEnabled(true);
+                    huntingGround1.setText("Fight this Animal!");
+                }
+            }
+        }
     }
 
      Image backgroundimg;

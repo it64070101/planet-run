@@ -22,8 +22,9 @@ public class Player {
             }
             case 1 -> energy = 2;
             case 2 -> energy = 3;
-            case 4 -> energy = 4;
-            case 6 -> energy = 6;
+            case 3 -> energy = 4; 
+            case 4 -> energy = 5;
+            case 5 -> energy = 6;
             default -> {
             }
         }
