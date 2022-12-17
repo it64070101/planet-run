@@ -31,6 +31,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     private static JSlider slider;
     
     public static int day;
+    private static int sec;
     public static int score;
     public static Animal[] huntingGround;
     public static Animal[] animalDeck;
@@ -40,6 +41,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         int screenDPI = Toolkit.getDefaultToolkit().getScreenResolution();
         double scaleTest = (double)96/screenDPI;
         day = 0;
+        sec = 0;
 
         huntingGround = new Animal[2];
         animalDeck = new Animal[6];
@@ -572,7 +574,6 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 
     public void run() {
         int count = 0;
-        int sec = 0;
         int min = 0;
         int hour = 0;
 
@@ -620,6 +621,34 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         JOptionPane.showMessageDialog(null, pInput);
     }
     
+    public static int scoring(){
+        double total = 0;
+        //Fixer Bonus
+        total += (Ship.partFixed*(Ship.partFixed+1))/2;
+        //Rocketeering
+        if(Ship.partFixed == 5){
+            total += 30;
+        }
+        //Toolmaker
+        total += ToolBox.toolMade;
+        //Jack of all tools
+        if(ToolBox.toolMade == 5){
+            total += 10;
+        }
+        //Discoverer
+        total += Area.areaExplored;
+        //apex legend
+        total += Player.animalKilled;
+        //nas
+        total += Player.HP;
+        //un
+        if(Player.HP == 4){
+            total += 8;
+        }
+        System.out.println(total+" , "+sec);
+        return (int)((total/sec)*1000);
+    } 
+    
     public static void endOfDay(){
         if (Player.energy < 1) {
 
@@ -632,7 +661,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             Main.day++;
             if (Main.day > 15) {
                 JOptionPane.showMessageDialog(null, "Your 15th day is end.");
-                JOptionPane.showMessageDialog(null, "Your score is: ");
+                JOptionPane.showMessageDialog(null, "Your score is: "+ scoring());
                 System.exit(0);
             } else {
                 JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.");

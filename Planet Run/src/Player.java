@@ -4,14 +4,14 @@ public class Player {
     public static int HP;
     public static int energy;
     public static String name;
-    public static int selectedEnergy;
+    public static int animalKilled;
 
 
     public Player(String name) {
         Player.name = name;
         HP = 4;
         energy = 3;
-        selectedEnergy = 0;
+        animalKilled = 0;
     }
     
     public static void eat(int food){
@@ -52,6 +52,7 @@ public class Player {
         if (Dice.rollAgainst(amount, 4)){
             sector.setExplored(true);
             JOptionPane.showMessageDialog(null, "Success to explore. Discover "+sector.getName()+".");
+            Area.areaExplored++;
         }
         else{
             JOptionPane.showMessageDialog(null, "Fail to explore this sector.");
@@ -64,6 +65,7 @@ public class Player {
 //            System.out.println("Fix "+part.getName()+" Successful.");
             Player.energy--;
             JOptionPane.showMessageDialog(null, "Success to fix "+part.getName()+".");
+            Ship.partFixed++;
             return true;
         }
         else{
@@ -74,10 +76,11 @@ public class Player {
     }
     
     public static void hunting(Animal animal, int amount){
-        if (Dice.rollAgainst(amount*10, animal.getRating())){
+        if (Dice.rollAgainst(amount, animal.getRating())){
             JOptionPane.showMessageDialog(null, "Hunting succeeded. You got "+animal.getFoodDrop()+" foods!.");
             animal.setIsAlive(false);
             Storage.food.gain(animal.getFoodDrop());
+            animalKilled++;
         }
         else{
             JOptionPane.showMessageDialog(null, "Hunting failed. You took "+animal.getDamage()+" damages!.");
@@ -99,6 +102,7 @@ public class Player {
             JOptionPane.showMessageDialog(null, "Success to make "+gadget.getName()+".");
             gadget.setObtained(true);
             Player.energy -= amount;
+            ToolBox.toolMade++;
             return true;
         }
         else{

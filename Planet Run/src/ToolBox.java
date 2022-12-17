@@ -13,8 +13,10 @@ public class ToolBox {
     public static Gadget hammer;
     public static Gadget pick;
     public static Gadget hook;
+    public static int toolMade;
 
     public ToolBox() {
+        toolMade = 0;
         gun = new Gadget("Gun", 7, Area.D, "+1 Energy When Hunting");
         axe = new Gadget("Axe", 7, Area.C, "+1 Energy When Gathering Triangle");
         hammer = new Gadget("Hammer", 7, Area.A, "+1 Energy When Gathering Circle");
