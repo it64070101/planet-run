@@ -293,7 +293,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pSec.setBounds(screenScale(0),screenScale(50), screenScale(450),screenScale(1000));
         pRocket.setBounds(screenScale(500),screenScale(50), screenScale(650),screenScale(850));
         pHuntAll.setBounds(screenScale(500+700),screenScale(50), screenScale(500),screenScale(500));
-        fr.add(showclock);
+        add(showclock);
         showclock.setBounds(screenScale(500+350-150),screenScale(150), screenScale(250),screenScale(60));
         exit = new JButton("exit");
         exit.setBounds(screenScale(500+700+15+175),screenScale(825),screenScale(200),screenScale(75));
@@ -311,26 +311,33 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 
         update();
 
-        fr.getContentPane().setBackground(new Color(0, 0, 0, 0));
-        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        fr.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        fr.setSize(screenSize.width, screenSize.height);
-        fr.setUndecorated(true);
-        fr.setLayout(null);
-        fr.add(exit);
-        fr.add(pSec);
-        fr.add(pRocket);
-        fr.add(pHuntAll);
-
-        fr.setLocationRelativeTo(null);
-        fr.setVisible(true);
-
-        fr.setLocationRelativeTo(null);
-        fr.setVisible(true);
-        fr.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
-        fr.setResizable(false);
-
+//        fr.getContentPane().setBackground(new Color(0, 0, 0, 0));
+//        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//
+//        fr.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        fr.setSize(screenSize.width, screenSize.height);
+//        fr.setUndecorated(true);
+//        fr.setLayout(null);
+//        fr.add(exit);
+//        fr.add(pSec);
+//        fr.add(pRocket);
+//        fr.add(pHuntAll);
+//
+//        fr.setLocationRelativeTo(null);
+//        fr.setVisible(true);
+//
+//        fr.setLocationRelativeTo(null);
+//        fr.setVisible(true);
+//        fr.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
+//        fr.setResizable(false);
+        
+        setSize(screenSize.width, screenSize.height);
+        setLayout(null);
+        add(exit);
+        add(pSec);
+        add(pRocket);
+        add(pHuntAll);
+       
         maketool.addActionListener(this);
         sector1.addActionListener(this);
         sector2.addActionListener(this);
@@ -382,25 +389,37 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pInput.add(slider);
 
         Main.day++;
-        JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.");
+//        JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.");
 
     }
 
-//    public static void main(String[] args) {
-//        new Dice(6);
-//        new Player("Chokchai");
-//        new Storage();
-//        new Area();
-//        new Ship();
-//        new ToolBox();
-//        day = 0;
-//
-//        huntingGround = new Animal[2];
-//        animalDeck = new Animal[6];
-//        MainUI frame = new MainUI();
-//        Thread n1 = new Thread(frame);
-//        n1.start();
-//    }
+    public static void main(String[] args) {
+        new Dice(6);
+        new Player("Chokchai");
+        new Storage();
+        new Area();
+        new Ship();
+        new ToolBox();
+        day = 0;
+
+        huntingGround = new Animal[2];
+        animalDeck = new Animal[6];
+        MainUI frame = new MainUI();
+        
+        JFrame fr = new JFrame();
+        fr.getContentPane().setBackground(new Color(0, 0, 0, 0));
+        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fr.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        fr.setUndecorated(true);
+        fr.setLocationRelativeTo(null);
+        fr.setVisible(true);
+        fr.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
+        fr.setResizable(false);
+        fr.add(frame);
+        JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.");
+        Thread n1 = new Thread(frame);
+        n1.start();
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -670,4 +689,11 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         JOptionPane.showMessageDialog(null, pInput);
     }
 
+     Image backgroundimg;
+    public void paintComponent(Graphics g) {
+        Graphics2D g2D = (Graphics2D) g;
+        backgroundimg = new ImageIcon("src/images/spacetest03.jpg").getImage();
+        g2D.drawImage(backgroundimg, 0, 0, null);
+        
+        }
 }

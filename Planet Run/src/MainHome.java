@@ -94,8 +94,23 @@ public class MainHome extends JPanel implements ActionListener {
             new ToolBox();
             
             MainUI frame = new MainUI();
+            
+            
+            JFrame fr1 = new JFrame();
+            fr1.getContentPane().setBackground(new Color(0, 0, 0, 0));
+            fr1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            fr1.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            fr1.setUndecorated(true);
+            fr1.setLocationRelativeTo(null);
+            fr1.setVisible(true);
+            fr1.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
+            fr1.setResizable(false);
+            fr1.add(frame);
+            JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.");
+        
             Thread n1 = new Thread(frame);
             n1.start();
+            
             fr.dispose();
         }
         else if(e.getSource().equals(bConti)){

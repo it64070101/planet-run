@@ -72,7 +72,7 @@ public class Maketool implements ActionListener, WindowListener{
         fr.setLocation((int) (screenSize.width-(screenSize.width/5.5)),(int) (screenSize.height-(screenSize.height/1.1)));
         fr.setResizable(false);
         fr.getContentPane().setBackground(new Color(40, 42, 58));
-        
+//        fr.setUndecorated(true);
         gun.addActionListener(this);
         axe.addActionListener(this);
         hammer.addActionListener(this);
