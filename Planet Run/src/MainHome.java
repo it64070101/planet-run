@@ -39,16 +39,16 @@ public class MainHome extends JPanel implements ActionListener {
         
         bStart.setFont(new Font("Ink Free", Font.BOLD, 25));
         bStart.setBackground(new Color(192, 96, 161));
-        bStart.setForeground(new Color(240, 202, 163));
+        bStart.setForeground(new Color(255,255,255));
         bConti.setFont(new Font("Ink Free", Font.BOLD, 25));
         bConti.setBackground(new Color(192, 96, 161));
-        bConti.setForeground(new Color(240, 202, 163));
+        bConti.setForeground(new Color(255,255,255));
         bHow.setFont(new Font("Ink Free", Font.BOLD, 25));
         bHow.setBackground(new Color(192, 96, 161));
-        bHow.setForeground(new Color(240, 202, 163));
+        bHow.setForeground(new Color(255,255,255));
         bExit.setFont(new Font("Ink Free", Font.BOLD, 25));
         bExit.setBackground(new Color(192, 96, 161));
-        bExit.setForeground(new Color(240, 202, 163));
+        bExit.setForeground(new Color(255,255,255));
         
         p1.add(bStart); p1.add(bConti);
         p1.add(bHow); p1.add(bExit);    p1.add(new JLabel());
@@ -106,7 +106,7 @@ public class MainHome extends JPanel implements ActionListener {
             fr1.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
             fr1.setResizable(false);
             fr1.add(frame);
-            JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.");
+            JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.","Day "+Main.day,JOptionPane.PLAIN_MESSAGE);
         
             Thread n1 = new Thread(frame);
             n1.start();
@@ -135,15 +135,7 @@ public class MainHome extends JPanel implements ActionListener {
         g2D.drawImage(ani1, 1,1, null);
         g2D.drawImage(ani2, 1450,1, null);
         gString.setFont(new Font("Ink Free", Font.BOLD, 70));
-        gString.setColor(new Color(252, 249, 190));
+        gString.setColor(new Color(255,255,255));
         gString.drawString("Planet run the BoardGame with Java", 190, 180);
-        
-        
-        
-        }
-
-  
-    
-
-    
+    }
 }

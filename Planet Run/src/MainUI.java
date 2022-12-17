@@ -161,10 +161,10 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         sector2.setFont(new Font("Ink Free", Font.BOLD, screenScale(15)));
         sector3.setFont(new Font("Ink Free", Font.BOLD, screenScale(15)));
         sector4.setFont(new Font("Ink Free", Font.BOLD, screenScale(15)));
-        sector1.setBackground(new Color(63, 0, 113));
-        sector2.setBackground(new Color(63, 0, 113));
-        sector3.setBackground(new Color(63, 0, 113));
-        sector4.setBackground(new Color(63, 0, 113));
+        sector1.setBackground(new Color(192, 96, 161));
+        sector2.setBackground(new Color(192, 96, 161));
+        sector3.setBackground(new Color(192, 96, 161));
+        sector4.setBackground(new Color(192, 96, 161));
         sector1.setForeground(new Color(198, 151, 73));
         sector2.setForeground(new Color(198, 151, 73));
         sector3.setForeground(new Color(198, 151, 73));
@@ -199,12 +199,12 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pHuntingGround.add(huntingGround1);
         huntingGround0.setPreferredSize(new Dimension(screenScale(350), screenScale(220)));
         huntingGround1.setPreferredSize(new Dimension(screenScale(350), screenScale(220)));
-        huntingGround0.setBackground(new Color(63, 0, 113));
+        huntingGround0.setBackground(new Color(192, 96, 161));
 
         huntingGround0.setForeground(new Color(255,255,255));
         huntingGround0.setFont(new Font("Ink Free", Font.BOLD, screenScale(20)));
 
-        huntingGround1.setBackground(new Color(63, 0, 113));
+        huntingGround1.setBackground(new Color(192, 96, 161));
         huntingGround1.setForeground(new Color(255, 255, 255));
         pHuntingGround.setBackground(new Color(0, 0, 0, 0));
         huntingGround1.setFont(new Font("Ink Free", Font.BOLD, screenScale(20)));
@@ -389,7 +389,6 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pInput.add(slider);
 
         Main.day++;
-//        JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.");
 
     }
 
@@ -416,7 +415,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         fr.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
         fr.setResizable(false);
         fr.add(frame);
-        JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.");
+        JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.","Day "+Main.day,JOptionPane.PLAIN_MESSAGE);
         Thread n1 = new Thread(frame);
         n1.start();
     }
@@ -454,6 +453,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             if(!huntingGround[0].getIsAlive()){
                 huntingGround0.setEnabled(false);
                 huntingGround0.setText("Animal Killed!");
+                huntingGround0.setBackground(new Color(128, 128, 128));
                 huntingGround[0] = null;
             }
         } else if (e.getSource().equals(huntingGround1)) {
@@ -461,10 +461,11 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             if(!huntingGround[1].getIsAlive()){
                 huntingGround1.setEnabled(false);
                 huntingGround1.setText("Animal Killed!");
+                huntingGround1.setBackground(new Color(128, 128, 128));
                 huntingGround[1] = null;
             }
         } else if (e.getSource().equals(rest)) {
-            Player.rest(sliderInput());
+            Player.rest(restInput());
         } else if (e.getSource().equals(noseCone)) {
             if (Player.fix(Ship.noseCone)) {
                 noseCone.setEnabled(false);
@@ -495,7 +496,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         }
         update();
         if (Player.HP < 1) {
-            JOptionPane.showMessageDialog(null, "Your HP is below than 1. You lose.");
+            JOptionPane.showMessageDialog(null,"Your HP is below than 1. You lose.", "You Lose.", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         }
         endOfDay();
@@ -515,6 +516,11 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         sectorDiscover(Area.B, sector2);
         sectorDiscover(Area.C, sector3);
         sectorDiscover(Area.D, sector4);
+        if(Player.HP >= 4){
+            rest.setEnabled(false);
+        }else{
+            rest.setEnabled(true);
+        }
     }
 
     public static int sliderInput() {
@@ -522,7 +528,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         slider.setMinimum(1);
         int num = 0;
         howMany.setText("How many energy do you want to use ? ");
-        JOptionPane.showMessageDialog(null, pInput);
+        JOptionPane.showMessageDialog(null, pInput, "Energy Input",JOptionPane.PLAIN_MESSAGE);
         num = slider.getValue();
 
         return num;
@@ -540,24 +546,32 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             slider.setMaximum(max);
             slider.setMinimum(0);
             howMany.setText("How many food do you want to eat ? ");
-            JOptionPane.showMessageDialog(null, pInput);
+            JOptionPane.showMessageDialog(null, pInput,"Food Input",JOptionPane.PLAIN_MESSAGE);
             num = slider.getValue();
         }
-
         return num;
-
+    }
+    
+        public static int restInput() {
+            int num;
+            slider.setMaximum(4-Player.HP);
+            slider.setMinimum(0);
+            howMany.setText("How much do you want to rest ? (Using Energy)");
+            JOptionPane.showMessageDialog(null, pInput, "Energy Input",JOptionPane.PLAIN_MESSAGE);
+            num = slider.getValue();
+        return num;
     }
 
     public static void sectorDiscover(Sector sector, JButton secBtn) {
         if (sector.isExplored()) {
             secBtn.setIcon(new ImageIcon("src/images/"+sector.getName()+".png"));
-            secBtn.setBackground(new Color(69, 60, 103));
+            secBtn.setBackground(new Color(247, 135, 87));
             secBtn.setForeground(new Color(242, 247, 161));
             secBtn.setText(sector.getName());
         } else {
             secBtn.setPreferredSize(new Dimension(250, 160));
             secBtn.setFont(new Font("Ink Free", Font.BOLD, 15));
-            secBtn.setBackground(new Color(63, 0, 113));
+            secBtn.setBackground(new Color(192, 96, 161));
             secBtn.setForeground(new Color(198, 151, 73));
         }
 
@@ -616,10 +630,6 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         }
         e1.setSelected(true);
     }
-
-    public static void eating() {
-        JOptionPane.showMessageDialog(null, pInput);
-    }
     
     public static int scoring(){
         double total = 0;
@@ -652,21 +662,21 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     public static void endOfDay(){
         if (Player.energy < 1) {
 
-            JOptionPane.showMessageDialog(null, "End day, choose what to eat.");
+            JOptionPane.showMessageDialog(null, "End day, time for dinner.", "", JOptionPane.PLAIN_MESSAGE);
             Player.eat(sliderInput(Storage.food.getAmount()));
             if (Player.HP < 1) {
-                JOptionPane.showMessageDialog(null, "Your HP is below than 1. You lose.");
+                JOptionPane.showMessageDialog(null, "Your HP is below than 1. You lose.", "You lose.", JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
             }
             Main.day++;
             if (Main.day > 15) {
-                JOptionPane.showMessageDialog(null, "Your 15th day is end.");
-                JOptionPane.showMessageDialog(null, "Your score is: "+ scoring());
+                JOptionPane.showMessageDialog(null, "Your 15th day has ended. Blast off!", "",JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Your score is: "+ scoring(),"Score",JOptionPane.PLAIN_MESSAGE);
                 System.exit(0);
             } else {
-                JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.");
+                JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.","Day "+Main.day,JOptionPane.PLAIN_MESSAGE);
                 if (ToolBox.hook.isObtained() && Dice.rollAgainst(1, 2)) {
-                    JOptionPane.showMessageDialog(null, "You gain 1 food from hook.");
+                    JOptionPane.showMessageDialog(null, "You gain 1 food from hook.","Bonus food.",JOptionPane.PLAIN_MESSAGE);
                     Storage.food.gain(1);
                 }
                 update();
@@ -698,6 +708,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
                     }
                     huntingGround0.setEnabled(true);
                     huntingGround0.setText("Fight this Animal!");
+                    huntingGround0.setBackground(new Color(192, 96, 161));
                 }
                 while(huntingGround[1] == null){
                     int redrawing = (int) (Math.random() * 10) % 6;
@@ -718,6 +729,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
                     }
                     huntingGround1.setEnabled(true);
                     huntingGround1.setText("Fight this Animal!");
+                    huntingGround1.setBackground(new Color(192, 96, 161));
                 }
             }
         }

@@ -29,21 +29,21 @@ public class Player {
             }
         }
         if (food == 0){
-            JOptionPane.showMessageDialog(null, "You not eat. gain "+energy+" and -1 HP");
+            JOptionPane.showMessageDialog(null, "You not eat. gain "+energy+" and -1 HP","Hungry",JOptionPane.ERROR_MESSAGE);
         }
         else{
             Storage.food.consume(food);
-            JOptionPane.showMessageDialog(null, "You eat "+food+" food to gain "+energy+" energy");
+            JOptionPane.showMessageDialog(null, "You eat "+food+" food to gain "+energy+" energy","Yummy!",JOptionPane.PLAIN_MESSAGE);
         }
     }
     
     public static void gather(Sector sector, int amount){
         if (Dice.rollAgainst(amount, sector.getPip())){
             sector.getResource().gain(1);
-            JOptionPane.showMessageDialog(null, "Success to gathering. Gain 1 "+sector.getResource().getName()+".");
+            JOptionPane.showMessageDialog(null, "Success to gathering. Gain 1 "+sector.getResource().getName()+".","",JOptionPane.PLAIN_MESSAGE);
         }
         else{
-            JOptionPane.showMessageDialog(null, "Fail to gathering resource from "+sector.getName()+".");
+            JOptionPane.showMessageDialog(null, "Fail to gathering resource from "+sector.getName()+".","",JOptionPane.ERROR_MESSAGE);
         }
         Player.energy -= amount;
     }
@@ -51,11 +51,11 @@ public class Player {
     public static void explore(Sector sector, int amount){
         if (Dice.rollAgainst(amount, 4)){
             sector.setExplored(true);
-            JOptionPane.showMessageDialog(null, "Success to explore. Discover "+sector.getName()+".");
+            JOptionPane.showMessageDialog(null, "Success to explore. Discover "+sector.getName()+".","",JOptionPane.PLAIN_MESSAGE);
             Area.areaExplored++;
         }
         else{
-            JOptionPane.showMessageDialog(null, "Fail to explore this sector.");
+            JOptionPane.showMessageDialog(null, "Fail to explore this sector.","",JOptionPane.ERROR_MESSAGE);
         }
         Player.energy -= amount;
     }
@@ -64,26 +64,26 @@ public class Player {
         if (part.check()){
 //            System.out.println("Fix "+part.getName()+" Successful.");
             Player.energy--;
-            JOptionPane.showMessageDialog(null, "Success to fix "+part.getName()+".");
+            JOptionPane.showMessageDialog(null, "Success to fix "+part.getName()+".","",JOptionPane.PLAIN_MESSAGE);
             Ship.partFixed++;
             return true;
         }
         else{
 //            System.out.println("Can't Fix "+part.getName());
-            JOptionPane.showMessageDialog(null, "Resource not enough to fix "+part.getName()+".");
+            JOptionPane.showMessageDialog(null, "Resource not enough to fix "+part.getName()+".","",JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
     
     public static void hunting(Animal animal, int amount){
         if (Dice.rollAgainst(amount, animal.getRating())){
-            JOptionPane.showMessageDialog(null, "Hunting succeeded. You got "+animal.getFoodDrop()+" foods!.");
+            JOptionPane.showMessageDialog(null, "Hunting succeeded. You got "+animal.getFoodDrop()+" foods!.","",JOptionPane.PLAIN_MESSAGE);
             animal.setIsAlive(false);
             Storage.food.gain(animal.getFoodDrop());
             animalKilled++;
         }
         else{
-            JOptionPane.showMessageDialog(null, "Hunting failed. You took "+animal.getDamage()+" damages!.");
+            JOptionPane.showMessageDialog(null, "Hunting failed. You took "+animal.getDamage()+" damages!.","",JOptionPane.ERROR_MESSAGE);
             Player.HP = Player.HP - animal.getDamage();
         }
         Player.energy -= amount;
@@ -99,14 +99,14 @@ public class Player {
         if (Dice.rollAgainst(amount, gadget.getTargetNumber())){
             gadget.setObtained(true);
             System.out.println("Success, complete "+gadget.getName()+".");
-            JOptionPane.showMessageDialog(null, "Success to make "+gadget.getName()+".");
+            JOptionPane.showMessageDialog(null, "Success to make "+gadget.getName()+".","",JOptionPane.PLAIN_MESSAGE);
             gadget.setObtained(true);
             Player.energy -= amount;
             ToolBox.toolMade++;
             return true;
         }
         else{
-            JOptionPane.showMessageDialog(null, "Fail to make "+gadget.getName()+".");
+            JOptionPane.showMessageDialog(null, "Fail to make "+gadget.getName()+".","",JOptionPane.ERROR_MESSAGE);
             Player.energy -= amount;
             return false;
         }
@@ -115,9 +115,9 @@ public class Player {
     
     public static void rest(int energy){
         Player.energy -= energy;
-        Player.HP += energy;
+        JOptionPane.showMessageDialog(null, "You are rested ( HP +"+energy+" ).","Soundly Slept",JOptionPane.PLAIN_MESSAGE);
+        heal(energy);
 //        System.out.println("You are rested");
-        JOptionPane.showMessageDialog(null, "You are rested ( HP +"+energy+" ).");
     }
     
     @Override
@@ -125,6 +125,8 @@ public class Player {
         return "Player:" + " HP: " + HP + ", Energy: " + energy;
     }
     
-    
+    public static void heal(int amount){
+        HP+=amount;
+    }
     
 }
