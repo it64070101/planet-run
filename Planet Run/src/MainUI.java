@@ -155,14 +155,14 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 
         rest = new JButton("Rest");
         rest.setPreferredSize(new Dimension(screenScale(100), screenScale(50)));
-        rest.setBackground(new Color(63, 59, 108));
+        rest.setBackground(new Color(88, 62, 138));
         rest.setForeground(new Color(163, 199, 214));
         rest.setFont(new Font("Ink Free", Font.BOLD, screenScale(35)));
         rest.setToolTipText("Heal 1HP/Energy");
 
         maketool = new JButton("Tool Box");
         maketool.setPreferredSize(new Dimension(screenScale(100), screenScale(50)));
-        maketool.setBackground(new Color(63, 59, 108));
+        maketool.setBackground(new Color(88, 62, 138));
         maketool.setForeground(new Color(163, 199, 214));
         maketool.setFont(new Font("Ink Free", Font.BOLD, screenScale(35)));
         maketool.setToolTipText("Crafting your Gadgets");
@@ -184,15 +184,16 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pHuntingGround.add(huntingGround1);
         huntingGround0.setPreferredSize(new Dimension(screenScale(350), screenScale(180)));
         huntingGround1.setPreferredSize(new Dimension(screenScale(350), screenScale(180)));
-        huntingGround0.setBackground(new Color(192, 96, 161));
-
+        
+        huntingGround0.setBackground(new Color(200,55,135));
         huntingGround0.setForeground(new Color(255, 255, 255));
         huntingGround0.setFont(new Font("Ink Free", Font.BOLD, screenScale(20)));
 
-        huntingGround1.setBackground(new Color(192, 96, 161));
+        huntingGround1.setBackground(new Color(200,55,135));
         huntingGround1.setForeground(new Color(255, 255, 255));
-        pHuntingGround.setBackground(new Color(0, 0, 0, 0));
         huntingGround1.setFont(new Font("Ink Free", Font.BOLD, screenScale(20)));
+        
+        pHuntingGround.setBackground(new Color(0, 0, 0, 0));
         pHuntAll = new JPanel();
         pHuntAll.setLayout(new FlowLayout());
         pHuntAll.add(pHuntingGround);
@@ -224,27 +225,27 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pLabel.add(triangleTxt);
         pLabel.add(squareTxt);
         pLabel.add(circleTxt);
-        pLabel.setBackground(new Color(24, 39, 71));
+        pLabel.setBackground(new Color(29, 48, 87));
 
-        dayTxt.setBackground(new Color(24, 39, 71));
+        dayTxt.setBackground(new Color(29, 48, 87));
         dayTxt.setForeground(new Color(245, 213, 174));
-        foodTxt.setBackground(new Color(24, 39, 71));
+        foodTxt.setBackground(new Color(29, 48, 87));
         foodTxt.setForeground(new Color(245, 213, 174));
-        starTxt.setBackground(new Color(24, 39, 71));
+        starTxt.setBackground(new Color(29, 48, 87));
         starTxt.setForeground(new Color(245, 213, 174));
-        triangleTxt.setBackground(new Color(24, 39, 71));
+        triangleTxt.setBackground(new Color(29, 48, 87));
         triangleTxt.setForeground(new Color(245, 213, 174));
-        squareTxt.setBackground(new Color(24, 39, 71));
+        squareTxt.setBackground(new Color(29, 48, 87));
         squareTxt.setForeground(new Color(245, 213, 174));
-        circleTxt.setBackground(new Color(24, 39, 71));
+        circleTxt.setBackground(new Color(29, 48, 87));
         circleTxt.setForeground(new Color(245, 213, 174));
-        title1.setBackground(new Color(24, 39, 71));
+        title1.setBackground(new Color(29, 48, 87));
         title1.setForeground(new Color(245, 213, 174));
-        HPTxt.setBackground(new Color(24, 39, 71));
+        HPTxt.setBackground(new Color(29, 48, 87));
         HPTxt.setForeground(new Color(245, 213, 174));
-        energyTxt.setBackground(new Color(24, 39, 71));
+        energyTxt.setBackground(new Color(29, 48, 87));
         energyTxt.setForeground(new Color(245, 213, 174));
-        name.setBackground(new Color(24, 39, 71));
+        name.setBackground(new Color(29, 48, 87,0));
         name.setForeground(new Color(245, 213, 174));
 
         dayTxt.setEditable(false);
@@ -265,15 +266,16 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pAll.setLayout(new FlowLayout(FlowLayout.CENTER));
         pAll.add(pLabel);
         pAll.setSize(screenScale(100), screenScale(100));
-        pAll.setBackground(new Color(24, 39, 71));
+        pAll.setBackground(new Color(29, 48, 87));
         pAll.setForeground(new Color(254, 194, 96));
 
         showclock = new JPanel();
         clockshow = new JLabel("");
+        clockshow.setForeground(new Color(255,255,255));
         showclock.setForeground(new Color(234, 234, 234));
         showclock.add(clockshow);
         showclock.setSize(screenScale(200), screenScale(200));
-        showclock.setBackground(new Color(249, 102, 102));
+        showclock.setBackground(new Color(30,0,69));
 
         pSec.setBounds(screenScale(0), screenScale(50), screenScale(450), screenScale(1000));
         pRocket.setBounds(screenScale(500), screenScale(50), screenScale(650), screenScale(850));
@@ -506,7 +508,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     public void setSector() {
         Dimension preferSize = new Dimension(screenScale(250), screenScale(160));
         Font font = new Font("Ink Free", Font.BOLD, screenScale(15));
-        Color bgColor = new Color(192, 96, 161);
+        Color bgColor = new Color(194, 68, 161);
         Color fgColor = new Color(255, 255, 255);
         int hText = JButton.CENTER;
         int vText = JButton.BOTTOM;
@@ -548,7 +550,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     }
 
     public void setShip() {
-        Color bgColor = new Color(98, 79, 130);
+        Color bgColor = new Color(117, 92, 170);
         Color fgColor = new Color(255, 255, 255);
         int htext = JButton.CENTER;
         int vtext = JButton.BOTTOM;
@@ -712,6 +714,9 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     }
 
     public static void endOfDay() {
+        if(MainHome.frame != null){
+            MainHome.frame.repaint();
+        }
         if (Player.getEnergy() < 1) {
 
             JOptionPane.showMessageDialog(null, "End day, time for dinner.", "", JOptionPane.PLAIN_MESSAGE);
@@ -786,7 +791,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
                     }
                     huntingGround0.setEnabled(true);
                     huntingGround0.setText(foodDrop + diff);
-                    huntingGround0.setBackground(new Color(192, 96, 161));
+                    huntingGround0.setBackground(new Color(200,55,135));
                 }
                 while (huntingGround[1] == null) {
                     int redrawing = (int) (Math.random() * 10) % 6;
@@ -819,7 +824,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
                     }
                     huntingGround1.setEnabled(true);
                     huntingGround1.setText(foodDrop + diff);
-                    huntingGround1.setBackground(new Color(192, 96, 161));
+                    huntingGround1.setBackground(new Color(200,55,135));
                 }
             }
         }
@@ -828,22 +833,26 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 //    public void changeday(){
 //        repaint();
 //    }
-
+int j;
     Image backgroundimg;
     public void paintComponent(Graphics g) {
-        int j = screenScale(1000);
+        // int j = screenScale(1000);
         Graphics2D g2D = (Graphics2D) g;
         backgroundimg = new ImageIcon("src/images/spacetest03.jpg").getImage();
         g2D.drawImage(backgroundimg, 0, 0, null);
+        g2D.setFont(new Font("Ink Free", Font.BOLD, 20));
+        g2D.setColor(new Color(255,239,235));
+        g2D.drawString("Day"+day,555,120);
+        j = 605;
         for(int i =0; i<day;i++){
             g2D.setColor(Color.yellow);
-            g2D.fillOval(j-screenScale(350), screenScale(100), 25, 25);
-            j+=screenScale(30);
+            g2D.fillOval(j, 100, 25, 25);
+            j+=30;
         }
         for(int i =0; i<15-day;i++){
             g2D.setColor(Color.gray);
-            g2D.fillOval(j-screenScale(350), screenScale(100), 25, 25);
-            j+=screenScale(30);
+            g2D.fillOval(j, 100, 25, 25);
+            j+=30;
         }
         
     }
