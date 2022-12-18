@@ -1,9 +1,11 @@
-You are a pilot of the spaceship Yamato. One day while cruising, your ship was hit by asteroids and you landed on Planet Run. You need to find the resources to fix your ship while trying to survive from dying of hunger! 
+PLANET RUN: HOW TO PLAY
 
-OBJECTIVE 
+You are a pilot of the spaceship. One day while cruising, your ship was hit by asteroids and you landed on Planet Run. You need to find the resources to fix your ship while trying to survive from dying of hunger! 
+
+OBJECTIVE ====================
 To fix your ship and get back to earth. 
 
-GAMEPLAY 
+GAMEPLAY ====================
 There are 5 phases in the game. 
 1. UPKEEP
 2. DRAW
@@ -11,38 +13,38 @@ There are 5 phases in the game.
 4. EAT
 5. TURN END
 
-UPKEEP You start the game with 2 Foods, 3 Energy and 4 HP. During upkeep if you obtained the Hook gadget, you have five in six chance of getting 1 extra food.
+- [UPKEEP] You start the game with 2 Foods, 3 Energy and 4 HP. During upkeep if you obtained the Hook gadget, you have five in six chance of getting 1 extra food.
 
-DRAW The animal(s) that has been hunted in the previous day will be replace with a new animal in this phase. Hunting ground will have a maximum of 2 animals at anytime.  
+- [DRAW] The animal(s) that has been hunted in the previous day will be replace with a new animal in this phase. Hunting ground will have a maximum of 2 animals at anytime.  
 
-ORDER During this phase you use your Energy to explore new sector or hunting or gather resources or gadget con­struction or rest.  Every energy will equals to one dice roll. The higer the energy usage, higher the chance of said action being successful.
+- [ORDER] During this phase you spend some Energy to explore new sector or hunting or gather resources or gadget con­struction or rest.  Every energy will equals to one dice roll. The higer the energy usage, higher the chance of said action being successful.
 
-Explore new sector - To explore, you put 1 or more Energy on an unexplored sector.
+    -- Explore New Sector: Spend some Energy on an unexplored sector to discover a sector.
 
-Hunting - To hunt, you put 1 or more Energy on 1 of the available animal on the hunting ground. The difficulty of the hunt is displayed beside the animals' name, rolled a total more than or equals to difficulty to succeed. If the hunt is a failure, you will re­ceived damage. If you obtained the Gun gadget, 1 bonus energy will be added. 
+    -- Hunting: spend some Energy on an available animal. The difficulty of the hunt is displayed beside the animals' name. You'll receive damages. If you obtained Gun, 1 bonus energy will be added. 
 
-Gather Resource - Put 1 or more energy on sector discovered. You need to roll 3 points on each sector to gain 1 resource. If you have Axe, Hammer and/or Pick gadgets, you add 1 extra energy when gathering these resources: Axe for Triangle re­source, Hammer for Circle resource and Pick for Square re­source. 
-NOTE: Each sector must be discovered first before you can gather the resource. 
+    -- Gather Resource: Spend some energy on discovered sector. If you have Axe, Hammer and/or Pick, add 1 extra energy when gathering these resources: Axe for Wood, Hammer for Sand and Pick for Rock. 
+    NOTE: Each sector must be discovered first before you can gather the resource.
 
-Gadget Construction - You put 1 or more energy on 1 of the gadget to construct it. Certain tool have certain sector requirement. Axe for Triangle re­source, Hammer for Circle resource and Pick for Square re­source.
+    -- Gadget Making: Spend some energy to make a gadget. Some gadget require some discovered sector before you can make it.
 
-Rest- You recover 1 HP for each Energy you use. 
+    -- Rest: Recover 1 HP for each Energy you spend to rest.
 
-Fix the ship - You only need 1 Energy to fix 1 module of the ship. When you put Energy dice here, you reduce resource ac­cordingly. There's no chance of failure.
+    -- Fix the ship: You only need 1 Energy to fix 1 part of the ship. You'll spend resources to fix that pard. There's no chance of failure.
 
-Object's Diffuculty (points needed)
-3 -> (easy)
-4 -> (easy+)
-5 -> (normal)
-6 -> (normal+)
-7 -> (hard)
-8 -> (hard+)
-9 -> (very hard)
+    There are 7 difficulties in game:
+    Easy
+    Easy+
+    Normal
+    Normal+
+    Hard
+    Hard+
+    Very hard
 
-EAT During this phase you eat food you obtained from hunting. The amount of food you eat will get you that amount of Energy. 
+- [EAT] During this phase you eat food you obtained from hunting. The amount of food you eat will get you that amount of Energy. 
 
-TURN END Day counter increase by one. 
+- [TURN] END Day counter increase by one. 
 
-GAME OVER You lose the game when Xavier's HP runs out. 
+- [GAME OVER] You lose the game when your HP runs out. 
 
-GAME END SCORING At the end of day 15, the game will end and continues to scoring screen. 
+- [GAME END SCORING] At the end of day 15, the game will end and continues to scoring screen. 
