@@ -30,8 +30,8 @@ public class LosePage extends JPanel implements ActionListener ,Runnable {
     final int PANEL_WIDTH = 500;
     int x = 225;
     int y = 200;
-    int xVelo = 5;
-    int yVelo = 5;
+    int xVelo = 2;
+    int yVelo = 2;
 
     public LosePage(JFrame fr){
         this.fr = fr;
@@ -115,8 +115,8 @@ public class LosePage extends JPanel implements ActionListener ,Runnable {
         add(p1);
         add(p2);
 //        add(p3);
-        p1.setBounds(1450,650, 110, 110);
-        p2.setBounds(1450,750, 110, 110);
+        p1.setBounds(screenScale(1450),screenScale(650), screenScale(110), screenScale(110));
+        p2.setBounds(screenScale(1450),screenScale(750), screenScale(110), screenScale(110));
 //        p3.setBounds(850,500, 110, 110);
         
 //        setLayout(new GridLayout(1,15));
@@ -136,7 +136,6 @@ public class LosePage extends JPanel implements ActionListener ,Runnable {
 //        add(new JLabel());
       
         
-        bRetry.addActionListener(this);
         bExit.addActionListener(this);
 
         
@@ -186,8 +185,8 @@ public class LosePage extends JPanel implements ActionListener ,Runnable {
         Graphics2D gdTime = (Graphics2D) g;
         Graphics2D gdFinals = (Graphics2D) g;
         
-        ani1 = new ImageIcon("src/images/Ani3.png").getImage();
-        ani2 = new ImageIcon("src/images/Ani4.png").getImage();
+        ani1 = new ImageIcon("src/images/Ani5.png").getImage();
+        ani2 = new ImageIcon("src/images/Ani6.png").getImage();
         backgroundimg = new ImageIcon("src/images/spacetest04.png").getImage();
         rocket = new ImageIcon("src/images/Player.png").getImage();
         
@@ -209,7 +208,7 @@ public class LosePage extends JPanel implements ActionListener ,Runnable {
 //        Header
         ghFixer.setFont(new Font("Ink Free", Font.BOLD, 40));
         ghFixer.setColor(new Color(255,255,255));
-        ghFixer.drawString("You survived " + "15" + " days", 675, 290);
+        ghFixer.drawString("You survived " + MainUI.getDay() + " days", 675, 290);
         
         ghRocketeer.setFont(new Font("Ink Free", Font.BOLD, 25));
         ghRocketeer.setColor(new Color(255,0,0));
@@ -219,22 +218,21 @@ public class LosePage extends JPanel implements ActionListener ,Runnable {
     }
     
     public void actionPerformed(ActionEvent e){
-        if(e.getSource().equals(bRetry)){
-            
+        if(e.getSource().equals(bExit)){
+            MainUI.exitAsk();
         }
-        else if(e.getSource().equals(bExit)){
-            System.exit(0);
-        }
+        
+    
         
 
     }
     public void run(){
         while(true){
             try{
-                if(x>=PANEL_WIDTH - 150 || x<120){
+                if(x>=PANEL_WIDTH-10 || x<120){
                     xVelo = xVelo * -1;
                 }
-                if(y>=PANEL_HEIGHT - 30 || y<150){
+                if(y>=PANEL_HEIGHT+225 || y<150){
                     yVelo = yVelo * -1;
                 }
                 x = x + xVelo;
@@ -247,6 +245,11 @@ public class LosePage extends JPanel implements ActionListener ,Runnable {
                 }
             }
         }
+    public static int screenScale(double pixel) {
+        int screenDPI = Toolkit.getDefaultToolkit().getScreenResolution();
+        double scaleTest = (double) 96 / screenDPI;
+        return (int) (pixel * scaleTest);
+    }
 //        if(x>=PANEL_WIDTH - rocket.getWidth(null) || x<0){
 //            xVelo = xVelo * -1;
 //        }

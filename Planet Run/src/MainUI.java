@@ -134,7 +134,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 
         pShip.setLayout(new BorderLayout(screenScale(5), screenScale(5)));
         pShip.setBackground(Color.BLACK);
-        pShip.setSize(screenScale(128), screenScale(128));
+        pShip.setSize(screenScale(200), screenScale(200));
         pShip.add(noseCone, BorderLayout.NORTH);
         pShip.add(shockcord, BorderLayout.CENTER);
         pShip.add(recoveryWadding, BorderLayout.SOUTH);
@@ -660,6 +660,9 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         int hour = 0;
 
         while (true) {
+            if(day==15&&Player.getEnergy()==0){
+                break;
+            }
             clockshow.setFont(new Font("Tahoma", Font.PLAIN, 32));
             clockshow.setText(String.format("%02d", hour) + " : " + String.format("%02d", min) + " : " + String.format("%02d", sec));
             try {
@@ -828,19 +831,19 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 
     Image backgroundimg;
     public void paintComponent(Graphics g) {
-        int j = 1000;
+        int j = screenScale(1000);
         Graphics2D g2D = (Graphics2D) g;
         backgroundimg = new ImageIcon("src/images/spacetest03.jpg").getImage();
         g2D.drawImage(backgroundimg, 0, 0, null);
         for(int i =0; i<day;i++){
             g2D.setColor(Color.yellow);
-            g2D.fillOval(j-350, 100, 25, 25);
-            j+=30;
+            g2D.fillOval(j-screenScale(350), screenScale(100), 25, 25);
+            j+=screenScale(30);
         }
         for(int i =0; i<15-day;i++){
             g2D.setColor(Color.gray);
-            g2D.fillOval(j-350, 100, 25, 25);
-            j+=30;
+            g2D.fillOval(j-screenScale(350), screenScale(100), 25, 25);
+            j+=screenScale(30);
         }
         
     }
@@ -857,6 +860,13 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         MainUI.day = day;
     }
     
+    public static int getSec() {
+        return sec;
+    }
+
+    public static void setSec(int sec) {
+        MainUI.sec = sec;
+    }
     public static void exitAsk(){
         int num = JOptionPane.showConfirmDialog(null, "Do you want to quit the game ?", "Exit", JOptionPane.YES_NO_OPTION);
         if (num == 0){

@@ -160,8 +160,9 @@ public class MainHome extends JPanel implements ActionListener {
     
     public void howToPlay(){
         JPanel p = new JPanel();
-        JTextArea ta = new JTextArea("Lorem ipsum dolor sit amet, consectetur adipiscing elit.Curabitur placerat, massa at tincidunt egestas, ex turpis congue neque, vitae tempor ligula justo condimentum neque. Nullam aliquam lorem vitae mi aliquam fermentum. Pellentesque pharetra sem sit amet consequat consequat. Pellentesque quis justo ac risus ultrices faucibus. Phasellus scelerisque nec urna et iaculis. Donec iaculis neque at ante pretium mollis. Nam ut euismod libero, vitae finibus nibh. Proin sollicitudin ex sem, eget dictum tortor gravida nec. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nulla consequat finibus efficitur.", 30, 60);
+        JTextArea ta = new JTextArea("", 30, 60);
         ta.setLineWrap(true);
+        ta.setEditable(false);
         ta.setWrapStyleWord(true);
         JScrollPane taScroll = new JScrollPane(ta);
         taScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);

@@ -116,7 +116,7 @@ public class WinPage extends JPanel implements ActionListener ,Runnable {
         add(p2);
 //        add(p3);
         p1.setBounds(1450,650, 110, 110);
-        p2.setBounds(1450,750, 110, 110);
+        p2.setBounds(1450,650, 110, 110);
 //        p3.setBounds(850,500, 110, 110);
         
 //        setLayout(new GridLayout(1,15));
@@ -160,7 +160,7 @@ public class WinPage extends JPanel implements ActionListener ,Runnable {
         Graphics2D g2D = (Graphics2D) g;
         Graphics2D gString = (Graphics2D) g;
         Graphics2D gRocket = (Graphics2D) g;
-        Graphics2D gBorder = (Graphics2D) g;
+//        Graphics2D gBorder = (Graphics2D) g;
         
         Graphics2D ghFixer = (Graphics2D) g;
         Graphics2D ghRocketeer = (Graphics2D) g;
@@ -199,11 +199,11 @@ public class WinPage extends JPanel implements ActionListener ,Runnable {
         gString.setColor(new Color(255,255,255));
         gString.drawString("You Survived!", 750, 180);
         
-        gBorder.setColor(new Color(0,0,0));
-        gBorder.fillRect(127,140,475,525);
+//        gBorder.setColor(new Color(0,0,0));
+//        gBorder.fillRect(127,140,475,525);
         
-        gRocket.setColor(new Color(255,255,255));
-        gRocket.fillRect(140,150,450,500);
+//        gRocket.setColor(new Color(255,255,255));
+//        gRocket.fillRect(140,150,450,500);
         gRocket.drawImage(rocket,x,y,null);
         
 //        Header
@@ -245,56 +245,77 @@ public class WinPage extends JPanel implements ActionListener ,Runnable {
         
         ghTime.setFont(new Font("Ink Free", Font.BOLD, 25));
         ghTime.setColor(new Color(255,255,255));
-        ghTime.drawString("Fixer", 675, 670);
+        ghTime.drawString("Time Taken", 675, 670);
         
         ghFinals.setFont(new Font("Ink Free", Font.BOLD, 25));
         ghFinals.setColor(new Color(255,255,255));
-        ghFinals.drawString("Fixer", 675, 710);
+        ghFinals.drawString("Final Score", 675, 710);
         
 //   Detail:
+        int scoreTally = 0;
+
         gdFixer.setFont(new Font("Ink Free", Font.BOLD, 25));
         gdFixer.setColor(new Color(255,255,255));
-        gdFixer.drawString(":", 1050, 270);
+        gdFixer.drawString(": " +((Ship.getPartFixed() * (Ship.getPartFixed() + 1)) / 2), 1050, 270);
+        scoreTally += ((Ship.getPartFixed() * (Ship.getPartFixed() + 1)) / 2);
         
         gdRocketeer.setFont(new Font("Ink Free", Font.BOLD, 25));
         gdRocketeer.setColor(new Color(255,255,255));
-        gdRocketeer.drawString(":", 1050, 310);
+        if (Ship.getPartFixed() == 5) {
+            gdRocketeer.drawString(": 30", 1050, 310);
+            scoreTally += 30;
+        } else{
+            gdRocketeer.drawString(": 0", 1050, 310);
+        }
         
         gdToolmaker.setFont(new Font("Ink Free", Font.BOLD, 25));
         gdToolmaker.setColor(new Color(255,255,255));
-        gdToolmaker.drawString(":", 1050, 350);
+        gdToolmaker.drawString(": "+ToolBox.getToolMade(), 1050, 350);
+        scoreTally += ToolBox.getToolMade();
         
         gdJack.setFont(new Font("Ink Free", Font.BOLD, 25));
         gdJack.setColor(new Color(255,255,255));
-        gdJack.drawString(":", 1050, 390);
+        if (ToolBox.getToolMade() == 5) {
+            gdJack.drawString(": 10", 1050, 390);
+            scoreTally += 10;
+        }else{
+            gdJack.drawString(": 0", 1050, 390);
+        }
+        
         
         gdDis.setFont(new Font("Ink Free", Font.BOLD, 25));
         gdDis.setColor(new Color(255,255,255));
-        gdDis.drawString(":", 1050, 430);
+        gdDis.drawString(": "+ Area.getAreaExplored(), 1050, 430);
+        scoreTally+=Area.getAreaExplored();
         
         gdApex.setFont(new Font("Ink Free", Font.BOLD, 25));
         gdApex.setColor(new Color(255,255,255));
-        gdApex.drawString(":", 1050, 470);
+        gdApex.drawString(": "+Player.getAnimalKilled(), 1050, 470);
+        scoreTally+=Player.getAnimalKilled();
         
         gdBarely.setFont(new Font("Ink Free", Font.BOLD, 25));
         gdBarely.setColor(new Color(255,255,255));
-        gdBarely.drawString(":", 1050, 510);
+        gdBarely.drawString(": "+Player.getHP(), 1050, 510);
+        scoreTally += Player.getHP();
         
         gdUnbreak.setFont(new Font("Ink Free", Font.BOLD, 25));
         gdUnbreak.setColor(new Color(255,255,255));
-        gdUnbreak.drawString(":", 1050, 550);
-        
+        if (Player.getHP() == 4) {
+            gdUnbreak.drawString(": 8", 1050, 550);
+            scoreTally += 8;
+        }else{gdUnbreak.drawString(": 0", 1050, 550);}
+          
         gdTotal.setFont(new Font("Ink Free", Font.BOLD, 25));
         gdTotal.setColor(new Color(255,255,255));
-        gdTotal.drawString(":", 1050, 590);
+        gdTotal.drawString(": "+ scoreTally, 1050, 590);
         
         gdTime.setFont(new Font("Ink Free", Font.BOLD, 25));
         gdTime.setColor(new Color(255,255,255));
-        gdTime.drawString(":", 1050, 670);
+        gdTime.drawString(": " + MainUI.getSec(), 1050, 670);
         
         gdFinals.setFont(new Font("Ink Free", Font.BOLD, 25));
         gdFinals.setColor(new Color(255,255,255));
-        gdFinals.drawString(":", 1050, 710);
+        gdFinals.drawString(": ("+scoreTally+"/"+ MainUI.getSec() + ")*100 = "+MainUI.scoring(), 1050, 710);
         
     }
     
@@ -303,7 +324,7 @@ public class WinPage extends JPanel implements ActionListener ,Runnable {
 //            new MainHome();
         }
         else if(e.getSource().equals(bExit)){
-            System.exit(0);
+            MainUI.exitAsk();
         }
         
 
