@@ -64,21 +64,17 @@ public class MainHome extends JPanel implements ActionListener {
         setSize(512, 512);
         setOpaque(false);
         setLayout(new GridLayout(1,3));
-//        p1.setBounds(50,50, 500, 500);
         add(new JLabel());
         add(p2); 
         add(new JLabel());
-//        p1.setBounds(50,50, 500, 500);
 
          bStart.addActionListener(this);
          bConti.addActionListener(this);
          bHow.addActionListener(this);
          bExit.addActionListener(this);
-//        addKeyListener(this);
     }
 
     public static void main(String[] args) {
-        System.out.println("i am working!");
         JFrame fr = new JFrame();
         MainHome p = new MainHome(fr);
         fr.setMinimumSize(new Dimension(1600, 900));
@@ -117,7 +113,7 @@ public class MainHome extends JPanel implements ActionListener {
             fr1.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
             fr1.setResizable(false);
             fr1.add(frame);
-            JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.","Day "+Main.day,JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.energy + " Energy.","Day "+Main.day,JOptionPane.PLAIN_MESSAGE);
         
             Thread n1 = new Thread(frame);
             n1.start();

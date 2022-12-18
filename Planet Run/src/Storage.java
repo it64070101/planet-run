@@ -15,11 +15,11 @@ public class Storage {
     public static Resource star;
 
     public Storage() {
-        food = new Resource("food", 2);
-        circle = new Resource("circle", 0);
-        triangle = new Resource("triangle", 0);
-        square = new Resource("square", 0);
-        star = new Resource("star", 0);
+        food = new Resource("Food", 2);
+        circle = new Resource("Sand", 0);
+        triangle = new Resource("Wood", 0);
+        square = new Resource("Rock", 0);
+        star = new Resource("Star", 0);
     }
     
 }

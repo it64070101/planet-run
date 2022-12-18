@@ -17,11 +17,11 @@ public class ToolBox {
 
     public ToolBox() {
         toolMade = 0;
-        gun = new Gadget("Gun", 7, Area.D, "+1 Energy When Hunting");
-        axe = new Gadget("Axe", 7, Area.C, "+1 Energy When Gathering Triangle");
-        hammer = new Gadget("Hammer", 7, Area.A, "+1 Energy When Gathering Circle");
-        pick = new Gadget("Pick", 7, Area.B, "+1 Energy When Gathering Square");
-        hook = new Gadget("Hook", 7, null, "83% to get 1 food");
+        gun = new Gadget("Gun", 7, Area.sectorMap.get("Altar"), "Bonus when hunting");
+        axe = new Gadget("Axe", 7, Area.sectorMap.get("Mountain"), "Bonus when gathering wood");
+        hammer = new Gadget("Hammer", 7, Area.sectorMap.get("Forest"), "Bonus when gathering sand");
+        pick = new Gadget("Pick", 7, Area.sectorMap.get("Desert"), "Bonus when gathering rock");
+        hook = new Gadget("Hook", 7, null, "Chane to get 1 food everyday");
     }
     
 }

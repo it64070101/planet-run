@@ -14,9 +14,9 @@ public class Maketool implements ActionListener, WindowListener {
 
     public Maketool() {
 
-        System.out.println("Set to false");
+//        System.out.println("Set to false");
         pGadget = new JPanel();
-        fr = new JFrame();
+        fr = new JFrame("Tool box");
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         imgAxe = new ImageIcon("src/images/Axe.png");
@@ -25,39 +25,13 @@ public class Maketool implements ActionListener, WindowListener {
         imgPick = new ImageIcon("src/images/Pickaxe.png");
         imgHook = new ImageIcon("src/images/Hook.png");
 
-        gun = new JButton("Make Gun", imgGun);
-        checkObtained(ToolBox.gun, gun);
-        axe = new JButton("Make Axe", imgAxe);
-        checkObtained(ToolBox.axe, axe);
-        hammer = new JButton("Make Hammer", imgHammer);
-        checkObtained(ToolBox.hammer, hammer);
-        pick = new JButton("Make Pick", imgPick);
-        checkObtained(ToolBox.pick, pick);
-        hook = new JButton("Make Hook", imgHook);
-        checkObtained(ToolBox.hook, hook);
-
-        gun.setBackground(new Color(76, 103, 147));
-        axe.setBackground(new Color(76, 103, 147));
-        hammer.setBackground(new Color(76, 103, 147));
-        pick.setBackground(new Color(76, 103, 147));
-        hook.setBackground(new Color(76, 103, 147));
-        gun.setForeground(new Color(174, 254, 255));
-        axe.setForeground(new Color(174, 254, 255));
-        hammer.setForeground(new Color(174, 254, 255));
-        pick.setForeground(new Color(174, 254, 255));
-        hook.setForeground(new Color(174, 254, 255));
-
-        gun.setPreferredSize(new Dimension(250, 136));
-        axe.setPreferredSize(new Dimension(250, 136));
-        hammer.setPreferredSize(new Dimension(250, 136));
-        pick.setPreferredSize(new Dimension(250, 136));
-        hook.setPreferredSize(new Dimension(250, 136));
-
-        gun.setFont(new Font("Ink Free", Font.BOLD, 15));
-        axe.setFont(new Font("Ink Free", Font.BOLD, 15));
-        hammer.setFont(new Font("Ink Free", Font.BOLD, 15));
-        pick.setFont(new Font("Ink Free", Font.BOLD, 15));
-        hook.setFont(new Font("Ink Free", Font.BOLD, 15));
+        gun = new JButton("Required: "+ToolBox.gun.getSectorRequirement().getName()+" (Hard)", imgGun);
+        axe = new JButton("Required: "+ToolBox.axe.getSectorRequirement().getName()+" (Hard)", imgAxe);
+        hammer = new JButton("Required: "+ToolBox.hammer.getSectorRequirement().getName()+" (Hard)", imgHammer);
+        pick = new JButton("Required: "+ToolBox.pick.getSectorRequirement().getName()+" (Hard)", imgPick);
+        hook = new JButton("For fishing (Hard)", imgHook);
+        
+        setButton();
 
         pGadget.setLayout(new GridLayout(5, 1, 10, 10));
         pGadget.add(gun);
@@ -73,7 +47,8 @@ public class Maketool implements ActionListener, WindowListener {
 
         fr.setVisible(true);
         fr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        fr.setSize(300, 780);
+//        fr.setSize(300, 780);
+        fr.pack();
         fr.setLocation((int) (screenSize.width - (screenSize.width / 5.5)), (int) (screenSize.height - (screenSize.height / 1.1)));
         fr.setResizable(false);
         fr.getContentPane().setBackground(new Color(40, 42, 58));
@@ -95,13 +70,13 @@ public class Maketool implements ActionListener, WindowListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(gun)) {
-            sectorCheck(ToolBox.gun, Area.sectorMap.get("Altar"), gun);
+            sectorCheck(ToolBox.gun, ToolBox.gun.getSectorRequirement(), gun);
         } else if (e.getSource().equals(axe)) {
-            sectorCheck(ToolBox.axe, Area.sectorMap.get("Mountain"), axe);
+            sectorCheck(ToolBox.axe, ToolBox.axe.getSectorRequirement(), axe);
         } else if (e.getSource().equals(hammer)) {
-            sectorCheck(ToolBox.hammer, Area.sectorMap.get("Forest"), hammer);
+            sectorCheck(ToolBox.hammer, ToolBox.hammer.getSectorRequirement(), hammer);
         } else if (e.getSource().equals(pick)) {
-            sectorCheck(ToolBox.pick, Area.sectorMap.get("Desert"), pick);
+            sectorCheck(ToolBox.pick, ToolBox.pick.getSectorRequirement(), pick);
         } else if (e.getSource().equals(hook)) {
             if (Player.construction(ToolBox.hook, MainUI.sliderInput())) {
                 hook.setEnabled(false);
@@ -122,6 +97,64 @@ public class Maketool implements ActionListener, WindowListener {
             JOptionPane.showMessageDialog(null, "You can't make " + gadget.getName() + " because " + sector.getName() + " is not discovered yet.");
         }
 
+    }
+    
+    public void setButton(){
+        Color bgColor = new Color(76, 103, 147);
+        Color fgColor = new Color(174, 254, 255);
+        Dimension preferedSize = new Dimension(256, 160);
+        Font font = new Font("Ink Free", Font.BOLD, 15);
+        int hText = JButton.CENTER;
+        int vText = JButton.BOTTOM;
+        
+        checkObtained(ToolBox.gun, gun);
+        checkObtained(ToolBox.axe, axe);
+        checkObtained(ToolBox.hammer, hammer);
+        checkObtained(ToolBox.pick, pick);
+        checkObtained(ToolBox.hook, hook);
+        
+        gun.setBackground(bgColor);
+        axe.setBackground(bgColor);
+        hammer.setBackground(bgColor);
+        pick.setBackground(bgColor);
+        hook.setBackground(bgColor);
+        
+        gun.setForeground(fgColor);
+        axe.setForeground(fgColor);
+        hammer.setForeground(fgColor);
+        pick.setForeground(fgColor);
+        hook.setForeground(fgColor);
+
+        gun.setPreferredSize(preferedSize);
+        axe.setPreferredSize(preferedSize);
+        hammer.setPreferredSize(preferedSize);
+        pick.setPreferredSize(preferedSize);
+        hook.setPreferredSize(preferedSize);
+
+        gun.setFont(font);
+        axe.setFont(font);
+        hammer.setFont(font);
+        pick.setFont(font);
+        hook.setFont(font);
+        
+        gun.setHorizontalTextPosition(hText);
+        axe.setHorizontalTextPosition(hText);
+        hammer.setHorizontalTextPosition(hText);
+        pick.setHorizontalTextPosition(hText);
+        hook.setHorizontalTextPosition(hText);
+        
+        gun.setVerticalTextPosition(vText);
+        axe.setVerticalTextPosition(vText);
+        hammer.setVerticalTextPosition(vText);
+        pick.setVerticalTextPosition(vText);
+        hook.setVerticalTextPosition(vText);
+        
+        gun.setToolTipText(ToolBox.gun.getAbility());
+        axe.setToolTipText(ToolBox.axe.getAbility());
+        hammer.setToolTipText(ToolBox.hammer.getAbility());
+        pick.setToolTipText(ToolBox.pick.getAbility());
+        hook.setToolTipText(ToolBox.hook.getAbility());
+        
     }
 
     @Override

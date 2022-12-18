@@ -45,6 +45,26 @@ public abstract class Animal {
     public void setIsAlive(Boolean state) {
         this.isAlive = state;
     }
+    
+    public String getDifficulty(){
+        switch (rating){
+            case 4:
+                return "(Easy+)";
+            case 5:
+                return "(Normal)";
+            case 6:
+                return "(Normal+)";
+            case 7:
+                return "(Hard)";
+            case 8:
+                return "(Hard+)";
+            case 9:
+                return "(Very Hard)";
+            default:
+                return "0";
+        }
+                
+    }
 
     @Override
     public String toString() {
