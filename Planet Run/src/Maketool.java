@@ -1,8 +1,9 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Maketool implements ActionListener, WindowListener{
+public class Maketool implements ActionListener, WindowListener {
 
     private JFrame fr;
     private JFrame toolBtn;
@@ -11,9 +12,9 @@ public class Maketool implements ActionListener, WindowListener{
     private JButton gun, axe, hammer, pick, hook;
     private ImageIcon imgAxe, imgGun, imgHammer, imgPick, imgHook;
 
-    public Maketool(JFrame mainFr){
-        this.toolBtn = mainFr;
-        this.toolBtn.setEnabled(false);
+    public Maketool() {
+
+        System.out.println("Set to false");
         pGadget = new JPanel();
         fr = new JFrame();
 
@@ -25,16 +26,16 @@ public class Maketool implements ActionListener, WindowListener{
         imgHook = new ImageIcon("src/images/Hook.png");
 
         gun = new JButton("Make Gun", imgGun);
-        checkObtained(ToolBox.gun,gun);
+        checkObtained(ToolBox.gun, gun);
         axe = new JButton("Make Axe", imgAxe);
-        checkObtained(ToolBox.axe,axe);
+        checkObtained(ToolBox.axe, axe);
         hammer = new JButton("Make Hammer", imgHammer);
-        checkObtained(ToolBox.hammer,hammer);
+        checkObtained(ToolBox.hammer, hammer);
         pick = new JButton("Make Pick", imgPick);
-        checkObtained(ToolBox.pick,pick);
+        checkObtained(ToolBox.pick, pick);
         hook = new JButton("Make Hook", imgHook);
-        checkObtained(ToolBox.hook,hook);
-        
+        checkObtained(ToolBox.hook, hook);
+
         gun.setBackground(new Color(76, 103, 147));
         axe.setBackground(new Color(76, 103, 147));
         hammer.setBackground(new Color(76, 103, 147));
@@ -45,21 +46,20 @@ public class Maketool implements ActionListener, WindowListener{
         hammer.setForeground(new Color(174, 254, 255));
         pick.setForeground(new Color(174, 254, 255));
         hook.setForeground(new Color(174, 254, 255));
-        
+
         gun.setPreferredSize(new Dimension(250, 136));
         axe.setPreferredSize(new Dimension(250, 136));
         hammer.setPreferredSize(new Dimension(250, 136));
         pick.setPreferredSize(new Dimension(250, 136));
         hook.setPreferredSize(new Dimension(250, 136));
-        
+
         gun.setFont(new Font("Ink Free", Font.BOLD, 15));
         axe.setFont(new Font("Ink Free", Font.BOLD, 15));
         hammer.setFont(new Font("Ink Free", Font.BOLD, 15));
         pick.setFont(new Font("Ink Free", Font.BOLD, 15));
         hook.setFont(new Font("Ink Free", Font.BOLD, 15));
-        
-        
-        pGadget.setLayout(new GridLayout(5,1, 10, 10));
+
+        pGadget.setLayout(new GridLayout(5, 1, 10, 10));
         pGadget.add(gun);
         pGadget.add(axe);
         pGadget.add(hammer);
@@ -74,7 +74,7 @@ public class Maketool implements ActionListener, WindowListener{
         fr.setVisible(true);
         fr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         fr.setSize(300, 780);
-        fr.setLocation((int) (screenSize.width-(screenSize.width/5.5)),(int) (screenSize.height-(screenSize.height/1.1)));
+        fr.setLocation((int) (screenSize.width - (screenSize.width / 5.5)), (int) (screenSize.height - (screenSize.height / 1.1)));
         fr.setResizable(false);
         fr.getContentPane().setBackground(new Color(40, 42, 58));
 //        fr.setUndecorated(true);
@@ -84,42 +84,26 @@ public class Maketool implements ActionListener, WindowListener{
         pick.addActionListener(this);
         hook.addActionListener(this);
         fr.addWindowListener(this);
-    }   
-    
-    public static void checkObtained(Gadget gadget, JButton btt){
-        if(gadget.isObtained()){
+    }
+
+    public static void checkObtained(Gadget gadget, JButton btt) {
+        if (gadget.isObtained()) {
             btt.setEnabled(false);
             btt.setText("Obtained");
         }
     }
-    
-    public void actionPerformed(ActionEvent e){
-        if (e.getSource().equals(gun)){
-            if (Player.construction(ToolBox.gun, MainUI.sliderInput())){
-                gun.setEnabled(false);
-                gun.setText("Obtained");
-            }
-        }
-        else if (e.getSource().equals(axe)){
-            if (Player.construction(ToolBox.axe, MainUI.sliderInput())){
-                axe.setEnabled(false);
-                axe.setText("Obtained");
-            }
-        }
-        else if (e.getSource().equals(hammer)){
-            if (Player.construction(ToolBox.hammer, MainUI.sliderInput())){
-                hammer.setEnabled(false);
-                hammer.setText("Obtained");
-            }
-        }
-        else if (e.getSource().equals(pick)){
-            if (Player.construction(ToolBox.pick, MainUI.sliderInput())){
-                pick.setEnabled(false);
-                pick.setText("Obtained");
-            }
-        }
-        else if (e.getSource().equals(hook)){
-            if (Player.construction(ToolBox.hook, MainUI.sliderInput())){
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(gun)) {
+            sectorCheck(ToolBox.gun, Area.sectorMap.get("Altar"), gun);
+        } else if (e.getSource().equals(axe)) {
+            sectorCheck(ToolBox.axe, Area.sectorMap.get("Mountain"), axe);
+        } else if (e.getSource().equals(hammer)) {
+            sectorCheck(ToolBox.hammer, Area.sectorMap.get("Forest"), hammer);
+        } else if (e.getSource().equals(pick)) {
+            sectorCheck(ToolBox.pick, Area.sectorMap.get("Desert"), pick);
+        } else if (e.getSource().equals(hook)) {
+            if (Player.construction(ToolBox.hook, MainUI.sliderInput())) {
                 hook.setEnabled(false);
                 hook.setText("Obtained");
             }
@@ -128,15 +112,28 @@ public class Maketool implements ActionListener, WindowListener{
         MainUI.endOfDay();
     }
 
+    public void sectorCheck(Gadget gadget, Sector sector, JButton btn) {
+        if (sector.isExplored()) {
+            if (Player.construction(gadget, MainUI.sliderInput())) {
+                btn.setEnabled(false);
+                btn.setText("Obtained");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "You can't make " + gadget.getName() + " because " + sector.getName() + " is not discovered yet.");
+        }
+
+    }
+
     @Override
     public void windowOpened(WindowEvent e) {
-        this.toolBtn.setEnabled(false);
+        MainHome.fr1.setEnabled(false);
+
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
-        this.toolBtn.setEnabled(true);
+        MainHome.fr1.setEnabled(true);
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -164,6 +161,5 @@ public class Maketool implements ActionListener, WindowListener{
     public void windowDeactivated(WindowEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-    
+
 }

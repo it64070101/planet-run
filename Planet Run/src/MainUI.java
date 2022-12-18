@@ -13,7 +13,7 @@ import java.util.*;
 
 public class MainUI extends JPanel implements ActionListener, Runnable {
 
-    private static JFrame fr;
+    public static JFrame fr;
     private static JPanel pAll, pShip, pHuntingGround, pSectors, pGadget, pRest, pLabel, pButton, pMaketool, pComponent,
             pRocket, pHuntAll, pSec, pInmain, pInRocket, showclock;
     private static JButton noseCone, shockcord, recoveryWadding, leftFin, rightFin;
@@ -175,12 +175,14 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         rest.setBackground(new Color(63, 59, 108));
         rest.setForeground(new Color(163, 199, 214));
         rest.setFont(new Font("Ink Free", Font.BOLD, screenScale(35)));
+        rest.setToolTipText("Heal 1HP/Energy");
 
         maketool = new JButton("Make Tool");
         maketool.setPreferredSize(new Dimension(screenScale(100), screenScale(50)));
         maketool.setBackground(new Color(63, 59, 108));
         maketool.setForeground(new Color(163, 199, 214));
         maketool.setFont(new Font("Ink Free", Font.BOLD, screenScale(35)));
+        maketool.setToolTipText("Crafting your Gadgets");
 
         pSectors.setLayout(new GridLayout(4, 1, screenScale(50), screenScale(50)));
         pSectors.add(sector1);
@@ -423,7 +425,8 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(maketool)) {
-            new Maketool(fr);
+           new Maketool();
+           fr.setEnabled(false);
         } else if (e.getSource().equals(sector1)) {
             if (!Area.A.isExplored()) {
                 Player.explore(Area.A, sliderInput());

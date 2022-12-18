@@ -38,7 +38,22 @@ public class Player {
     }
     
     public static void gather(Sector sector, int amount){
-        if (Dice.rollAgainst(amount, sector.getPip())){
+        Gadget gadget = null;
+        switch (sector.getName()) {
+            case "Forest":
+                gadget = ToolBox.axe;
+                break;
+            case "Mountain":
+                gadget = ToolBox.pick;
+                break;
+            case "Desert":
+                gadget = ToolBox.hammer;
+                break;
+            default:
+                gadget = null;
+                break;
+        }
+        if (Dice.rollAgainst(amount+gadgetBonus(gadget), sector.getPip())){
             sector.getResource().gain(1);
             JOptionPane.showMessageDialog(null, "Success to gathering. Gain 1 "+sector.getResource().getName()+".","",JOptionPane.PLAIN_MESSAGE);
         }
@@ -49,6 +64,8 @@ public class Player {
     }
     
     public static void explore(Sector sector, int amount){
+        
+        
         if (Dice.rollAgainst(amount, 4)){
             sector.setExplored(true);
             JOptionPane.showMessageDialog(null, "Success to explore. Discover "+sector.getName()+".","",JOptionPane.PLAIN_MESSAGE);
@@ -76,7 +93,7 @@ public class Player {
     }
     
     public static void hunting(Animal animal, int amount){
-        if (Dice.rollAgainst(amount, animal.getRating())){
+        if (Dice.rollAgainst(amount+gadgetBonus(ToolBox.gun), animal.getRating())){
             JOptionPane.showMessageDialog(null, "Hunting succeeded. You got "+animal.getFoodDrop()+" foods!.","",JOptionPane.PLAIN_MESSAGE);
             animal.setIsAlive(false);
             Storage.food.gain(animal.getFoodDrop());
@@ -118,6 +135,19 @@ public class Player {
         JOptionPane.showMessageDialog(null, "You are rested ( HP +"+energy+" ).","Soundly Slept",JOptionPane.PLAIN_MESSAGE);
         heal(energy);
 //        System.out.println("You are rested");
+    }
+    
+    public static int gadgetBonus(Gadget gadget){
+        if (gadget == null){
+            return 0;
+        }
+        if (gadget.isObtained()){
+            JOptionPane.showMessageDialog(null, "You have +1 engergy with "+gadget.getName()+" !","Bonus from "+gadget.getName(),JOptionPane.PLAIN_MESSAGE);
+            return 1;
+        }
+        else{
+            return 0;
+        }
     }
     
     @Override

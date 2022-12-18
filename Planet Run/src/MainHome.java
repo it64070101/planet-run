@@ -7,10 +7,12 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class MainHome extends JPanel implements ActionListener {
-    private JFrame fr;
-    private JPanel p1, p2;
-    private JLabel title1;
+    public static JFrame fr ,fr1;
+    private JPanel p1, p2, pName;
+    private JLabel title1, nameLbl;
     private JButton bStart, bConti, bHow, bExit;
+    private String name;
+    private JTextField nameField;
 
     Image backgroundimg;
     Image ani1,ani2,ani3,ani4;
@@ -28,6 +30,11 @@ public class MainHome extends JPanel implements ActionListener {
         bConti = new JButton("Continue");
         bHow = new JButton("How to Play");
         bExit = new JButton("Exit");
+        pName = new JPanel(new GridLayout(2,1));
+        nameField = new JTextField("Christopher", 10);
+        nameLbl = new JLabel("What is your name ?");
+        pName.add(nameLbl);
+        pName.add(nameField);
         
         p1.setBackground(new Color(0,0,0,0));
         p2.setBackground(new Color(0,0,0,0));
@@ -86,8 +93,12 @@ public class MainHome extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e){
         if(e.getSource().equals(bStart)){
+            JOptionPane.showMessageDialog(null, pName, "What is your name ?", JOptionPane.PLAIN_MESSAGE);
+            name = nameField.getText();
+            if (nameField.getText().equals("") || nameField.getText() == null )
+                name = "Christopher";
             new Dice(6);
-            new Player("Chokchai");
+            new Player(name);
             new Storage();
             new Area();
             new Ship();
@@ -96,7 +107,7 @@ public class MainHome extends JPanel implements ActionListener {
             MainUI frame = new MainUI();
             
             
-            JFrame fr1 = new JFrame();
+            fr1 = new JFrame();
             fr1.getContentPane().setBackground(new Color(0, 0, 0, 0));
             fr1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             fr1.setExtendedState(JFrame.MAXIMIZED_BOTH);
