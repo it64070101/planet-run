@@ -126,7 +126,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 
         noseCone.setPreferredSize(new Dimension(screenScale(100), screenScale(160)));
         shockcord.setPreferredSize(new Dimension(screenScale(150), screenScale(180)));
-        recoveryWadding.setPreferredSize(new Dimension(screenScale(100), screenScale(120)));
+        recoveryWadding.setPreferredSize(new Dimension(screenScale(100), screenScale(160)));
         leftFin.setPreferredSize(new Dimension(screenScale(100), screenScale(80)));
         rightFin.setPreferredSize(new Dimension(screenScale(100), screenScale(80)));
 

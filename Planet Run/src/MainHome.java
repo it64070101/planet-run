@@ -2,9 +2,14 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.Graphics2D;
 import java.awt.Graphics;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 
 public class MainHome extends JPanel implements ActionListener {
     public static JFrame fr ,fr1;
@@ -75,6 +80,11 @@ public class MainHome extends JPanel implements ActionListener {
     }
 
     public static void main(String[] args) {
+        String filepath = "songtest.wav";
+        
+        MusicStuff musicplay = new MusicStuff();
+        musicplay.playMusic(filepath);
+        
         JFrame fr = new JFrame();
         MainHome p = new MainHome(fr);
         fr.setMinimumSize(new Dimension(1600, 900));
@@ -145,4 +155,6 @@ public class MainHome extends JPanel implements ActionListener {
         gString.setColor(new Color(255,255,255));
         gString.drawString("Planet run the BoardGame with Java", 190, 180);
     }
+    
+    
 }
