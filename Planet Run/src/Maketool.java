@@ -25,10 +25,10 @@ public class Maketool implements ActionListener, WindowListener {
         imgPick = new ImageIcon("src/images/Pickaxe.png");
         imgHook = new ImageIcon("src/images/Hook.png");
 
-        gun = new JButton("Required: "+ToolBox.gun.getSectorRequirement().getName()+" (Hard)", imgGun);
-        axe = new JButton("Required: "+ToolBox.axe.getSectorRequirement().getName()+" (Hard)", imgAxe);
-        hammer = new JButton("Required: "+ToolBox.hammer.getSectorRequirement().getName()+" (Hard)", imgHammer);
-        pick = new JButton("Required: "+ToolBox.pick.getSectorRequirement().getName()+" (Hard)", imgPick);
+        gun = new JButton("Required: "+ToolBox.getGun().getSectorRequirement().getName()+" (Hard)", imgGun);
+        axe = new JButton("Required: "+ToolBox.getAxe().getSectorRequirement().getName()+" (Hard)", imgAxe);
+        hammer = new JButton("Required: "+ToolBox.getHammer().getSectorRequirement().getName()+" (Hard)", imgHammer);
+        pick = new JButton("Required: "+ToolBox.getPick().getSectorRequirement().getName()+" (Hard)", imgPick);
         hook = new JButton("For fishing (Hard)", imgHook);
         
         setButton();
@@ -70,15 +70,15 @@ public class Maketool implements ActionListener, WindowListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(gun)) {
-            sectorCheck(ToolBox.gun, ToolBox.gun.getSectorRequirement(), gun);
+            sectorCheck(ToolBox.getGun(), ToolBox.getGun().getSectorRequirement(), gun);
         } else if (e.getSource().equals(axe)) {
-            sectorCheck(ToolBox.axe, ToolBox.axe.getSectorRequirement(), axe);
+            sectorCheck(ToolBox.getAxe(), ToolBox.getAxe().getSectorRequirement(), axe);
         } else if (e.getSource().equals(hammer)) {
-            sectorCheck(ToolBox.hammer, ToolBox.hammer.getSectorRequirement(), hammer);
+            sectorCheck(ToolBox.getHammer(), ToolBox.getHammer().getSectorRequirement(), hammer);
         } else if (e.getSource().equals(pick)) {
-            sectorCheck(ToolBox.pick, ToolBox.pick.getSectorRequirement(), pick);
+            sectorCheck(ToolBox.getPick(), ToolBox.getPick().getSectorRequirement(), pick);
         } else if (e.getSource().equals(hook)) {
-            if (Player.construction(ToolBox.hook, MainUI.sliderInput())) {
+            if (Player.craft(ToolBox.getHook(), MainUI.sliderInput())) {
                 hook.setEnabled(false);
                 hook.setText("Obtained");
             }
@@ -89,7 +89,7 @@ public class Maketool implements ActionListener, WindowListener {
 
     public void sectorCheck(Gadget gadget, Sector sector, JButton btn) {
         if (sector.isExplored()) {
-            if (Player.construction(gadget, MainUI.sliderInput())) {
+            if (Player.craft(gadget, MainUI.sliderInput())) {
                 btn.setEnabled(false);
                 btn.setText("Obtained");
             }
@@ -107,11 +107,11 @@ public class Maketool implements ActionListener, WindowListener {
         int hText = JButton.CENTER;
         int vText = JButton.BOTTOM;
         
-        checkObtained(ToolBox.gun, gun);
-        checkObtained(ToolBox.axe, axe);
-        checkObtained(ToolBox.hammer, hammer);
-        checkObtained(ToolBox.pick, pick);
-        checkObtained(ToolBox.hook, hook);
+        checkObtained(ToolBox.getGun(), gun);
+        checkObtained(ToolBox.getAxe(), axe);
+        checkObtained(ToolBox.getHammer(), hammer);
+        checkObtained(ToolBox.getPick(), pick);
+        checkObtained(ToolBox.getHook(), hook);
         
         gun.setBackground(bgColor);
         axe.setBackground(bgColor);
@@ -149,11 +149,11 @@ public class Maketool implements ActionListener, WindowListener {
         pick.setVerticalTextPosition(vText);
         hook.setVerticalTextPosition(vText);
         
-        gun.setToolTipText(ToolBox.gun.getAbility());
-        axe.setToolTipText(ToolBox.axe.getAbility());
-        hammer.setToolTipText(ToolBox.hammer.getAbility());
-        pick.setToolTipText(ToolBox.pick.getAbility());
-        hook.setToolTipText(ToolBox.hook.getAbility());
+        gun.setToolTipText(ToolBox.getGun().getAbility());
+        axe.setToolTipText(ToolBox.getAxe().getAbility());
+        hammer.setToolTipText(ToolBox.getHammer().getAbility());
+        pick.setToolTipText(ToolBox.getPick().getAbility());
+        hook.setToolTipText(ToolBox.getHook().getAbility());
         
     }
 

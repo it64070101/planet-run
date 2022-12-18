@@ -30,11 +30,11 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     private static JLabel howMany;
     private static JSlider slider;
     
-    public static int day;
+    private static int day;
     private static int sec;
-    public static int score;
-    public static Animal[] huntingGround;
-    public static Animal[] animalDeck;
+    private static int score;
+    private static Animal[] huntingGround;
+    private static Animal[] animalDeck;
 
     public MainUI() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -198,16 +198,16 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pHuntAll.add(pHuntingGround);
         pHuntAll.setBackground(new Color(0, 0, 0, 0));
 
-        dayTxt = new JTextField("Day: " + Main.day);
-        foodTxt = new JTextField("Food: " + Storage.food.getAmount());
-        starTxt = new JTextField("Star: " + Storage.star.getAmount());
-        triangleTxt = new JTextField("Wood: " + Storage.triangle.getAmount());
-        squareTxt = new JTextField("Rock: " + Storage.square.getAmount());
-        circleTxt = new JTextField("Sand: " + Storage.circle.getAmount());
+        dayTxt = new JTextField("Day: " + day);
+        foodTxt = new JTextField("Food: " + Storage.getFood().getAmount());
+        starTxt = new JTextField("Star: " + Storage.getStar().getAmount());
+        triangleTxt = new JTextField("Wood: " + Storage.getTriangle().getAmount());
+        squareTxt = new JTextField("Rock: " + Storage.getSquare().getAmount());
+        circleTxt = new JTextField("Sand: " + Storage.getCircle().getAmount());
         title1 = new JTextField("Planet Run!");
-        HPTxt = new JTextField("HP: " + Player.HP);
-        energyTxt = new JTextField("Energy: " + Player.energy);
-        name = new JLabel(Player.name);
+        HPTxt = new JTextField("HP: " + Player.getHP());
+        energyTxt = new JTextField("Energy: " + Player.getEnergy());
+        name = new JLabel(Player.getName());
 
         slider = new JSlider(1, 6, 1);
         slider.setSnapToTicks(true);
@@ -373,7 +373,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pInput.add(howMany, BorderLayout.NORTH);
         pInput.add(slider);
 
-        Main.day++;
+        dayPass();
         update();
 
     }
@@ -401,7 +401,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         fr.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
         fr.setResizable(false);
         fr.add(frame);
-        JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.HP + " HP and " + Player.energy + " Energy.","Day "+Main.day,JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(null, "You start day " + day + " with " + Player.getHP() + " HP and " + Player.getEnergy() + " Energy.","Day "+day,JOptionPane.PLAIN_MESSAGE);
         Thread n1 = new Thread(frame);
         n1.start();
     }
@@ -412,31 +412,31 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
            new Maketool();
            fr.setEnabled(false);
         } else if (e.getSource().equals(sector1)) {
-            if (!Area.A.isExplored()) {
-                Player.explore(Area.A, sliderInput());
+            if (!Area.getA().isExplored()) {
+                Player.explore(Area.getA(), sliderInput());
             } else {
-                Player.gather(Area.A, sliderInput());
+                Player.gather(Area.getA(), sliderInput());
             }
         } else if (e.getSource().equals(sector2)) {
-            if (!Area.B.isExplored()) {
-                Player.explore(Area.B, sliderInput());
+            if (!Area.getB().isExplored()) {
+                Player.explore(Area.getB(), sliderInput());
             } else {
-                Player.gather(Area.B, sliderInput());
+                Player.gather(Area.getB(), sliderInput());
             }
         } else if (e.getSource().equals(sector3)) {
-            if (!Area.C.isExplored()) {
-                Player.explore(Area.C, sliderInput());
+            if (!Area.getC().isExplored()) {
+                Player.explore(Area.getC(), sliderInput());
             } else {
-                Player.gather(Area.C, sliderInput());
+                Player.gather(Area.getC(), sliderInput());
             }
         } else if (e.getSource().equals(sector4)) {
-            if (!Area.D.isExplored()) {
-                Player.explore(Area.D, sliderInput());
+            if (!Area.getD().isExplored()) {
+                Player.explore(Area.getD(), sliderInput());
             } else {
-                Player.gather(Area.D, sliderInput());
+                Player.gather(Area.getD(), sliderInput());
             }
         } else if (e.getSource().equals(huntingGround0)) {
-            Player.hunting(huntingGround[0], sliderInput());
+            Player.hunt(huntingGround[0], sliderInput());
             if(!huntingGround[0].getIsAlive()){
                 huntingGround0.setEnabled(false);
                 huntingGround0.setText("Animal Killed!");
@@ -444,7 +444,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
                 huntingGround[0] = null;
             }
         } else if (e.getSource().equals(huntingGround1)) {
-            Player.hunting(huntingGround[1], sliderInput());
+            Player.hunt(huntingGround[1], sliderInput());
             if(!huntingGround[1].getIsAlive()){
                 huntingGround1.setEnabled(false);
                 huntingGround1.setText("Animal Killed!");
@@ -454,27 +454,27 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         } else if (e.getSource().equals(rest)) {
             Player.rest(restInput());
         } else if (e.getSource().equals(noseCone)) {
-            if (Player.fix(Ship.noseCone)) {
+            if (Player.fix(Ship.getNoseCone())) {
                 noseCone.setEnabled(false);
                 noseCone.setBackground(new Color(159, 115, 171));
             }
         } else if (e.getSource().equals(shockcord)) {
-            if (Player.fix(Ship.shockcord)) {
+            if (Player.fix(Ship.getShockcord())) {
                 shockcord.setEnabled(false);
                 shockcord.setBackground(new Color(159, 115, 171));
             }
         } else if (e.getSource().equals(recoveryWadding)) {
-            if (Player.fix(Ship.recoveryWadding)) {
+            if (Player.fix(Ship.getRecoveryWadding())) {
                 recoveryWadding.setEnabled(false);
                 recoveryWadding.setBackground(new Color(159, 115, 171));
             }
         } else if (e.getSource().equals(leftFin)) {
-            if (Player.fix(Ship.leftFin)) {
+            if (Player.fix(Ship.getLeftFin())) {
                 leftFin.setEnabled(false);
                 leftFin.setBackground(new Color(159, 115, 171));
             }
         } else if (e.getSource().equals(rightFin)) {
-            if (Player.fix(Ship.rightFin)) {
+            if (Player.fix(Ship.getRightFin())) {
                 rightFin.setEnabled(false);
                 rightFin.setBackground(new Color(159, 115, 171));
             }
@@ -482,7 +482,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             System.exit(0);
         }
         update();
-        if (Player.HP < 1) {
+        if (Player.getHP() < 1) {
             JOptionPane.showMessageDialog(null,"Your HP is below than 1. You lose.", "You Lose.", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         }
@@ -490,20 +490,20 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     }
 
     public static void update() {
-        dayTxt.setText("Day: " + Main.day);
-        foodTxt.setText("Food: " + Storage.food.getAmount());
-        starTxt.setText("Star: " + Storage.star.getAmount());
-        triangleTxt.setText("Wood: " + Storage.triangle.getAmount());
-        squareTxt.setText("Rock: " + Storage.square.getAmount());
-        circleTxt.setText("Sand: " + Storage.circle.getAmount());
+        dayTxt.setText("Day: " + day);
+        foodTxt.setText("Food: " + Storage.getFood().getAmount());
+        starTxt.setText("Star: " + Storage.getStar().getAmount());
+        triangleTxt.setText("Wood: " + Storage.getTriangle().getAmount());
+        squareTxt.setText("Rock: " + Storage.getSquare().getAmount());
+        circleTxt.setText("Sand: " + Storage.getCircle().getAmount());
         title1.setText("Planet Run!");
-        HPTxt.setText("HP: " + Player.HP);
-        energyTxt.setText("Energy: " + Player.energy);
-        sectorDiscover(Area.A, sector1);
-        sectorDiscover(Area.B, sector2);
-        sectorDiscover(Area.C, sector3);
-        sectorDiscover(Area.D, sector4);
-        if(Player.HP >= 4){
+        HPTxt.setText("HP: " + Player.getHP());
+        energyTxt.setText("Energy: " + Player.getEnergy());
+        sectorDiscover(Area.getA(), sector1);
+        sectorDiscover(Area.getB(), sector2);
+        sectorDiscover(Area.getC(), sector3);
+        sectorDiscover(Area.getD(), sector4);
+        if(Player.getHP() >= 4){
             rest.setEnabled(false);
         }else{
             rest.setEnabled(true);
@@ -591,7 +591,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     }
 
     public static int sliderInput() {
-        slider.setMaximum(Player.energy);
+        slider.setMaximum(Player.getEnergy());
         slider.setMinimum(1);
         int num = 0;
         howMany.setText("How many energy do you want to use ? ");
@@ -604,7 +604,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 
     public static int sliderInput(int max) {
         int num = 0;
-        if (Storage.food.getAmount() < 1) {
+        if (Storage.getFood().getAmount() < 1) {
             num = 0;
         } else {
             if (max > 4){
@@ -621,7 +621,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     
         public static int restInput() {
             int num;
-            slider.setMaximum(4-Player.HP);
+            slider.setMaximum(4-Player.getHP());
             slider.setMinimum(0);
             howMany.setText("How much do you want to rest ? (Using Energy)");
             JOptionPane.showMessageDialog(null, pInput, "Energy Input",JOptionPane.PLAIN_MESSAGE);
@@ -679,47 +679,29 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         return (int)(pixel*scaleTest);
     }
 
-    public static void select() {
-        if (Player.energy < 6) {
-            e6.setEnabled(false);
-        }
-        if (Player.energy < 5) {
-            e5.setEnabled(false);
-        }
-        if (Player.energy < 4) {
-            e4.setEnabled(false);
-        }
-        if (Player.energy < 3) {
-            e3.setEnabled(false);
-        }
-        if (Player.energy < 2) {
-            e2.setEnabled(false);
-        }
-        e1.setSelected(true);
-    }
     
     public static int scoring(){
         double total = 0;
         //Fixer Bonus
-        total += (Ship.partFixed*(Ship.partFixed+1))/2;
+        total += (Ship.getPartFixed()*(Ship.getPartFixed()+1))/2;
         //Rocketeering
-        if(Ship.partFixed == 5){
+        if(Ship.getPartFixed() == 5){
             total += 30;
         }
         //Toolmaker
-        total += ToolBox.toolMade;
+        total += ToolBox.getToolMade();
         //Jack of all tools
-        if(ToolBox.toolMade == 5){
+        if(ToolBox.getToolMade() == 5){
             total += 10;
         }
         //Discoverer
-        total += Area.areaExplored;
+        total += Area.getAreaExplored();
         //apex legend
-        total += Player.animalKilled;
+        total += Player.getAnimalKilled();
         //nas
-        total += Player.HP;
+        total += Player.getHP();
         //un
-        if(Player.HP == 4){
+        if(Player.getHP() == 4){
             total += 8;
         }
         System.out.println(total+" , "+sec);
@@ -727,26 +709,26 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     } 
     
     public static void endOfDay(){
-        if (Player.energy < 1) {
+        if (Player.getEnergy() < 1) {
 
             JOptionPane.showMessageDialog(null, "End day, time for dinner.", "", JOptionPane.PLAIN_MESSAGE);
-            Player.eat(sliderInput(Storage.food.getAmount()));
-            if (Player.HP < 1) {
+            Player.eat(sliderInput(Storage.getFood().getAmount()));
+            if (Player.getHP() < 1) {
                 JOptionPane.showMessageDialog(null, "Your HP is below than 1. You lose.", "You lose.", JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
             }
-            Main.day++;
-            if (Main.day > 15) {
+            dayPass();
+            if (day > 15) {
                 JOptionPane.showMessageDialog(null, "Your 15th day has ended. Blast off!", "",JOptionPane.PLAIN_MESSAGE);
                 JOptionPane.showMessageDialog(null, "Your score is: "+ scoring(),"Score",JOptionPane.PLAIN_MESSAGE);
                 System.exit(0);
             } else {
                 String bonus = "";
-                if (ToolBox.hook.isObtained() && Dice.rollAgainst(1, 2)) {
+                if (ToolBox.getHook().isObtained() && Dice.rollAgainst(1, 2)) {
                     bonus = " (and +1 food from hook)";
-                    Storage.food.gain(1);
+                    Storage.getFood().gain(1);
                 }
-                JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.energy +" Energy."+bonus,"Day "+Main.day,JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "You start day " + day + " with " + Player.getEnergy() +" Energy."+bonus,"Day "+day,JOptionPane.PLAIN_MESSAGE);
                 update();
                 boolean animalDeckIsEmpty = (animalDeck[0] == null) && (animalDeck[1] == null) && (animalDeck[2] == null) && (animalDeck[3] == null) && (animalDeck[4] == null) && (animalDeck[5] == null);
                 if(animalDeckIsEmpty){
@@ -835,5 +817,19 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         backgroundimg = new ImageIcon("src/images/spacetest03.jpg").getImage();
         g2D.drawImage(backgroundimg, 0, 0, null);
         
-        }
+    }
+    
+    public static void dayPass(){
+        setDay(getDay()+1);
+    }
+
+    public static int getDay() {
+        return day;
+    }
+
+    public static void setDay(int day) {
+        MainUI.day = day;
+    }
+    
+    
 }

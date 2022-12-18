@@ -8,11 +8,11 @@
  * @author User
  */
 public class Storage {
-    public static Resource food;
-    public static Resource circle;
-    public static Resource triangle;
-    public static Resource square;
-    public static Resource star;
+    private static Resource food;
+    private static Resource circle;
+    private static Resource triangle;
+    private static Resource square;
+    private static Resource star;
 
     public Storage() {
         food = new Resource("Food", 2);
@@ -21,5 +21,47 @@ public class Storage {
         square = new Resource("Rock", 0);
         star = new Resource("Star", 0);
     }
+
+    public static Resource getFood() {
+        return food;
+    }
+
+    public static void setFood(Resource food) {
+        Storage.food = food;
+    }
+
+    public static Resource getCircle() {
+        return circle;
+    }
+
+    public static void setCircle(Resource circle) {
+        Storage.circle = circle;
+    }
+
+    public static Resource getTriangle() {
+        return triangle;
+    }
+
+    public static void setTriangle(Resource triangle) {
+        Storage.triangle = triangle;
+    }
+
+    public static Resource getSquare() {
+        return square;
+    }
+
+    public static void setSquare(Resource square) {
+        Storage.square = square;
+    }
+
+    public static Resource getStar() {
+        return star;
+    }
+
+    public static void setStar(Resource star) {
+        Storage.star = star;
+    }
+    
+    
     
 }

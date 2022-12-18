@@ -113,7 +113,7 @@ public class MainHome extends JPanel implements ActionListener {
             fr1.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
             fr1.setResizable(false);
             fr1.add(frame);
-            JOptionPane.showMessageDialog(null, "You start day " + Main.day + " with " + Player.energy + " Energy.","Day "+Main.day,JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You start day " + MainUI.getDay() + " with " + Player.getEnergy() + " Energy.","Day "+MainUI.getDay(),JOptionPane.PLAIN_MESSAGE);
         
             Thread n1 = new Thread(frame);
             n1.start();

@@ -1,10 +1,10 @@
 import javax.swing.*;
 
 public class Player {
-    public static int HP;
-    public static int energy;
-    public static String name;
-    public static int animalKilled;
+    private static int HP;
+    private static int energy;
+    private static String name;
+    private static int animalKilled;
 
 
     public Player(String name) {
@@ -17,23 +17,23 @@ public class Player {
     public static void eat(int food){
         switch (food) {
             case 0 -> {
-                energy = 2;
-                HP--;
+                setEnergy(2);
+                harm(1);
             }
-            case 1 -> energy = 2;
-            case 2 -> energy = 3;
-            case 3 -> energy = 4; 
-            case 4 -> energy = 5;
-            case 5 -> energy = 6;
+            case 1 -> setEnergy(2);
+            case 2 -> setEnergy(3);
+            case 3 -> setEnergy(4);
+            case 4 -> setEnergy(5);
+            case 5 -> setEnergy(6);
             default -> {
             }
         }
         if (food == 0){
-            JOptionPane.showMessageDialog(null, "You not eat. gain "+energy+" and -1 HP","Hungry",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You not eat. gain "+getEnergy()+" and -1 HP","Hungry",JOptionPane.ERROR_MESSAGE);
         }
         else{
-            Storage.food.consume(food);
-            JOptionPane.showMessageDialog(null, "You eat "+food+" food to gain "+energy+" energy","Yummy!",JOptionPane.PLAIN_MESSAGE);
+            Storage.getFood().consume(food);
+            JOptionPane.showMessageDialog(null, "You eat "+food+" food to gain "+getEnergy()+" energy","Yummy!",JOptionPane.PLAIN_MESSAGE);
         }
     }
     
@@ -41,13 +41,13 @@ public class Player {
         Gadget gadget = null;
         switch (sector.getName()) {
             case "Forest":
-                gadget = ToolBox.axe;
+                gadget = ToolBox.getAxe();
                 break;
             case "Mountain":
-                gadget = ToolBox.pick;
+                gadget = ToolBox.getPick();
                 break;
             case "Desert":
-                gadget = ToolBox.hammer;
+                gadget = ToolBox.getHammer();
                 break;
             default:
                 gadget = null;
@@ -60,7 +60,7 @@ public class Player {
         else{
             JOptionPane.showMessageDialog(null, "Fail to gathering resource from "+sector.getName()+".","",JOptionPane.ERROR_MESSAGE);
         }
-        Player.energy -= amount;
+        useEnergy(amount);
     }
     
     public static void explore(Sector sector, int amount){
@@ -69,20 +69,20 @@ public class Player {
         if (Dice.rollAgainst(amount, 4)){
             sector.setExplored(true);
             JOptionPane.showMessageDialog(null, "Success to explore. Discover "+sector.getName()+".","",JOptionPane.PLAIN_MESSAGE);
-            Area.areaExplored++;
+            Area.countExplore();
         }
         else{
             JOptionPane.showMessageDialog(null, "Fail to explore this sector.","",JOptionPane.ERROR_MESSAGE);
         }
-        Player.energy -= amount;
+        useEnergy(amount);
     }
     
     public static boolean fix(Part part){
         if (part.check()){
 //            System.out.println("Fix "+part.getName()+" Successful.");
-            Player.energy--;
+            useEnergy(1);
             JOptionPane.showMessageDialog(null, "Success to fix "+part.getName()+".","",JOptionPane.PLAIN_MESSAGE);
-            Ship.partFixed++;
+            Ship.countFixed();
             return true;
         }
         else{
@@ -92,46 +92,41 @@ public class Player {
         }
     }
     
-    public static void hunting(Animal animal, int amount){
-        if (Dice.rollAgainst(amount+gadgetBonus(ToolBox.gun), animal.getRating())){
+    public static void hunt(Animal animal, int amount){
+        if (Dice.rollAgainst(amount+gadgetBonus(ToolBox.getGun()), animal.getRating())){
             JOptionPane.showMessageDialog(null, "Hunting succeeded. You got "+animal.getFoodDrop()+" foods!.","",JOptionPane.PLAIN_MESSAGE);
             animal.setIsAlive(false);
-            Storage.food.gain(animal.getFoodDrop());
+            Storage.getFood().gain(animal.getFoodDrop());
             animalKilled++;
         }
         else{
             JOptionPane.showMessageDialog(null, "Hunting failed. You took "+animal.getDamage()+" damages!.","",JOptionPane.ERROR_MESSAGE);
-            Player.HP = Player.HP - animal.getDamage();
+            harm(animal.getDamage());
         }
-        Player.energy -= amount;
+        useEnergy(amount);
 
-        // if(playerAttack >= getRating()){
-        //     Storage.food.gain(getFoodDrop());
-        // }else{
-        //     Player.HP = Player.HP - getDamage();
-        // }
     }
     
-    public static boolean construction(Gadget gadget, int amount){
+    public static boolean craft(Gadget gadget, int amount){
         if (Dice.rollAgainst(amount, gadget.getTargetNumber())){
             gadget.setObtained(true);
             System.out.println("Success, complete "+gadget.getName()+".");
             JOptionPane.showMessageDialog(null, "Success to make "+gadget.getName()+".","",JOptionPane.PLAIN_MESSAGE);
             gadget.setObtained(true);
-            Player.energy -= amount;
-            ToolBox.toolMade++;
+            useEnergy(amount);
+            ToolBox.countTool();
             return true;
         }
         else{
             JOptionPane.showMessageDialog(null, "Fail to make "+gadget.getName()+".","",JOptionPane.ERROR_MESSAGE);
-            Player.energy -= amount;
+            useEnergy(amount);
             return false;
         }
         
     }
     
     public static void rest(int energy){
-        Player.energy -= energy;
+        useEnergy(energy);
         JOptionPane.showMessageDialog(null, "You are rested ( HP +"+energy+" ).","Soundly Slept",JOptionPane.PLAIN_MESSAGE);
         heal(energy);
 //        System.out.println("You are rested");
@@ -150,13 +145,58 @@ public class Player {
         }
     }
     
-    @Override
-    public String toString() {
-        return "Player:" + " HP: " + HP + ", Energy: " + energy;
+    public static void heal(int amount){
+        setHP(getHP()+amount);
     }
     
-    public static void heal(int amount){
-        HP+=amount;
+    public static void harm(int amount){
+        setHP(getHP()-amount);
     }
+
+    public static int getHP() {
+        return HP;
+    }
+
+    public static void setHP(int HP) {
+        Player.HP = HP;
+    }
+
+    public static int getEnergy() {
+        return energy;
+    }
+
+    public static void setEnergy(int energy) {
+        Player.energy = energy;
+    }
+    
+    public static void useEnergy(int amount){
+        setEnergy(getEnergy()-amount);
+    }
+    
+    public static void chargeEnergy(int amount){
+        setEnergy(getEnergy()+amount);
+    }
+
+    public static String getName() {
+        return name;
+    }
+
+    public static void setName(String name) {
+        Player.name = name;
+    }
+
+    public static int getAnimalKilled() {
+        return animalKilled;
+    }
+
+    public static void setAnimalKilled(int animalKilled) {
+        Player.animalKilled = animalKilled;
+    }
+    
+    public static void countKilled(){
+        setAnimalKilled(getAnimalKilled()+1);
+    }
+    
+    
     
 }

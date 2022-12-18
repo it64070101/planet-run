@@ -7,10 +7,10 @@ import javax.swing.UIManager;
 
 public class Main {
 
-    public static int day;
-    public static int score;
-    public static Animal[] huntingGround;
-    public static Animal[] animalDeck;
+    private static int day;
+    private static int score;
+    private static Animal[] huntingGround;
+    private static Animal[] animalDeck;
 
     public Main() {
         day = 0;
@@ -27,7 +27,7 @@ public class Main {
         animalDeck[4] = new Snailbox();
         animalDeck[5] = new Rhinocow();
 
-        while (Player.HP > 0) {
+        while (Player.getHP() > 0) {
 //            System.out.println("Day: " + day);
             JOptionPane.showMessageDialog(null, "Day "+ day);
 //            if (hook.isObtained() && Dice.rollAgainst(1, 2)) {
@@ -59,9 +59,8 @@ public class Main {
             // ========== EAT ==========
             int n = 1;
             Player.eat(n);
-            Storage.food.consume(n);
+            Storage.getFood().consume(n);
             // ========== TURN END ==========
-            Player.HP -= 1;
             dayPass();
         }
 
@@ -86,7 +85,7 @@ public class Main {
     public void chooseAction(int action) {
         System.out.println("How many energy?");
         int num = 1;
-        while (num > Player.energy) {
+        while (num > Player.getEnergy()) {
             System.out.println("energy not enough.");
             num--;
         }

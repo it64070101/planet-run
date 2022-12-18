@@ -15,10 +15,10 @@ public class BodyPart extends Part{
     
     @Override
     public boolean check() {
-        if (Storage.triangle.getAmount() >= 1 && Storage.circle.getAmount() >= 1 && Storage.square.getAmount() >= 1){
-            Storage.triangle.consume(1);
-            Storage.circle.consume(1);
-            Storage.square.consume(1);
+        if (Storage.getTriangle().getAmount() >= 1 && Storage.getCircle().getAmount() >= 1 && Storage.getSquare().getAmount() >= 1){
+            Storage.getTriangle().consume(1);
+            Storage.getCircle().consume(1);
+            Storage.getSquare().consume(1);
             return true;
         }
         else{

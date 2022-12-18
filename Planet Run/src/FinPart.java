@@ -15,8 +15,8 @@ public class FinPart extends Part{
     
     @Override
     public boolean check() {
-        if (Storage.star.getAmount() >= 4){
-            Storage.star.consume(4);
+        if (Storage.getStar().getAmount() >= 4){
+            Storage.getStar().consume(4);
             return true;
         }
         else{
