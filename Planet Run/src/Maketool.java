@@ -14,7 +14,6 @@ public class Maketool implements ActionListener, WindowListener {
 
     public Maketool() {
 
-//        System.out.println("Set to false");
         pGadget = new JPanel();
         fr = new JFrame("Tool box");
 

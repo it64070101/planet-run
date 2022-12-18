@@ -499,6 +499,8 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         } else {
             rest.setEnabled(true);
         }
+        if (MainHome.frame != null)
+            MainHome.frame.repaint();
     }
 
     public void setSector() {
@@ -819,13 +821,14 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             }
         }
     }
-    int j = 500;
+    
 //    public void changeday(){
 //        repaint();
 //    }
 
-     Image backgroundimg;
+    Image backgroundimg;
     public void paintComponent(Graphics g) {
+        int j = 1000;
         Graphics2D g2D = (Graphics2D) g;
         backgroundimg = new ImageIcon("src/images/spacetest03.jpg").getImage();
         g2D.drawImage(backgroundimg, 0, 0, null);

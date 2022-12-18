@@ -18,6 +18,7 @@ public class MainHome extends JPanel implements ActionListener {
     private JButton bStart, bConti, bHow, bExit;
     private String name;
     private JTextField nameField;
+    public static MainUI frame;
 
     Image backgroundimg;
     Image ani1,ani2,ani3,ani4;
@@ -98,6 +99,8 @@ public class MainHome extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e){
         if(e.getSource().equals(bStart)){
+                        System.out.println(frame);
+
             JOptionPane.showMessageDialog(null, pName, "What is your name ?", JOptionPane.PLAIN_MESSAGE);
             name = nameField.getText();
             if (nameField.getText().equals("") || nameField.getText() == null )
@@ -109,8 +112,7 @@ public class MainHome extends JPanel implements ActionListener {
             new Ship();
             new ToolBox();
             
-            MainUI frame = new MainUI();
-            
+            frame = new MainUI();
             
             fr1 = new JFrame();
             fr1.getContentPane().setBackground(new Color(0, 0, 0, 0));
@@ -133,7 +135,7 @@ public class MainHome extends JPanel implements ActionListener {
             
         }
         else if(e.getSource().equals(bHow)){
-            
+            howToPlay();
         }
         else if(e.getSource().equals(bExit)){
             System.exit(0);
@@ -153,6 +155,17 @@ public class MainHome extends JPanel implements ActionListener {
         gString.setFont(new Font("Ink Free", Font.BOLD, 70));
         gString.setColor(new Color(255,255,255));
         gString.drawString("Planet run the BoardGame with Java", 190, 180);
+    }
+    
+    public void howToPlay(){
+        JPanel p = new JPanel();
+        JTextArea ta = new JTextArea("Lorem ipsum dolor sit amet, consectetur adipiscing elit.Curabitur placerat, massa at tincidunt egestas, ex turpis congue neque, vitae tempor ligula justo condimentum neque. Nullam aliquam lorem vitae mi aliquam fermentum. Pellentesque pharetra sem sit amet consequat consequat. Pellentesque quis justo ac risus ultrices faucibus. Phasellus scelerisque nec urna et iaculis. Donec iaculis neque at ante pretium mollis. Nam ut euismod libero, vitae finibus nibh. Proin sollicitudin ex sem, eget dictum tortor gravida nec. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nulla consequat finibus efficitur.", 30, 60);
+        ta.setLineWrap(true);
+        ta.setWrapStyleWord(true);
+        JScrollPane taScroll = new JScrollPane(ta);
+        taScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        p.add(taScroll);
+        JOptionPane.showMessageDialog(null, taScroll, "How to Play", JOptionPane.PLAIN_MESSAGE);
     }
     
     
