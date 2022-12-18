@@ -1,0 +1,48 @@
+You are a pilot of the spaceship Yamato. One day while cruising, your ship was hit by asteroids and you landed on Planet Run. You need to find the resources to fix your ship while trying to survive from dying of hunger! 
+
+OBJECTIVE 
+To fix your ship and get back to earth. 
+
+GAMEPLAY 
+There are 5 phases in the game. 
+1. UPKEEP
+2. DRAW
+3. ORDER
+4. EAT
+5. TURN END
+
+UPKEEP You start the game with 2 Foods, 3 Energy and 4 HP. During upkeep if you obtained the Hook gadget, you have five in six chance of getting 1 extra food.
+
+DRAW The animal(s) that has been hunted in the previous day will be replace with a new animal in this phase. Hunting ground will have a maximum of 2 animals at anytime.  
+
+ORDER During this phase you use your Energy to explore new sector or hunting or gather resources or gadget con­struction or rest.  Every energy will equals to one dice roll. The higer the energy usage, higher the chance of said action being successful.
+
+Explore new sector - To explore, you put 1 or more Energy on an unexplored sector.
+
+Hunting - To hunt, you put 1 or more Energy on 1 of the available animal on the hunting ground. The difficulty of the hunt is displayed beside the animals' name, rolled a total more than or equals to difficulty to succeed. If the hunt is a failure, you will re­ceived damage. If you obtained the Gun gadget, 1 bonus energy will be added. 
+
+Gather Resource - Put 1 or more energy on sector discovered. You need to roll 3 points on each sector to gain 1 resource. If you have Axe, Hammer and/or Pick gadgets, you add 1 extra energy when gathering these resources: Axe for Triangle re­source, Hammer for Circle resource and Pick for Square re­source. 
+NOTE: Each sector must be discovered first before you can gather the resource. 
+
+Gadget Construction - You put 1 or more energy on 1 of the gadget to construct it. Certain tool have certain sector requirement. Axe for Triangle re­source, Hammer for Circle resource and Pick for Square re­source.
+
+Rest- You recover 1 HP for each Energy you use. 
+
+Fix the ship - You only need 1 Energy to fix 1 module of the ship. When you put Energy dice here, you reduce resource ac­cordingly. There's no chance of failure.
+
+Object's Diffuculty (points needed)
+3 -> (easy)
+4 -> (easy+)
+5 -> (normal)
+6 -> (normal+)
+7 -> (hard)
+8 -> (hard+)
+9 -> (very hard)
+
+EAT During this phase you eat food you obtained from hunting. The amount of food you eat will get you that amount of Energy. 
+
+TURN END Day counter increase by one. 
+
+GAME OVER You lose the game when Xavier's HP runs out. 
+
+GAME END SCORING At the end of day 15, the game will end and continues to scoring screen. 

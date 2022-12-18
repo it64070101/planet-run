@@ -62,7 +62,8 @@ public class MainHome extends JPanel implements ActionListener {
         bExit.setBackground(new Color(192, 96, 161));
         bExit.setForeground(new Color(255,255,255));
         
-        p1.add(bStart); p1.add(bConti);
+        p1.add(bStart);
+//        p1.add(bConti);
         p1.add(bHow); p1.add(bExit);    p1.add(new JLabel());
         p2.add(p1, BorderLayout.SOUTH);
         
