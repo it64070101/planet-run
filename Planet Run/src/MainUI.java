@@ -21,7 +21,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     public static JButton huntingGround0, huntingGround1;
     private static JButton exit;
     private static JTextField dayTxt, foodTxt, starTxt, triangleTxt, squareTxt, circleTxt, title1, HPTxt, energyTxt;
-    public static ImageIcon rockcone, rockleft, rockright, rockbase, rockbody, sec1, sec2, sec3, sec4, ani1, ani2,ani3, ani4,ani5, ani6, queSym;
+    public static ImageIcon rockcone, rockleft, rockright, rockbase, rockbody, sec1, sec2, sec3, sec4, ani1, ani2, ani3, ani4, ani5, ani6, queSym;
     private static JLabel name, clockshow;
 
     private static JPanel pInput, pEnergy, pEat;
@@ -29,7 +29,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     private static JRadioButton e1, e2, e3, e4, e5, e6;
     private static JLabel howMany;
     private static JSlider slider;
-    
+
     private static int day;
     private static int sec;
     private static int score;
@@ -39,7 +39,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     public MainUI() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenDPI = Toolkit.getDefaultToolkit().getScreenResolution();
-        double scaleTest = (double)96/screenDPI;
+        double scaleTest = (double) 96 / screenDPI;
         day = 0;
         sec = 0;
 
@@ -60,41 +60,41 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         ani5 = new ImageIcon("src/images/Ani5.png");
         ani6 = new ImageIcon("src/images/Ani6.png");
 
-        while(huntingGround[0] == null){
+        while (huntingGround[0] == null) {
             int redrawing = (int) (Math.random() * 10) % 6;
             huntingGround[0] = animalDeck[redrawing];
             animalDeck[redrawing] = null;
-            if(huntingGround[0] instanceof BirdKing){
-                huntingGround0 = new JButton(huntingGround[0].getFoodDrop()+" Food "+huntingGround[0].getDifficulty(), ani1);
-            }else if (huntingGround[0] instanceof DoubleDog){
-                huntingGround0 = new JButton(huntingGround[0].getFoodDrop()+" Food "+huntingGround[0].getDifficulty(), ani2);
-            }else if (huntingGround[0] instanceof Fourleg){
-                huntingGround0 = new JButton(huntingGround[0].getFoodDrop()+" Food "+huntingGround[0].getDifficulty(), ani3);
-            }else if (huntingGround[0] instanceof Fishman){
-                huntingGround0 = new JButton(huntingGround[0].getFoodDrop()+" Food "+huntingGround[0].getDifficulty(), ani4);
-            }else if (huntingGround[0] instanceof Snailbox){
-                huntingGround0 = new JButton(huntingGround[0].getFoodDrop()+" Food "+huntingGround[0].getDifficulty(), ani5);
-            }else if (huntingGround[0] instanceof Rhinocow){
-                huntingGround0 = new JButton(huntingGround[0].getFoodDrop()+" Food "+huntingGround[0].getDifficulty(), ani6);
+            if (huntingGround[0] instanceof BirdKing) {
+                huntingGround0 = new JButton(huntingGround[0].getFoodDrop() + " Food " + huntingGround[0].getDifficulty(), ani1);
+            } else if (huntingGround[0] instanceof DoubleDog) {
+                huntingGround0 = new JButton(huntingGround[0].getFoodDrop() + " Food " + huntingGround[0].getDifficulty(), ani2);
+            } else if (huntingGround[0] instanceof Fourleg) {
+                huntingGround0 = new JButton(huntingGround[0].getFoodDrop() + " Food " + huntingGround[0].getDifficulty(), ani3);
+            } else if (huntingGround[0] instanceof Fishman) {
+                huntingGround0 = new JButton(huntingGround[0].getFoodDrop() + " Food " + huntingGround[0].getDifficulty(), ani4);
+            } else if (huntingGround[0] instanceof Snailbox) {
+                huntingGround0 = new JButton(huntingGround[0].getFoodDrop() + " Food " + huntingGround[0].getDifficulty(), ani5);
+            } else if (huntingGround[0] instanceof Rhinocow) {
+                huntingGround0 = new JButton(huntingGround[0].getFoodDrop() + " Food " + huntingGround[0].getDifficulty(), ani6);
             }
             huntingGround0.setToolTipText("Fight this animal");
         }
-        while(huntingGround[1] == null){
+        while (huntingGround[1] == null) {
             int redrawing = (int) (Math.random() * 10) % 6;
             huntingGround[1] = animalDeck[redrawing];
             animalDeck[redrawing] = null;
-            if(huntingGround[1] instanceof BirdKing){
-                huntingGround1 = new JButton(huntingGround[1].getFoodDrop()+" Food "+huntingGround[1].getDifficulty(), ani1);
-            }else if (huntingGround[1] instanceof DoubleDog){
-                huntingGround1 = new JButton(huntingGround[1].getFoodDrop()+" Food "+huntingGround[1].getDifficulty(), ani2);
-            }else if (huntingGround[1] instanceof Fourleg){
-                huntingGround1 = new JButton(huntingGround[1].getFoodDrop()+" Food "+huntingGround[1].getDifficulty(), ani3);
-            }else if (huntingGround[1] instanceof Fishman){
-                huntingGround1 = new JButton(huntingGround[1].getFoodDrop()+" Food "+huntingGround[1].getDifficulty(), ani4);
-            }else if (huntingGround[1] instanceof Snailbox){
-                huntingGround1 = new JButton(huntingGround[1].getFoodDrop()+" Food "+huntingGround[1].getDifficulty(), ani5);
-            }else if (huntingGround[1] instanceof Rhinocow){
-                huntingGround1 = new JButton(huntingGround[1].getFoodDrop()+" Food "+huntingGround[1].getDifficulty(), ani6);
+            if (huntingGround[1] instanceof BirdKing) {
+                huntingGround1 = new JButton(huntingGround[1].getFoodDrop() + " Food " + huntingGround[1].getDifficulty(), ani1);
+            } else if (huntingGround[1] instanceof DoubleDog) {
+                huntingGround1 = new JButton(huntingGround[1].getFoodDrop() + " Food " + huntingGround[1].getDifficulty(), ani2);
+            } else if (huntingGround[1] instanceof Fourleg) {
+                huntingGround1 = new JButton(huntingGround[1].getFoodDrop() + " Food " + huntingGround[1].getDifficulty(), ani3);
+            } else if (huntingGround[1] instanceof Fishman) {
+                huntingGround1 = new JButton(huntingGround[1].getFoodDrop() + " Food " + huntingGround[1].getDifficulty(), ani4);
+            } else if (huntingGround[1] instanceof Snailbox) {
+                huntingGround1 = new JButton(huntingGround[1].getFoodDrop() + " Food " + huntingGround[1].getDifficulty(), ani5);
+            } else if (huntingGround[1] instanceof Rhinocow) {
+                huntingGround1 = new JButton(huntingGround[1].getFoodDrop() + " Food " + huntingGround[1].getDifficulty(), ani6);
             }
             huntingGround1.setToolTipText("Fight this animal");
         }
@@ -186,7 +186,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         huntingGround1.setPreferredSize(new Dimension(screenScale(350), screenScale(180)));
         huntingGround0.setBackground(new Color(192, 96, 161));
 
-        huntingGround0.setForeground(new Color(255,255,255));
+        huntingGround0.setForeground(new Color(255, 255, 255));
         huntingGround0.setFont(new Font("Ink Free", Font.BOLD, screenScale(20)));
 
         huntingGround1.setBackground(new Color(192, 96, 161));
@@ -274,20 +274,20 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         showclock.add(clockshow);
         showclock.setSize(screenScale(200), screenScale(200));
         showclock.setBackground(new Color(249, 102, 102));
-        
-        pSec.setBounds(screenScale(0),screenScale(50), screenScale(450),screenScale(1000));
-        pRocket.setBounds(screenScale(500),screenScale(50), screenScale(650),screenScale(850));
-        pHuntAll.setBounds(screenScale(500+700),screenScale(50), screenScale(500),screenScale(500));
+
+        pSec.setBounds(screenScale(0), screenScale(50), screenScale(450), screenScale(1000));
+        pRocket.setBounds(screenScale(500), screenScale(50), screenScale(650), screenScale(850));
+        pHuntAll.setBounds(screenScale(500 + 700), screenScale(50), screenScale(500), screenScale(500));
         add(showclock);
-        showclock.setBounds(screenScale(500+350-150),screenScale(150), screenScale(250),screenScale(60));
+        showclock.setBounds(screenScale(500 + 350 - 150), screenScale(150), screenScale(250), screenScale(60));
         exit = new JButton("exit");
-        exit.setBounds(screenScale(500+700+15+175),screenScale(825),screenScale(200),screenScale(75));
+        exit.setBounds(screenScale(500 + 700 + 15 + 175), screenScale(825), screenScale(200), screenScale(75));
 
         exit.setBackground(new Color(220, 95, 0));
         exit.setForeground(new Color(238, 238, 238));
 
         // rocket panel
-        pRocket.setLayout(new BorderLayout(screenScale(150),screenScale(180)));
+        pRocket.setLayout(new BorderLayout(screenScale(150), screenScale(180)));
         pRocket.add(pAll, BorderLayout.NORTH);
         pRocket.add(pButton, BorderLayout.CENTER);
         pRocket.setBackground(new Color(0, 0, 0, 0));
@@ -296,33 +296,13 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 
         update();
 
-//        fr.getContentPane().setBackground(new Color(0, 0, 0, 0));
-//        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//
-//        fr.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        fr.setSize(screenSize.width, screenSize.height);
-//        fr.setUndecorated(true);
-//        fr.setLayout(null);
-//        fr.add(exit);
-//        fr.add(pSec);
-//        fr.add(pRocket);
-//        fr.add(pHuntAll);
-//
-//        fr.setLocationRelativeTo(null);
-//        fr.setVisible(true);
-//
-//        fr.setLocationRelativeTo(null);
-//        fr.setVisible(true);
-//        fr.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
-//        fr.setResizable(false);
-        
         setSize(screenSize.width, screenSize.height);
         setLayout(null);
         add(exit);
         add(pSec);
         add(pRocket);
         add(pHuntAll);
-       
+
         maketool.addActionListener(this);
         sector1.addActionListener(this);
         sector2.addActionListener(this);
@@ -390,7 +370,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         huntingGround = new Animal[2];
         animalDeck = new Animal[6];
         MainUI frame = new MainUI();
-        
+
         JFrame fr = new JFrame();
         fr.getContentPane().setBackground(new Color(0, 0, 0, 0));
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -401,7 +381,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         fr.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
         fr.setResizable(false);
         fr.add(frame);
-        JOptionPane.showMessageDialog(null, "You start day " + day + " with " + Player.getHP() + " HP and " + Player.getEnergy() + " Energy.","Day "+day,JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(null, "You start day " + day + " with " + Player.getHP() + " HP and " + Player.getEnergy() + " Energy.", "Day " + day, JOptionPane.PLAIN_MESSAGE);
         Thread n1 = new Thread(frame);
         n1.start();
     }
@@ -409,8 +389,8 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(maketool)) {
-           new Maketool();
-           fr.setEnabled(false);
+            new Maketool();
+            fr.setEnabled(false);
         } else if (e.getSource().equals(sector1)) {
             if (!Area.getA().isExplored()) {
                 Player.explore(Area.getA(), sliderInput());
@@ -437,7 +417,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             }
         } else if (e.getSource().equals(huntingGround0)) {
             Player.hunt(huntingGround[0], sliderInput());
-            if(!huntingGround[0].getIsAlive()){
+            if (!huntingGround[0].getIsAlive()) {
                 huntingGround0.setEnabled(false);
                 huntingGround0.setText("Animal Killed!");
                 huntingGround0.setBackground(new Color(128, 128, 128));
@@ -445,7 +425,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             }
         } else if (e.getSource().equals(huntingGround1)) {
             Player.hunt(huntingGround[1], sliderInput());
-            if(!huntingGround[1].getIsAlive()){
+            if (!huntingGround[1].getIsAlive()) {
                 huntingGround1.setEnabled(false);
                 huntingGround1.setText("Animal Killed!");
                 huntingGround1.setBackground(new Color(128, 128, 128));
@@ -479,12 +459,23 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
                 rightFin.setBackground(new Color(159, 115, 171));
             }
         } else if (e.getSource().equals(exit)) {
-            System.exit(0);
+            exitAsk();
         }
         update();
         if (Player.getHP() < 1) {
-            JOptionPane.showMessageDialog(null,"Your HP is below than 1. You lose.", "You Lose.", JOptionPane.ERROR_MESSAGE);
-            System.exit(0);
+            JOptionPane.showMessageDialog(null, "Your HP is below than 1. You lose.", "You Lose.", JOptionPane.ERROR_MESSAGE);
+            JFrame fr = new JFrame();
+            LosePage p = new LosePage(fr);
+            Thread t1 = new Thread(p);
+            fr.setMinimumSize(new Dimension(1600, 900));
+            fr.setLocationRelativeTo(null);
+            fr.setVisible(true);
+            fr.setResizable(false);
+            fr.add(p);
+            fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            t1.start();
+            MainHome.fr1.dispose();
+//            System.exit(0);
         }
         endOfDay();
     }
@@ -503,86 +494,87 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         sectorDiscover(Area.getB(), sector2);
         sectorDiscover(Area.getC(), sector3);
         sectorDiscover(Area.getD(), sector4);
-        if(Player.getHP() >= 4){
+        if (Player.getHP() >= 4) {
             rest.setEnabled(false);
-        }else{
+        } else {
             rest.setEnabled(true);
         }
     }
-    
-    public void setSector(){
+
+    public void setSector() {
         Dimension preferSize = new Dimension(screenScale(250), screenScale(160));
         Font font = new Font("Ink Free", Font.BOLD, screenScale(15));
         Color bgColor = new Color(192, 96, 161);
         Color fgColor = new Color(255, 255, 255);
         int hText = JButton.CENTER;
         int vText = JButton.BOTTOM;
-        
+
         sector1.setPreferredSize(preferSize);
         sector2.setPreferredSize(preferSize);
         sector3.setPreferredSize(preferSize);
         sector4.setPreferredSize(preferSize);
-        
+
         sector1.setFont(font);
         sector2.setFont(font);
         sector3.setFont(font);
         sector4.setFont(font);
-        
+
         sector1.setBackground(bgColor);
         sector2.setBackground(bgColor);
         sector3.setBackground(bgColor);
         sector4.setBackground(bgColor);
-        
+
         sector1.setForeground(fgColor);
         sector2.setForeground(fgColor);
         sector3.setForeground(fgColor);
         sector4.setForeground(fgColor);
-        
+
         sector1.setHorizontalTextPosition(hText);
         sector2.setHorizontalTextPosition(hText);
         sector3.setHorizontalTextPosition(hText);
         sector4.setHorizontalTextPosition(hText);
-        
+
         sector1.setVerticalTextPosition(vText);
         sector2.setVerticalTextPosition(vText);
         sector3.setVerticalTextPosition(vText);
         sector4.setVerticalTextPosition(vText);
-        
+
         sector1.setToolTipText("Explore this Sector");
         sector2.setToolTipText("Explore this Sector");
         sector3.setToolTipText("Explore this Sector");
         sector4.setToolTipText("Explore this Sector");
     }
-    public void setShip(){
+
+    public void setShip() {
         Color bgColor = new Color(98, 79, 130);
         Color fgColor = new Color(255, 255, 255);
         int htext = JButton.CENTER;
         int vtext = JButton.BOTTOM;
-        
+
         noseCone.setBackground(bgColor);
         shockcord.setBackground(bgColor);
         recoveryWadding.setBackground(bgColor);
         leftFin.setBackground(bgColor);
         rightFin.setBackground(bgColor);
-        
+
         noseCone.setForeground(fgColor);
         shockcord.setForeground(fgColor);
         recoveryWadding.setForeground(fgColor);
         leftFin.setForeground(fgColor);
         rightFin.setForeground(fgColor);
-        
+
         noseCone.setHorizontalTextPosition(htext);
         shockcord.setHorizontalTextPosition(htext);
         recoveryWadding.setHorizontalTextPosition(htext);
         leftFin.setHorizontalTextPosition(htext);
         rightFin.setHorizontalTextPosition(htext);
-        
+
         noseCone.setVerticalTextPosition(vtext);
         shockcord.setVerticalTextPosition(vtext);
         recoveryWadding.setVerticalTextPosition(vtext);
         leftFin.setVerticalTextPosition(vtext);
         rightFin.setVerticalTextPosition(vtext);
-        
+
         noseCone.setToolTipText("Fix Nose Cone");
         shockcord.setToolTipText("Fix Shockcord");
         recoveryWadding.setToolTipText("Fix Recovery Wadding");
@@ -595,7 +587,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         slider.setMinimum(1);
         int num = 0;
         howMany.setText("How many energy do you want to use ? ");
-        JOptionPane.showMessageDialog(null, pInput, "Energy Input",JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(null, pInput, "Energy Input", JOptionPane.PLAIN_MESSAGE);
         num = slider.getValue();
 
         return num;
@@ -607,34 +599,41 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         if (Storage.getFood().getAmount() < 1) {
             num = 0;
         } else {
-            if (max > 4){
+            if (max > 4) {
                 max = 4;
             }
             slider.setMaximum(max);
             slider.setMinimum(0);
             howMany.setText("How many food do you want to eat ? ");
-            JOptionPane.showMessageDialog(null, pInput,"Food Input",JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, pInput, "Food Input", JOptionPane.PLAIN_MESSAGE);
             num = slider.getValue();
         }
         return num;
     }
-    
-        public static int restInput() {
-            int num;
-            slider.setMaximum(4-Player.getHP());
-            slider.setMinimum(0);
-            howMany.setText("How much do you want to rest ? (Using Energy)");
-            JOptionPane.showMessageDialog(null, pInput, "Energy Input",JOptionPane.PLAIN_MESSAGE);
-            num = slider.getValue();
+
+    public static int restInput() {
+        int num;
+        int max;
+        if (Player.getEnergy() > 4 - Player.getHP()){
+            max = 4 - Player.getHP();
+        }
+        else{
+            max = Player.getEnergy();
+        }
+        slider.setMaximum(max);
+        slider.setMinimum(0);
+        howMany.setText("How much do you want to rest ? (Using Energy)");
+        JOptionPane.showMessageDialog(null, pInput, "Energy Input", JOptionPane.PLAIN_MESSAGE);
+        num = slider.getValue();
         return num;
     }
 
     public static void sectorDiscover(Sector sector, JButton secBtn) {
         if (sector.isExplored()) {
-            secBtn.setIcon(new ImageIcon("src/images/"+sector.getName()+".png"));
+            secBtn.setIcon(new ImageIcon("src/images/" + sector.getName() + ".png"));
             secBtn.setBackground(new Color(247, 135, 87));
             secBtn.setForeground(new Color(255, 255, 255));
-            secBtn.setText(sector.getName()+": "+sector.getResource().getName()+" (Easy)");
+            secBtn.setText(sector.getName() + ": " + sector.getResource().getName() + " (Easy)");
         } else {
             secBtn.setPreferredSize(new Dimension(250, 160));
             secBtn.setFont(new Font("Ink Free", Font.BOLD, 15));
@@ -672,26 +671,25 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             }
         }
     }
-    
-    public static int screenScale(double pixel){
+
+    public static int screenScale(double pixel) {
         int screenDPI = Toolkit.getDefaultToolkit().getScreenResolution();
-        double scaleTest = (double)96/screenDPI;
-        return (int)(pixel*scaleTest);
+        double scaleTest = (double) 96 / screenDPI;
+        return (int) (pixel * scaleTest);
     }
 
-    
-    public static int scoring(){
+    public static int scoring() {
         double total = 0;
         //Fixer Bonus
-        total += (Ship.getPartFixed()*(Ship.getPartFixed()+1))/2;
+        total += (Ship.getPartFixed() * (Ship.getPartFixed() + 1)) / 2;
         //Rocketeering
-        if(Ship.getPartFixed() == 5){
+        if (Ship.getPartFixed() == 5) {
             total += 30;
         }
         //Toolmaker
         total += ToolBox.getToolMade();
         //Jack of all tools
-        if(ToolBox.getToolMade() == 5){
+        if (ToolBox.getToolMade() == 5) {
             total += 10;
         }
         //Discoverer
@@ -701,14 +699,14 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         //nas
         total += Player.getHP();
         //un
-        if(Player.getHP() == 4){
+        if (Player.getHP() == 4) {
             total += 8;
         }
-        System.out.println(total+" , "+sec);
-        return (int)((total/sec)*1000);
-    } 
-    
-    public static void endOfDay(){
+        System.out.println(total + " , " + sec);
+        return (int) ((total / sec) * 1000);
+    }
+
+    public static void endOfDay() {
         if (Player.getEnergy() < 1) {
 
             JOptionPane.showMessageDialog(null, "End day, time for dinner.", "", JOptionPane.PLAIN_MESSAGE);
@@ -719,19 +717,30 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             }
             dayPass();
             if (day > 15) {
-                JOptionPane.showMessageDialog(null, "Your 15th day has ended. Blast off!", "",JOptionPane.PLAIN_MESSAGE);
-                JOptionPane.showMessageDialog(null, "Your score is: "+ scoring(),"Score",JOptionPane.PLAIN_MESSAGE);
-                System.exit(0);
+                JOptionPane.showMessageDialog(null, "Your 15th day has ended. Blast off!", "", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Your score is: " + scoring(), "Score", JOptionPane.PLAIN_MESSAGE);
+                JFrame fr = new JFrame();
+                WinPage p = new WinPage(fr);
+                Thread t1 = new Thread(p);
+                fr.setMinimumSize(new Dimension(1600, 900));
+                fr.setLocationRelativeTo(null);
+                fr.setVisible(true);
+                fr.setResizable(false);
+                fr.add(p);
+                fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                t1.start();
+                MainHome.fr1.dispose();
+//                System.exit(0);
             } else {
                 String bonus = "";
                 if (ToolBox.getHook().isObtained() && Dice.rollAgainst(1, 2)) {
                     bonus = " (and +1 food from hook)";
                     Storage.getFood().gain(1);
                 }
-                JOptionPane.showMessageDialog(null, "You start day " + day + " with " + Player.getEnergy() +" Energy."+bonus,"Day "+day,JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "You start day " + day + " with " + Player.getEnergy() + " Energy." + bonus, "Day " + day, JOptionPane.PLAIN_MESSAGE);
                 update();
                 boolean animalDeckIsEmpty = (animalDeck[0] == null) && (animalDeck[1] == null) && (animalDeck[2] == null) && (animalDeck[3] == null) && (animalDeck[4] == null) && (animalDeck[5] == null);
-                if(animalDeckIsEmpty){
+                if (animalDeckIsEmpty) {
                     animalDeck[0] = new BirdKing();
                     animalDeck[1] = new DoubleDog();
                     animalDeck[2] = new Fourleg();
@@ -741,86 +750,87 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
                 }
                 String diff = "";
                 String foodDrop = "";
-                while(huntingGround[0] == null){
+                while (huntingGround[0] == null) {
                     int redrawing = (int) (Math.random() * 10) % 6;
                     huntingGround[0] = animalDeck[redrawing];
                     animalDeck[redrawing] = null;
-                    if(huntingGround[0] instanceof BirdKing){
+                    if (huntingGround[0] instanceof BirdKing) {
                         huntingGround0.setIcon(ani1);
                         diff = huntingGround[0].getDifficulty();
-                        foodDrop = huntingGround[0].getFoodDrop()+" Food ";
-                    }else if (huntingGround[0] instanceof DoubleDog){
+                        foodDrop = huntingGround[0].getFoodDrop() + " Food ";
+                    } else if (huntingGround[0] instanceof DoubleDog) {
                         huntingGround0.setIcon(ani2);
                         diff = huntingGround[0].getDifficulty();
-                        foodDrop = huntingGround[0].getFoodDrop()+" Food ";
-                    }else if (huntingGround[0] instanceof Fourleg){
+                        foodDrop = huntingGround[0].getFoodDrop() + " Food ";
+                    } else if (huntingGround[0] instanceof Fourleg) {
                         huntingGround0.setIcon(ani3);
                         diff = huntingGround[0].getDifficulty();
-                        foodDrop = huntingGround[0].getFoodDrop()+" Food ";
-                    }else if (huntingGround[0] instanceof Fishman){
+                        foodDrop = huntingGround[0].getFoodDrop() + " Food ";
+                    } else if (huntingGround[0] instanceof Fishman) {
                         huntingGround0.setIcon(ani4);
                         diff = huntingGround[0].getDifficulty();
-                        foodDrop = huntingGround[0].getFoodDrop()+" Food ";
-                    }else if (huntingGround[0] instanceof Snailbox){
+                        foodDrop = huntingGround[0].getFoodDrop() + " Food ";
+                    } else if (huntingGround[0] instanceof Snailbox) {
                         huntingGround0.setIcon(ani5);
                         diff = huntingGround[0].getDifficulty();
-                        foodDrop = huntingGround[0].getFoodDrop()+" Food ";
-                    }else if (huntingGround[0] instanceof Rhinocow){
+                        foodDrop = huntingGround[0].getFoodDrop() + " Food ";
+                    } else if (huntingGround[0] instanceof Rhinocow) {
                         huntingGround0.setIcon(ani6);
                         diff = huntingGround[0].getDifficulty();
-                        foodDrop = huntingGround[0].getFoodDrop()+" Food ";
+                        foodDrop = huntingGround[0].getFoodDrop() + " Food ";
                     }
                     huntingGround0.setEnabled(true);
-                    huntingGround0.setText(foodDrop+diff);
+                    huntingGround0.setText(foodDrop + diff);
                     huntingGround0.setBackground(new Color(192, 96, 161));
                 }
-                while(huntingGround[1] == null){
+                while (huntingGround[1] == null) {
                     int redrawing = (int) (Math.random() * 10) % 6;
                     huntingGround[1] = animalDeck[redrawing];
                     animalDeck[redrawing] = null;
-                    if(huntingGround[1] instanceof BirdKing){
+                    if (huntingGround[1] instanceof BirdKing) {
                         huntingGround1.setIcon(ani1);
                         diff = huntingGround[1].getDifficulty();
-                        foodDrop = huntingGround[1].getFoodDrop()+" Food ";
-                    }else if (huntingGround[1] instanceof DoubleDog){
+                        foodDrop = huntingGround[1].getFoodDrop() + " Food ";
+                    } else if (huntingGround[1] instanceof DoubleDog) {
                         huntingGround1.setIcon(ani2);
                         diff = huntingGround[1].getDifficulty();
-                        foodDrop = huntingGround[1].getFoodDrop()+" Food ";
-                    }else if (huntingGround[1] instanceof Fourleg){
+                        foodDrop = huntingGround[1].getFoodDrop() + " Food ";
+                    } else if (huntingGround[1] instanceof Fourleg) {
                         huntingGround1.setIcon(ani3);
                         diff = huntingGround[1].getDifficulty();
-                        foodDrop = huntingGround[1].getFoodDrop()+" Food ";
-                    }else if (huntingGround[1] instanceof Fishman){
+                        foodDrop = huntingGround[1].getFoodDrop() + " Food ";
+                    } else if (huntingGround[1] instanceof Fishman) {
                         huntingGround1.setIcon(ani4);
                         diff = huntingGround[1].getDifficulty();
-                        foodDrop = huntingGround[1].getFoodDrop()+" Food ";
-                    }else if (huntingGround[1] instanceof Snailbox){
+                        foodDrop = huntingGround[1].getFoodDrop() + " Food ";
+                    } else if (huntingGround[1] instanceof Snailbox) {
                         huntingGround1.setIcon(ani5);
                         diff = huntingGround[1].getDifficulty();
-                        foodDrop = huntingGround[1].getFoodDrop()+" Food ";
-                    }else if (huntingGround[1] instanceof Rhinocow){
+                        foodDrop = huntingGround[1].getFoodDrop() + " Food ";
+                    } else if (huntingGround[1] instanceof Rhinocow) {
                         huntingGround1.setIcon(ani6);
                         diff = huntingGround[1].getDifficulty();
-                        foodDrop = huntingGround[1].getFoodDrop()+" Food ";
+                        foodDrop = huntingGround[1].getFoodDrop() + " Food ";
                     }
                     huntingGround1.setEnabled(true);
-                    huntingGround1.setText(foodDrop+diff);
+                    huntingGround1.setText(foodDrop + diff);
                     huntingGround1.setBackground(new Color(192, 96, 161));
                 }
             }
         }
     }
 
-     Image backgroundimg;
+    Image backgroundimg;
+
     public void paintComponent(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
         backgroundimg = new ImageIcon("src/images/spacetest03.jpg").getImage();
         g2D.drawImage(backgroundimg, 0, 0, null);
-        
+
     }
-    
-    public static void dayPass(){
-        setDay(getDay()+1);
+
+    public static void dayPass() {
+        setDay(getDay() + 1);
     }
 
     public static int getDay() {
@@ -831,5 +841,11 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         MainUI.day = day;
     }
     
-    
+    public static void exitAsk(){
+        int num = JOptionPane.showConfirmDialog(null, "Do you want to quit the game ?", "Exit", JOptionPane.YES_NO_OPTION);
+        if (num == 0){
+            System.exit(0);
+        }
+    }
+
 }

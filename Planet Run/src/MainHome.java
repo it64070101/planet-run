@@ -25,7 +25,6 @@ public class MainHome extends JPanel implements ActionListener {
     public int px = 0, py = 0;
 
     public MainHome(JFrame fr){
-        // MainHome p = new MainHome();
         this.fr = fr;
         p1 = new JPanel();
         p1.setLayout(new GridLayout(5,1,5,10));

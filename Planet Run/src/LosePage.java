@@ -88,7 +88,7 @@ public class LosePage extends JPanel implements ActionListener ,Runnable {
         bExit.setForeground(new Color(255,255,255));
         
 //        p1.add(new JLabel());   p1.add(new JLabel());   
-        p1.add(bRetry); 
+//        p1.add(bRetry); 
         p2.add(bExit);
 //        p2.add(p1);
         
@@ -143,7 +143,6 @@ public class LosePage extends JPanel implements ActionListener ,Runnable {
     }
 
     public static void main(String[] args) {
-        System.out.println("i am working!");
         JFrame fr = new JFrame();
         LosePage p = new LosePage(fr);
         Thread t1 = new Thread(p);

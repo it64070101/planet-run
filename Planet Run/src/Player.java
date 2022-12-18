@@ -197,6 +197,4 @@ public class Player {
         setAnimalKilled(getAnimalKilled()+1);
     }
     
-    
-    
 }

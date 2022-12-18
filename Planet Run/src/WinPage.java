@@ -88,7 +88,7 @@ public class WinPage extends JPanel implements ActionListener ,Runnable {
         bExit.setForeground(new Color(255,255,255));
         
 //        p1.add(new JLabel());   p1.add(new JLabel());   
-        p1.add(bRetry); 
+//        p1.add(bRetry); 
         p2.add(bExit);
 //        p2.add(p1);
         
@@ -143,7 +143,6 @@ public class WinPage extends JPanel implements ActionListener ,Runnable {
     }
 
     public static void main(String[] args) {
-        System.out.println("i am working!");
         JFrame fr = new JFrame();
         WinPage p = new WinPage(fr);
         Thread t1 = new Thread(p);
@@ -301,7 +300,7 @@ public class WinPage extends JPanel implements ActionListener ,Runnable {
     
     public void actionPerformed(ActionEvent e){
         if(e.getSource().equals(bRetry)){
-            
+//            new MainHome();
         }
         else if(e.getSource().equals(bExit)){
             System.exit(0);
