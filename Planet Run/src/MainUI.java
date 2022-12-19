@@ -37,7 +37,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     private static Animal[] animalDeck;
     public static Color btnColor = new Color(70, 130, 180);
 
-    private static JLabel food, wood, rock, sand, star, energy, HP;
+    private static JLabel food, wood, rock, sand, star;
 
     public MainUI() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -159,12 +159,12 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         ImageIcon rockIcon = new ImageIcon(new ImageIcon("src/images/rock.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
         ImageIcon sandIcon = new ImageIcon(new ImageIcon("src/images/sand.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
         ImageIcon starIcon = new ImageIcon(new ImageIcon("src/images/star.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
-        ImageIcon HPIcon = new ImageIcon(new ImageIcon("src/images/star.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+        ImageIcon HPIcon = new ImageIcon(new ImageIcon("src/images/heart.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
         ImageIcon energyIcon = new ImageIcon(new ImageIcon("src/images/star.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
 
         setSector();
 
-        rest = new JButton("Rest");
+        rest = new JButton("Rest", HPIcon);
         rest.setPreferredSize(new Dimension(screenScale(100), screenScale(50)));
         rest.setBackground(btnColor);
         rest.setForeground(Color.WHITE);
