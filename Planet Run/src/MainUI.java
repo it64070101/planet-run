@@ -719,7 +719,8 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             total += 8;
         }
 //        System.out.println(total + " , " + sec);
-        return (int) ((total / sec) * 1000);
+        MainUI.setScore((int)((total / sec) * 1000));
+        return MainUI.getScore();
     }
 
     public static void endOfDay() {
@@ -924,6 +925,14 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         if (num == 0) {
             System.exit(0);
         }
+    }
+
+    public static int getScore() {
+        return score;
+    }
+
+    public static void setScore(int score) {
+        MainUI.score = score;
     }
 
 }

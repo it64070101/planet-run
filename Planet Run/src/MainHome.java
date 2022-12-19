@@ -10,7 +10,8 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.io.*;
-import java.util.HashMap;
+import java.util.*;
+import java.util.Map.Entry;
 
 import javax.swing.*;
 
@@ -23,11 +24,12 @@ public class MainHome extends JPanel implements ActionListener {
     private String name;
     private JTextField nameField;
     public static MainUI frame;
-    public int ch;
-    public static String str = "";
-    public static String titleMusic = "title.wav", playingMusic = "playing.wav";
-    public static MusicStuff musicplay = new MusicStuff();
-    public static HashMap<String, Integer> highScore;
+    private int ch;
+    private static String str = "";
+    private static String titleMusic = "title.wav", playingMusic = "playing.wav";
+    private static MusicStuff musicplay = new MusicStuff();
+    private static HashMap<String, Integer> highScore;
+    private static LinkedHashMap<String, Integer> sortedScore;
 
     Image backgroundimg;
     Image ani1, ani2, ani3, ani4;
@@ -35,24 +37,19 @@ public class MainHome extends JPanel implements ActionListener {
     public int px = 0, py = 0;
 
     public MainHome(JFrame fr) {
+        sortedScore = new LinkedHashMap<>();
         highScore = new HashMap<String, Integer>();
-        highScore.put("Somchai", 9999);
-        highScore.put("Somsri", 9990);
+        
+        
 
-        try ( FileReader fileReader = new FileReader("src/rules.txt");) {
-            while ((ch = fileReader.read()) != -1) {
-                str += (char) ch;
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        
         this.fr = fr;
         p1 = new JPanel();
         p1.setLayout(new GridLayout(5, 1, 5, 10));
         p2 = new JPanel();
         p2.setLayout(new BorderLayout());
         bStart = new JButton("Start");
-        bHighscore = new JButton("High Score");
+        bHighscore = new JButton("Leaderboard");
         bHow = new JButton("How to Play");
         bExit = new JButton("Exit");
         pName = new JPanel(new GridLayout(2, 1));
@@ -205,6 +202,13 @@ public class MainHome extends JPanel implements ActionListener {
     }
 
     public void howToPlay() {
+        try ( FileReader fileReader = new FileReader("src/rules.txt");) {
+            while ((ch = fileReader.read()) != -1) {
+                str += (char) ch;
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
         JPanel p = new JPanel();
 
@@ -219,12 +223,14 @@ public class MainHome extends JPanel implements ActionListener {
     }
 
     public void highScore() {
+        sortScore();
         JPanel p = new JPanel();
         String data[][] = new String[highScore.keySet().size()][2];
         int index = 0;
-        for (String key : highScore.keySet()) {
+        
+        for (String key : sortedScore.keySet()) {
             data[index][0] = key;
-            data[index][1] = highScore.get(key)+"";
+            data[index][1] = sortedScore.get(key)+"";
             index++;
         }
         String column[] = {"NAME", "SCORE"};
@@ -233,7 +239,44 @@ public class MainHome extends JPanel implements ActionListener {
         jt.setBounds(30, 40, 200, 300);
         JScrollPane sp = new JScrollPane(jt);
         p.add(sp);
-        JOptionPane.showMessageDialog(null, p, "High Score", JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(null, p, "Leaderboard", JOptionPane.PLAIN_MESSAGE);
     }
+    
+    public void sortScore(){
+        try(FileInputStream fIn = new FileInputStream("HighScore.dat");
+            ObjectInputStream oin = new ObjectInputStream(fIn);){
+            highScore = (HashMap<String, Integer>) oin.readObject();
+        }
+        catch(IOException ioe){
+            System.out.println(ioe);
+        }
+        catch(ClassNotFoundException cnfe){
+            System.out.println(cnfe);
+        }
+        
+        ArrayList<Integer> score = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : highScore.entrySet()) {
+            score.add(entry.getValue());
+        }
+        Collections.sort(score); 
+        Collections.reverse(score);
+        for (int num : score) {
+            for (Entry<String, Integer> entry : highScore.entrySet()) {
+                if (entry.getValue().equals(num)) {
+                    sortedScore.put(entry.getKey(), num);
+                }
+            }
+        }
+    }
+
+    public static HashMap<String, Integer> getHighScore() {
+        return highScore;
+    }
+
+    public static void setHighScore(HashMap<String, Integer> highScore) {
+        MainHome.highScore = highScore;
+    }
+    
+    
 
 }
