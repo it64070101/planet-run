@@ -80,11 +80,8 @@ public class LosePage extends JPanel implements ActionListener ,Runnable {
         bRetry.setPreferredSize(new Dimension(250,80));
         bExit.setPreferredSize(new Dimension(250,80));
         
-        bRetry.setFont(new Font("Ink Free", Font.BOLD, 25));
-        bRetry.setBackground(new Color(192, 96, 161));
-        bRetry.setForeground(new Color(255,255,255));
-        bExit.setFont(new Font("Ink Free", Font.BOLD, 25));
-        bExit.setBackground(new Color(192, 96, 161));
+        bExit.setFont(new Font("Pixellari", Font.BOLD, 25));
+        bExit.setBackground(MainUI.btnColor);
         bExit.setForeground(new Color(255,255,255));
         
 //        p1.add(new JLabel());   p1.add(new JLabel());   
@@ -194,7 +191,7 @@ public class LosePage extends JPanel implements ActionListener ,Runnable {
         g2D.drawImage(ani1, 1,1, null);
         g2D.drawImage(ani2, 1450,1, null);
         
-        gString.setFont(new Font("Ink Free", Font.BOLD, 50));
+        gString.setFont(new Font("Pixellari", Font.BOLD, 50));
         gString.setColor(new Color(255,255,0));
         gString.drawString("You couldn't survived Planet Run!", 650, 180);
         
@@ -206,11 +203,11 @@ public class LosePage extends JPanel implements ActionListener ,Runnable {
         gRocket.drawImage(rocket,x,y,null);
         
 //        Header
-        ghFixer.setFont(new Font("Ink Free", Font.BOLD, 40));
+        ghFixer.setFont(new Font("Pixellari", Font.BOLD, 40));
         ghFixer.setColor(new Color(255,255,255));
         ghFixer.drawString("You survived " + MainUI.getDay() + " days", 675, 290);
         
-        ghRocketeer.setFont(new Font("Ink Free", Font.BOLD, 25));
+        ghRocketeer.setFont(new Font("Pixellari", Font.BOLD, 25));
         ghRocketeer.setColor(new Color(255,0,0));
         ghRocketeer.drawString("Impressive! but not enough to get back to earth", 675, 340);
 

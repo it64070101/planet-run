@@ -64,16 +64,16 @@ public class MainHome extends JPanel implements ActionListener {
         bExit.setPreferredSize(new Dimension(450, 80));
 
         bStart.setFont(new Font("Pixellari", Font.BOLD, 25));
-        bStart.setBackground(new Color(192, 96, 161));
+        bStart.setBackground(MainUI.btnColor);
         bStart.setForeground(new Color(255, 255, 255));
         bHighscore.setFont(new Font("Pixellari", Font.BOLD, 25));
-        bHighscore.setBackground(new Color(192, 96, 161));
+        bHighscore.setBackground(MainUI.btnColor);
         bHighscore.setForeground(new Color(255, 255, 255));
         bHow.setFont(new Font("Pixellari", Font.BOLD, 25));
-        bHow.setBackground(new Color(192, 96, 161));
+        bHow.setBackground(MainUI.btnColor);
         bHow.setForeground(new Color(255, 255, 255));
         bExit.setFont(new Font("Pixellari", Font.BOLD, 25));
-        bExit.setBackground(new Color(192, 96, 161));
+        bExit.setBackground(MainUI.btnColor);
         bExit.setForeground(new Color(255, 255, 255));
 
         p1.add(bStart);

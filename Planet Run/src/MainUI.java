@@ -35,6 +35,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     private static int score;
     private static Animal[] huntingGround;
     private static Animal[] animalDeck;
+    public static Color btnColor = new Color(70, 130, 180);
 
     private static JLabel food, wood, rock, sand, star, energy, HP;
 
@@ -165,15 +166,15 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 
         rest = new JButton("Rest");
         rest.setPreferredSize(new Dimension(screenScale(100), screenScale(50)));
-        rest.setBackground(new Color(88, 62, 138));
-        rest.setForeground(new Color(163, 199, 214));
+        rest.setBackground(btnColor);
+        rest.setForeground(Color.WHITE);
         rest.setFont(new Font("Pixellari", Font.BOLD, screenScale(35)));
         rest.setToolTipText("Heal 1HP/Energy");
 
         maketool = new JButton("Tool Box");
         maketool.setPreferredSize(new Dimension(screenScale(100), screenScale(50)));
-        maketool.setBackground(new Color(88, 62, 138));
-        maketool.setForeground(new Color(163, 199, 214));
+        maketool.setBackground(btnColor);
+        maketool.setForeground(Color.WHITE);
         maketool.setFont(new Font("Pixellari", Font.BOLD, screenScale(35)));
         maketool.setToolTipText("Crafting your Gadgets");
 
@@ -195,11 +196,11 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         huntingGround0.setPreferredSize(new Dimension(screenScale(350), screenScale(180)));
         huntingGround1.setPreferredSize(new Dimension(screenScale(350), screenScale(180)));
 
-        huntingGround0.setBackground(new Color(200, 55, 135));
+        huntingGround0.setBackground(btnColor);
         huntingGround0.setForeground(new Color(255, 255, 255));
         huntingGround0.setFont(new Font("Pixellari", Font.BOLD, screenScale(20)));
 
-        huntingGround1.setBackground(new Color(200, 55, 135));
+        huntingGround1.setBackground(btnColor);
         huntingGround1.setForeground(new Color(255, 255, 255));
         huntingGround1.setFont(new Font("Pixellari", Font.BOLD, screenScale(20)));
 
@@ -239,13 +240,13 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pLabel.add(star);
 //        pLabel.add(HPTxt);
 //        pLabel.add(energyTxt);
-        pLabel.setBackground(new Color(29, 48, 87));
+        pLabel.setBackground(btnColor);
 
-        food.setForeground(new Color(245, 213, 174));
-        wood.setForeground(new Color(245, 213, 174));
-        sand.setForeground(new Color(245, 213, 174));
-        rock.setForeground(new Color(245, 213, 174));
-        star.setForeground(new Color(245, 213, 174));
+        food.setForeground(Color.WHITE);
+        wood.setForeground(Color.WHITE);
+        sand.setForeground(Color.WHITE);
+        rock.setForeground(Color.WHITE);
+        star.setForeground(Color.WHITE);
 
         food.setFont(new Font("Pixellari", Font.BOLD, screenScale(32)));
         wood.setFont(new Font("Pixellari", Font.BOLD, screenScale(32)));
@@ -264,7 +265,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pAll.setLayout(new FlowLayout(FlowLayout.CENTER));
         pAll.add(pLabel);
         pAll.setSize(screenScale(100), screenScale(100));
-        pAll.setBackground(new Color(29, 48, 87));
+        pAll.setBackground(btnColor);
         pAll.setForeground(new Color(254, 194, 96));
 
         showclock = new JPanel();
@@ -273,7 +274,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         showclock.setForeground(new Color(234, 234, 234));
         showclock.add(clockshow);
         showclock.setSize(screenScale(200), screenScale(200));
-        showclock.setBackground(new Color(30, 0, 69));
+        showclock.setBackground(btnColor);
 
         pSec.setBounds(screenScale(0), screenScale(50), screenScale(450), screenScale(1000));
         pRocket.setBounds(screenScale(500), screenScale(50), screenScale(650), screenScale(850));
@@ -282,8 +283,9 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         showclock.setBounds(screenScale(640 - 150), screenScale(190), screenScale(200), screenScale(60));
         exit = new JButton("exit");
         exit.setBounds(screenScale(500 + 700 + 15 + 175), screenScale(825), screenScale(200), screenScale(75));
+        exit.setFont(new Font("Pixellari", Font.BOLD, 25));
 
-        exit.setBackground(new Color(220, 95, 0));
+        exit.setBackground(btnColor);
         exit.setForeground(new Color(238, 238, 238));
 
         // rocket panel
@@ -420,7 +422,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             if (!huntingGround[0].getIsAlive()) {
                 huntingGround0.setEnabled(false);
                 huntingGround0.setText("Animal Killed!");
-                huntingGround0.setBackground(new Color(128, 128, 128));
+                huntingGround0.setBackground(btnColor);
                 huntingGround[0] = null;
             }
         } else if (e.getSource().equals(huntingGround1)) {
@@ -428,7 +430,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             if (!huntingGround[1].getIsAlive()) {
                 huntingGround1.setEnabled(false);
                 huntingGround1.setText("Animal Killed!");
-                huntingGround1.setBackground(new Color(128, 128, 128));
+                huntingGround1.setBackground(btnColor);
                 huntingGround[1] = null;
             }
         } else if (e.getSource().equals(rest)) {
@@ -436,27 +438,27 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         } else if (e.getSource().equals(noseCone)) {
             if (Player.fix(Ship.getNoseCone())) {
                 noseCone.setEnabled(false);
-                noseCone.setBackground(new Color(159, 115, 171));
+                noseCone.setBackground(btnColor);
             }
         } else if (e.getSource().equals(shockcord)) {
             if (Player.fix(Ship.getShockcord())) {
                 shockcord.setEnabled(false);
-                shockcord.setBackground(new Color(159, 115, 171));
+                shockcord.setBackground(btnColor);
             }
         } else if (e.getSource().equals(recoveryWadding)) {
             if (Player.fix(Ship.getRecoveryWadding())) {
                 recoveryWadding.setEnabled(false);
-                recoveryWadding.setBackground(new Color(159, 115, 171));
+                recoveryWadding.setBackground(btnColor);
             }
         } else if (e.getSource().equals(leftFin)) {
             if (Player.fix(Ship.getLeftFin())) {
                 leftFin.setEnabled(false);
-                leftFin.setBackground(new Color(159, 115, 171));
+                leftFin.setBackground(btnColor);
             }
         } else if (e.getSource().equals(rightFin)) {
             if (Player.fix(Ship.getRightFin())) {
                 rightFin.setEnabled(false);
-                rightFin.setBackground(new Color(159, 115, 171));
+                rightFin.setBackground(btnColor);
             }
         } else if (e.getSource().equals(exit)) {
             exitAsk();
@@ -508,7 +510,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     public void setSector() {
         Dimension preferSize = new Dimension(screenScale(250), screenScale(160));
         Font font = new Font("Pixellari", Font.BOLD, screenScale(15));
-        Color bgColor = new Color(194, 68, 161);
+        Color bgColor = btnColor;
         Color fgColor = new Color(255, 255, 255);
         int hText = JButton.CENTER;
         int vText = JButton.BOTTOM;
@@ -550,7 +552,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     }
 
     public void setShip() {
-        Color bgColor = new Color(117, 92, 170);
+        Color bgColor = btnColor;
         Color fgColor = new Color(255, 255, 255);
         int htext = JButton.CENTER;
         int vtext = JButton.BOTTOM;
@@ -634,13 +636,13 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     public static void sectorDiscover(Sector sector, JButton secBtn) {
         if (sector.isExplored()) {
             secBtn.setIcon(new ImageIcon("src/images/" + sector.getName() + ".png"));
-            secBtn.setBackground(new Color(247, 135, 87));
+            secBtn.setBackground(btnColor);
             secBtn.setForeground(new Color(255, 255, 255));
             secBtn.setText(sector.getName() + ": " + sector.getResource().getName() + " (Easy)");
         } else {
             secBtn.setPreferredSize(new Dimension(250, 160));
             secBtn.setFont(new Font("Pixellari", Font.BOLD, screenScale(15)));
-            secBtn.setBackground(new Color(192, 96, 161));
+            secBtn.setBackground(btnColor);
             secBtn.setForeground(new Color(255, 255, 255));
         }
 
@@ -801,7 +803,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
                     }
                     huntingGround0.setEnabled(true);
                     huntingGround0.setText(foodDrop + diff);
-                    huntingGround0.setBackground(new Color(200, 55, 135));
+                    huntingGround0.setBackground(btnColor);
                 }
                 while (huntingGround[1] == null) {
                     int redrawing = (int) (Math.random() * 10) % 6;
@@ -834,7 +836,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
                     }
                     huntingGround1.setEnabled(true);
                     huntingGround1.setText(foodDrop + diff);
-                    huntingGround1.setBackground(new Color(200, 55, 135));
+                    huntingGround1.setBackground(btnColor);
                 }
             }
         }

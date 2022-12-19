@@ -91,11 +91,8 @@ public class WinPage extends JPanel implements ActionListener, Runnable {
         bRetry.setPreferredSize(new Dimension(250, 80));
         bExit.setPreferredSize(new Dimension(250, 80));
 
-        bRetry.setFont(new Font("Ink Free", Font.BOLD, 25));
-        bRetry.setBackground(new Color(192, 96, 161));
-        bRetry.setForeground(new Color(255, 255, 255));
-        bExit.setFont(new Font("Ink Free", Font.BOLD, 25));
-        bExit.setBackground(new Color(192, 96, 161));
+        bExit.setFont(new Font("Pixellari", Font.BOLD, 25));
+        bExit.setBackground(MainUI.btnColor);
         bExit.setForeground(new Color(255, 255, 255));
 
 //        p1.add(new JLabel());   p1.add(new JLabel());   
@@ -200,7 +197,7 @@ public class WinPage extends JPanel implements ActionListener, Runnable {
         g2D.drawImage(ani1, 1, 1, null);
         g2D.drawImage(ani2, 1450, 1, null);
 
-        gString.setFont(new Font("Ink Free", Font.BOLD, 70));
+        gString.setFont(new Font("Pixellari", Font.BOLD, 70));
         gString.setColor(new Color(255, 255, 255));
         gString.drawString("You Survived!", 750, 180);
 
@@ -211,59 +208,59 @@ public class WinPage extends JPanel implements ActionListener, Runnable {
         gRocket.drawImage(rocket, x, y, null);
 
 //        Header
-        ghFixer.setFont(new Font("Ink Free", Font.BOLD, 25));
+        ghFixer.setFont(new Font("Pixellari", Font.BOLD, 25));
         ghFixer.setColor(new Color(255, 255, 255));
         ghFixer.drawString("Fixer", 675, 270);
 
-        ghRocketeer.setFont(new Font("Ink Free", Font.BOLD, 25));
+        ghRocketeer.setFont(new Font("Pixellari", Font.BOLD, 25));
         ghRocketeer.setColor(new Color(255, 255, 255));
         ghRocketeer.drawString("Rocketeering", 675, 310);
 
-        ghToolmaker.setFont(new Font("Ink Free", Font.BOLD, 25));
+        ghToolmaker.setFont(new Font("Pixellari", Font.BOLD, 25));
         ghToolmaker.setColor(new Color(255, 255, 255));
         ghToolmaker.drawString("Toolmaker", 675, 350);
 
-        ghJack.setFont(new Font("Ink Free", Font.BOLD, 25));
+        ghJack.setFont(new Font("Pixellari", Font.BOLD, 25));
         ghJack.setColor(new Color(255, 255, 255));
         ghJack.drawString("Jack of all tools", 675, 390);
 
-        ghDis.setFont(new Font("Ink Free", Font.BOLD, 25));
+        ghDis.setFont(new Font("Pixellari", Font.BOLD, 25));
         ghDis.setColor(new Color(255, 255, 255));
         ghDis.drawString("Discover", 675, 430);
 
-        ghApex.setFont(new Font("Ink Free", Font.BOLD, 25));
+        ghApex.setFont(new Font("Pixellari", Font.BOLD, 25));
         ghApex.setColor(new Color(255, 255, 255));
         ghApex.drawString("Apex Predator", 675, 470);
 
-        ghBarely.setFont(new Font("Ink Free", Font.BOLD, 25));
+        ghBarely.setFont(new Font("Pixellari", Font.BOLD, 25));
         ghBarely.setColor(new Color(255, 255, 255));
         ghBarely.drawString("Barely a scratch", 675, 510);
 
-        ghUnbreak.setFont(new Font("Ink Free", Font.BOLD, 25));
+        ghUnbreak.setFont(new Font("Pixellari", Font.BOLD, 25));
         ghUnbreak.setColor(new Color(255, 255, 255));
         ghUnbreak.drawString("Unbreakable", 675, 550);
 
-        ghTotal.setFont(new Font("Ink Free", Font.BOLD, 25));
+        ghTotal.setFont(new Font("Pixellari", Font.BOLD, 25));
         ghTotal.setColor(new Color(255, 255, 255));
         ghTotal.drawString("Total Score", 675, 590);
 
-        ghTime.setFont(new Font("Ink Free", Font.BOLD, 25));
+        ghTime.setFont(new Font("Pixellari", Font.BOLD, 25));
         ghTime.setColor(new Color(255, 255, 255));
         ghTime.drawString("Time Taken", 675, 670);
 
-        ghFinals.setFont(new Font("Ink Free", Font.BOLD, 25));
+        ghFinals.setFont(new Font("Pixellari", Font.BOLD, 25));
         ghFinals.setColor(new Color(255, 255, 255));
         ghFinals.drawString("Final Score", 675, 710);
 
 //   Detail:
         int scoreTally = 0;
 
-        gdFixer.setFont(new Font("Ink Free", Font.BOLD, 25));
+        gdFixer.setFont(new Font("Pixellari", Font.BOLD, 25));
         gdFixer.setColor(new Color(255, 255, 255));
         gdFixer.drawString(": " + ((Ship.getPartFixed() * (Ship.getPartFixed() + 1)) / 2), 1050, 270);
         scoreTally += ((Ship.getPartFixed() * (Ship.getPartFixed() + 1)) / 2);
 
-        gdRocketeer.setFont(new Font("Ink Free", Font.BOLD, 25));
+        gdRocketeer.setFont(new Font("Pixellari", Font.BOLD, 25));
         gdRocketeer.setColor(new Color(255, 255, 255));
         if (Ship.getPartFixed() == 5) {
             gdRocketeer.drawString(": 30", 1050, 310);
@@ -272,12 +269,12 @@ public class WinPage extends JPanel implements ActionListener, Runnable {
             gdRocketeer.drawString(": 0", 1050, 310);
         }
 
-        gdToolmaker.setFont(new Font("Ink Free", Font.BOLD, 25));
+        gdToolmaker.setFont(new Font("Pixellari", Font.BOLD, 25));
         gdToolmaker.setColor(new Color(255, 255, 255));
         gdToolmaker.drawString(": " + ToolBox.getToolMade(), 1050, 350);
         scoreTally += ToolBox.getToolMade();
 
-        gdJack.setFont(new Font("Ink Free", Font.BOLD, 25));
+        gdJack.setFont(new Font("Pixellari", Font.BOLD, 25));
         gdJack.setColor(new Color(255, 255, 255));
         if (ToolBox.getToolMade() == 5) {
             gdJack.drawString(": 10", 1050, 390);
@@ -286,22 +283,22 @@ public class WinPage extends JPanel implements ActionListener, Runnable {
             gdJack.drawString(": 0", 1050, 390);
         }
 
-        gdDis.setFont(new Font("Ink Free", Font.BOLD, 25));
+        gdDis.setFont(new Font("Pixellari", Font.BOLD, 25));
         gdDis.setColor(new Color(255, 255, 255));
         gdDis.drawString(": " + Area.getAreaExplored(), 1050, 430);
         scoreTally += Area.getAreaExplored();
 
-        gdApex.setFont(new Font("Ink Free", Font.BOLD, 25));
+        gdApex.setFont(new Font("Pixellari", Font.BOLD, 25));
         gdApex.setColor(new Color(255, 255, 255));
         gdApex.drawString(": " + Player.getAnimalKilled(), 1050, 470);
         scoreTally += Player.getAnimalKilled();
 
-        gdBarely.setFont(new Font("Ink Free", Font.BOLD, 25));
+        gdBarely.setFont(new Font("Pixellari", Font.BOLD, 25));
         gdBarely.setColor(new Color(255, 255, 255));
         gdBarely.drawString(": " + Player.getHP(), 1050, 510);
         scoreTally += Player.getHP();
 
-        gdUnbreak.setFont(new Font("Ink Free", Font.BOLD, 25));
+        gdUnbreak.setFont(new Font("Pixellari", Font.BOLD, 25));
         gdUnbreak.setColor(new Color(255, 255, 255));
         if (Player.getHP() == 4) {
             gdUnbreak.drawString(": 8", 1050, 550);
@@ -310,15 +307,15 @@ public class WinPage extends JPanel implements ActionListener, Runnable {
             gdUnbreak.drawString(": 0", 1050, 550);
         }
 
-        gdTotal.setFont(new Font("Ink Free", Font.BOLD, 25));
+        gdTotal.setFont(new Font("Pixellari", Font.BOLD, 25));
         gdTotal.setColor(new Color(255, 255, 255));
         gdTotal.drawString(": " + scoreTally, 1050, 590);
 
-        gdTime.setFont(new Font("Ink Free", Font.BOLD, 25));
+        gdTime.setFont(new Font("Pixellari", Font.BOLD, 25));
         gdTime.setColor(new Color(255, 255, 255));
         gdTime.drawString(": " + MainUI.getSec(), 1050, 670);
 
-        gdFinals.setFont(new Font("Ink Free", Font.BOLD, 25));
+        gdFinals.setFont(new Font("Pixellari", Font.BOLD, 25));
         gdFinals.setColor(new Color(255, 255, 255));
         gdFinals.drawString(": (" + scoreTally + "/" + MainUI.getSec() + ")*100 = " + MainUI.scoring(), 1050, 710);
 
