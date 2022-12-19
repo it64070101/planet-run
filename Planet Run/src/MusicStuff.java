@@ -64,11 +64,12 @@ public class MusicStuff {
                 
                 AudioInputStream audio = AudioSystem.getAudioInputStream(music1);
                 Clip clip = AudioSystem.getClip();
-                clip.open(audio);
                 FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-                double gain = 0.25;
+                double gain = 0.1;
                 float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
                 gainControl.setValue(dB);
+                clip.open(audio);
+                
 //                
 //                if(clip.isActive()){
                     clip.stop();

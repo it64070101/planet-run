@@ -131,7 +131,7 @@ public class MainHome extends JPanel implements ActionListener {
             
             
             SoundEffect ef = new SoundEffect();
-            ef.playEffect(effect1);
+//            ef.playEffect(effect1);
             
             JOptionPane.showMessageDialog(null, pName, "What is your name ?", JOptionPane.PLAIN_MESSAGE);
             name = nameField.getText();
@@ -144,8 +144,15 @@ public class MainHome extends JPanel implements ActionListener {
             new Area();
             new Ship();
             new ToolBox();
-
-            frame = new MainUI();
+            
+            try {
+                frame = new MainUI();
+            }
+            catch (Exception ex){
+                System.out.println(ex);
+                frame = new MainUI();
+            }
+            
 
             fr1 = new JFrame();
             fr1.getContentPane().setBackground(new Color(0, 0, 0, 0));

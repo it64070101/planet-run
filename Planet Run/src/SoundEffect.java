@@ -11,6 +11,7 @@ import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 //import javax.swing.JOptionPane;
 
 public class SoundEffect {
@@ -23,7 +24,6 @@ public class SoundEffect {
                 
                 AudioInputStream audio = AudioSystem.getAudioInputStream(music1);
                 Clip clip = AudioSystem.getClip();
-                clip.open(audio);
                 
                 clip.start();
                 
