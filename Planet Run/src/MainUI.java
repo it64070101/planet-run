@@ -153,7 +153,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         sector3 = new JButton("Explore (Easy+)", queSym);
         sector4 = new JButton("Explore (Easy+)", queSym);
 
-        ImageIcon foodIcon = new ImageIcon(new ImageIcon("src/images/food.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+        ImageIcon foodIcon = new ImageIcon(new ImageIcon("src/images/food.png").getImage().getScaledInstance(screenScale(32), screenScale(32), Image.SCALE_DEFAULT));
         ImageIcon woodIcon = new ImageIcon(new ImageIcon("src/images/wood.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
         ImageIcon rockIcon = new ImageIcon(new ImageIcon("src/images/rock.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
         ImageIcon sandIcon = new ImageIcon(new ImageIcon("src/images/sand.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
@@ -877,10 +877,10 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             j += 30;
         }
         gBorder.setColor(new Color(255, 255, 0));
-        gBorder.fillRect(1215, 485, 500, 250);
+        gBorder.fillRect(screenScale(1215), screenScale(485), 500, 250);
 
         gRocket.setColor(new Color(0, 0, 0));
-        gRocket.fillRect(1225, 500, 475, 225);
+        gRocket.fillRect(screenScale(1225), screenScale(500), 475, 225);
         gRocket.drawImage(rocket, x, y, null);
         
         g2D.setFont(new Font("Ink Free", Font.BOLD, 24));
