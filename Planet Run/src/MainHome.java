@@ -26,7 +26,7 @@ public class MainHome extends JPanel implements ActionListener {
     public static MainUI frame;
     private int ch;
     private static String str = "";
-    private static String titleMusic = "title.wav", playingMusic = "playing.wav";
+    public static String titleMusic = "title.wav", playingMusic = "playing.wav";
     private static MusicStuff musicplay = new MusicStuff();
     private static HashMap<String, Integer> highScore;
     private static LinkedHashMap<String, Integer> sortedScore;
@@ -39,9 +39,6 @@ public class MainHome extends JPanel implements ActionListener {
     public MainHome(JFrame fr) {
         sortedScore = new LinkedHashMap<>();
         highScore = new HashMap<String, Integer>();
-        
-        
-
         
         this.fr = fr;
         p1 = new JPanel();
@@ -66,16 +63,16 @@ public class MainHome extends JPanel implements ActionListener {
         bHow.setPreferredSize(new Dimension(450, 80));
         bExit.setPreferredSize(new Dimension(450, 80));
 
-        bStart.setFont(new Font("Ink Free", Font.BOLD, 25));
+        bStart.setFont(new Font("Pixellari", Font.BOLD, 25));
         bStart.setBackground(new Color(192, 96, 161));
         bStart.setForeground(new Color(255, 255, 255));
-        bHighscore.setFont(new Font("Ink Free", Font.BOLD, 25));
+        bHighscore.setFont(new Font("Pixellari", Font.BOLD, 25));
         bHighscore.setBackground(new Color(192, 96, 161));
         bHighscore.setForeground(new Color(255, 255, 255));
-        bHow.setFont(new Font("Ink Free", Font.BOLD, 25));
+        bHow.setFont(new Font("Pixellari", Font.BOLD, 25));
         bHow.setBackground(new Color(192, 96, 161));
         bHow.setForeground(new Color(255, 255, 255));
-        bExit.setFont(new Font("Ink Free", Font.BOLD, 25));
+        bExit.setFont(new Font("Pixellari", Font.BOLD, 25));
         bExit.setBackground(new Color(192, 96, 161));
         bExit.setForeground(new Color(255, 255, 255));
 
@@ -99,15 +96,9 @@ public class MainHome extends JPanel implements ActionListener {
         bExit.addActionListener(this);
     }
     
-    static String filepath = "maintest.wav";
-    static String effect1 = "soundclick.wav";
 //    private MusicStuff musicplay = new MusicStuff();
     
     public static void main(String[] args) {
-//        String filepath = "songtest.wav";
-
-//        MusicStuff musicplay = new MusicStuff();
-        MusicStuff.playMusic(filepath);
 
         JFrame fr = new JFrame();
         MainHome p = new MainHome(fr);
@@ -175,11 +166,6 @@ public class MainHome extends JPanel implements ActionListener {
         } else if (e.getSource().equals(bHighscore)) {
             highScore();
         } else if (e.getSource().equals(bHow)) {
-            
-//            MusicStuff.stopMusic(filepath);
-            SoundEffect ef = new SoundEffect();
-            ef.playEffect(effect1);
-            
             howToPlay();
         } else if (e.getSource().equals(bExit)) {
             System.exit(0);
@@ -196,9 +182,9 @@ public class MainHome extends JPanel implements ActionListener {
         g2D.drawImage(backgroundimg, 0, 0, null);
         g2D.drawImage(ani1, 1, 1, null);
         g2D.drawImage(ani2, 1450, 1, null);
-        gString.setFont(new Font("Ink Free", Font.BOLD, 70));
+        gString.setFont(new Font("Pixellari", Font.BOLD, 70));
         gString.setColor(new Color(255, 255, 255));
-        gString.drawString("Planet run the BoardGame with Java", 190, 180);
+        gString.drawString("Planet Run", 190, 180);
     }
 
     public void howToPlay() {
@@ -276,6 +262,16 @@ public class MainHome extends JPanel implements ActionListener {
     public static void setHighScore(HashMap<String, Integer> highScore) {
         MainHome.highScore = highScore;
     }
+
+    public static MusicStuff getMusicplay() {
+        return musicplay;
+    }
+
+    public static void setMusicplay(MusicStuff musicplay) {
+        MainHome.musicplay = musicplay;
+    }
+    
+    
     
     
 

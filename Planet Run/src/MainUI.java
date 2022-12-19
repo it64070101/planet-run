@@ -167,14 +167,14 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         rest.setPreferredSize(new Dimension(screenScale(100), screenScale(50)));
         rest.setBackground(new Color(88, 62, 138));
         rest.setForeground(new Color(163, 199, 214));
-        rest.setFont(new Font("Ink Free", Font.BOLD, screenScale(35)));
+        rest.setFont(new Font("Pixellari", Font.BOLD, screenScale(35)));
         rest.setToolTipText("Heal 1HP/Energy");
 
         maketool = new JButton("Tool Box");
         maketool.setPreferredSize(new Dimension(screenScale(100), screenScale(50)));
         maketool.setBackground(new Color(88, 62, 138));
         maketool.setForeground(new Color(163, 199, 214));
-        maketool.setFont(new Font("Ink Free", Font.BOLD, screenScale(35)));
+        maketool.setFont(new Font("Pixellari", Font.BOLD, screenScale(35)));
         maketool.setToolTipText("Crafting your Gadgets");
 
         pSectors.setLayout(new GridLayout(4, 1, screenScale(50), screenScale(50)));
@@ -197,11 +197,11 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 
         huntingGround0.setBackground(new Color(200, 55, 135));
         huntingGround0.setForeground(new Color(255, 255, 255));
-        huntingGround0.setFont(new Font("Ink Free", Font.BOLD, screenScale(20)));
+        huntingGround0.setFont(new Font("Pixellari", Font.BOLD, screenScale(20)));
 
         huntingGround1.setBackground(new Color(200, 55, 135));
         huntingGround1.setForeground(new Color(255, 255, 255));
-        huntingGround1.setFont(new Font("Ink Free", Font.BOLD, screenScale(20)));
+        huntingGround1.setFont(new Font("Pixellari", Font.BOLD, screenScale(20)));
 
         pHuntingGround.setBackground(new Color(0, 0, 0, 0));
         pHuntAll = new JPanel();
@@ -247,11 +247,11 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         rock.setForeground(new Color(245, 213, 174));
         star.setForeground(new Color(245, 213, 174));
 
-        food.setFont(new Font("Tahoma", Font.BOLD, screenScale(32)));
-        wood.setFont(new Font("Tahoma", Font.BOLD, screenScale(32)));
-        sand.setFont(new Font("Tahoma", Font.BOLD, screenScale(32)));
-        rock.setFont(new Font("Tahoma", Font.BOLD, screenScale(32)));
-        star.setFont(new Font("Tahoma", Font.BOLD, screenScale(32)));
+        food.setFont(new Font("Pixellari", Font.BOLD, screenScale(32)));
+        wood.setFont(new Font("Pixellari", Font.BOLD, screenScale(32)));
+        sand.setFont(new Font("Pixellari", Font.BOLD, screenScale(32)));
+        rock.setFont(new Font("Pixellari", Font.BOLD, screenScale(32)));
+        star.setFont(new Font("Pixellari", Font.BOLD, screenScale(32)));
 
 
 
@@ -507,7 +507,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 
     public void setSector() {
         Dimension preferSize = new Dimension(screenScale(250), screenScale(160));
-        Font font = new Font("Ink Free", Font.BOLD, screenScale(15));
+        Font font = new Font("Pixellari", Font.BOLD, screenScale(15));
         Color bgColor = new Color(194, 68, 161);
         Color fgColor = new Color(255, 255, 255);
         int hText = JButton.CENTER;
@@ -639,7 +639,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             secBtn.setText(sector.getName() + ": " + sector.getResource().getName() + " (Easy)");
         } else {
             secBtn.setPreferredSize(new Dimension(250, 160));
-            secBtn.setFont(new Font("Ink Free", Font.BOLD, screenScale(15)));
+            secBtn.setFont(new Font("Pixellari", Font.BOLD, screenScale(15)));
             secBtn.setBackground(new Color(192, 96, 161));
             secBtn.setForeground(new Color(255, 255, 255));
         }
@@ -664,7 +664,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             if (day == 15 && Player.getEnergy() == 0) {
                 break;
             }
-            clockshow.setFont(new Font("Tahoma", Font.PLAIN, screenScale(32)));
+            clockshow.setFont(new Font("Pixellari", Font.PLAIN, screenScale(32)));
             clockshow.setText(String.format("%02d", hour) + " : " + String.format("%02d", min) + " : " + String.format("%02d", sec));
             try {
                 Thread.sleep(1000);
@@ -862,7 +862,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         bolt = new ImageIcon("src/images/bolt.png").getImage();
         heart = new ImageIcon("src/images/heart.png").getImage();
         g2D.drawImage(backgroundimg, 0, 0, null);
-        g2D.setFont(new Font("Ink Free", Font.BOLD, screenScale(32)));
+        g2D.setFont(new Font("Pixellari", Font.BOLD, screenScale(32)));
         g2D.setColor(new Color(255, 239, 235));
         g2D.drawString("Day " + day, screenScale(500), screenScale(148));
         j = screenScale(605);
@@ -884,7 +884,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         gRocket.fillRect(screenScale(1225), screenScale(500), 475, 225);
         gRocket.drawImage(rocket, x, y, null);
         
-        g2D.setFont(new Font("Ink Free", Font.BOLD, screenScale(24)));
+        g2D.setFont(new Font("Pixellari", Font.BOLD, screenScale(24)));
         g2D.setColor(new Color(255, 239, 235));
         g2D.drawString("HP " , screenScale(700), screenScale(210));
         g2D.drawString("Energy ", screenScale(700), screenScale(250));

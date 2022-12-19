@@ -102,7 +102,7 @@ public class Maketool implements ActionListener, WindowListener {
         Color bgColor = new Color(76, 103, 147);
         Color fgColor = new Color(174, 254, 255);
         Dimension preferedSize = new Dimension(256, 160);
-        Font font = new Font("Ink Free", Font.BOLD, 15);
+        Font font = new Font("Pixellari", Font.BOLD, 15);
         int hText = JButton.CENTER;
         int vText = JButton.BOTTOM;
         

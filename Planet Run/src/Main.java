@@ -4,7 +4,7 @@ import java.awt.*;
 public class Main {
     public static void main(String[] args) {
         
-//        MainHome.musicplay.playMusic(MainHome.titleMusic);
+        MainHome.getMusicplay().playMusic(MainHome.titleMusic);
 
         JFrame fr = new JFrame();
         MainHome p = new MainHome(fr);
