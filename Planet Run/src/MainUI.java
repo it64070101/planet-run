@@ -153,7 +153,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         sector3 = new JButton("Explore (Easy+)", queSym);
         sector4 = new JButton("Explore (Easy+)", queSym);
 
-        ImageIcon foodIcon = new ImageIcon(new ImageIcon("src/images/food.png").getImage().getScaledInstance(screenScale(32), screenScale(32), Image.SCALE_DEFAULT));
+        ImageIcon foodIcon = new ImageIcon(new ImageIcon("src/images/food.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
         ImageIcon woodIcon = new ImageIcon(new ImageIcon("src/images/wood.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
         ImageIcon rockIcon = new ImageIcon(new ImageIcon("src/images/rock.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
         ImageIcon sandIcon = new ImageIcon(new ImageIcon("src/images/sand.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
@@ -639,7 +639,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             secBtn.setText(sector.getName() + ": " + sector.getResource().getName() + " (Easy)");
         } else {
             secBtn.setPreferredSize(new Dimension(250, 160));
-            secBtn.setFont(new Font("Ink Free", Font.BOLD, 15));
+            secBtn.setFont(new Font("Ink Free", Font.BOLD, screenScale(15)));
             secBtn.setBackground(new Color(192, 96, 161));
             secBtn.setForeground(new Color(255, 255, 255));
         }
@@ -664,7 +664,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             if (day == 15 && Player.getEnergy() == 0) {
                 break;
             }
-            clockshow.setFont(new Font("Tahoma", Font.PLAIN, 32));
+            clockshow.setFont(new Font("Tahoma", Font.PLAIN, screenScale(32)));
             clockshow.setText(String.format("%02d", hour) + " : " + String.format("%02d", min) + " : " + String.format("%02d", sec));
             try {
                 Thread.sleep(1000);
@@ -861,7 +861,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         bolt = new ImageIcon("src/images/bolt.png").getImage();
         heart = new ImageIcon("src/images/heart.png").getImage();
         g2D.drawImage(backgroundimg, 0, 0, null);
-        g2D.setFont(new Font("Ink Free", Font.BOLD, 32));
+        g2D.setFont(new Font("Ink Free", Font.BOLD, screenScale(32)));
         g2D.setColor(new Color(255, 239, 235));
         g2D.drawString("Day " + day, screenScale(500), screenScale(148));
         j = screenScale(605);
@@ -883,7 +883,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         gRocket.fillRect(screenScale(1225), screenScale(500), 475, 225);
         gRocket.drawImage(rocket, x, y, null);
         
-        g2D.setFont(new Font("Ink Free", Font.BOLD, 24));
+        g2D.setFont(new Font("Ink Free", Font.BOLD, screenScale(24)));
         g2D.setColor(new Color(255, 239, 235));
         g2D.drawString("HP " , screenScale(700), screenScale(210));
         g2D.drawString("Energy ", screenScale(700), screenScale(250));
