@@ -26,8 +26,54 @@ public class MusicStuff {
                 AudioInputStream audio = AudioSystem.getAudioInputStream(music1);
                 Clip clip = AudioSystem.getClip();
                 clip.open(audio);
-                clip.start();
+//                
+                if(clip.isRunning()){
+                    JOptionPane.showMessageDialog(null, "Pause");
+                    clip.stop();
+                }
+                else{
+                    clip.start();
+                }
+//                clip.start();
+                
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
+                
+//                JOptionPane.showMessageDialog(null, "Pause");
+//                long clipTimePosition = clip.getMicrosecondPosition();
+//                clip.stop();
+//                
+//                JOptionPane.showMessageDialog(null, "Resume");
+//                clip.setMicrosecondPosition(clipTimePosition);
+//                clip.start();
+            }
+            else{
+                System.out.println("Peter");
+            }
+            
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public static void stopMusic(String filepath){
+//        InputStream music;
+        try{
+            File music1 = new File(filepath);
+            if(music1.exists()){
+                
+                AudioInputStream audio = AudioSystem.getAudioInputStream(music1);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audio);
+//                
+//                if(clip.isActive()){
+                    clip.stop();
+//                }
+//                else{
+//                    clip.start();
+//                }
+//                clip.start();
+                
+//                clip.loop(Clip.LOOP_CONTINUOUSLY);
                 
 //                JOptionPane.showMessageDialog(null, "Pause");
 //                long clipTimePosition = clip.getMicrosecondPosition();

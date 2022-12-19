@@ -93,12 +93,16 @@ public class MainHome extends JPanel implements ActionListener {
         bHow.addActionListener(this);
         bExit.addActionListener(this);
     }
-
+    
+    static String filepath = "maintest.wav";
+    static String effect1 = "soundclick.wav";
+    private MusicStuff musicplay = new MusicStuff();
+    
     public static void main(String[] args) {
-        String filepath = "songtest.wav";
+//        String filepath = "songtest.wav";
 
-        MusicStuff musicplay = new MusicStuff();
-//        musicplay.playMusic(filepath);
+//        MusicStuff musicplay = new MusicStuff();
+        MusicStuff.playMusic(filepath);
 
         JFrame fr = new JFrame();
         MainHome p = new MainHome(fr);
@@ -114,6 +118,13 @@ public class MainHome extends JPanel implements ActionListener {
         if (e.getSource().equals(bStart)) {
             System.out.println(frame);
 
+//            String filepath = "songtest.wav";
+//            MusicStuff musicplay = new MusicStuff();
+            
+            
+            SoundEffect ef = new SoundEffect();
+            ef.playEffect(effect1);
+            
             JOptionPane.showMessageDialog(null, pName, "What is your name ?", JOptionPane.PLAIN_MESSAGE);
             name = nameField.getText();
             if (nameField.getText().equals("") || nameField.getText() == null) {
@@ -140,13 +151,21 @@ public class MainHome extends JPanel implements ActionListener {
             fr1.add(frame);
             JOptionPane.showMessageDialog(null, "You start day " + MainUI.getDay() + " with " + Player.getEnergy() + " Energy.", "Day " + MainUI.getDay(), JOptionPane.PLAIN_MESSAGE);
 
+//            musicplay.stopMusic("songtest.wav");
+//            musicplay.playMusic("maintest.wav");
+            
             Thread n1 = new Thread(frame);
             n1.start();
 
             fr.dispose();
         } else if (e.getSource().equals(bConti)) {
-
+            
         } else if (e.getSource().equals(bHow)) {
+            
+//            MusicStuff.stopMusic(filepath);
+            SoundEffect ef = new SoundEffect();
+            ef.playEffect(effect1);
+            
             howToPlay();
         } else if (e.getSource().equals(bExit)) {
             System.exit(0);

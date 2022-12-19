@@ -673,6 +673,16 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
                 sec = count % 60;
                 min = (count / 60) % 60;
                 hour = count / 3600;
+                if(x>=PANEL_WIDTH - 100 || x<screenScale(1200)){
+                    xVelo = xVelo * -1;
+                }
+                if(y>=PANEL_HEIGHT - 50 || y<screenScale(500)){
+                    yVelo = yVelo * -1;
+                }
+                x = x + xVelo;
+                y = y + yVelo;
+                repaint();
+//                Thread.sleep(25);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
@@ -834,11 +844,20 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
 //        repaint();
 //    }
 int j;
-    Image backgroundimg;
+    Image backgroundimg, rocket;
+    int x = screenScale(1200);
+    int y = screenScale(550);
+    int xVelo = 5;
+    int yVelo = 5;
+    final int PANEL_WIDTH = screenScale(1700);
+    final int PANEL_HEIGHT = screenScale(650);
     public void paintComponent(Graphics g) {
         // int j = screenScale(1000);
         Graphics2D g2D = (Graphics2D) g;
+        Graphics2D gRocket = (Graphics2D) g;
+        Graphics2D gBorder = (Graphics2D) g;
         backgroundimg = new ImageIcon("src/images/spacetest03.jpg").getImage();
+        rocket = new ImageIcon("src/images/Player.png").getImage();
         g2D.drawImage(backgroundimg, 0, 0, null);
         g2D.setFont(new Font("Ink Free", Font.BOLD, 20));
         g2D.setColor(new Color(255,239,235));
@@ -854,6 +873,12 @@ int j;
             g2D.fillOval(j, screenScale(100), 25, 25);
             j+=30;
         }
+        gBorder.setColor(new Color(255,255,0));
+        gBorder.fillRect(1215,485,500,250);
+        
+        gRocket.setColor(new Color(0,0,0));
+        gRocket.fillRect(1225,500,475,225);
+        gRocket.drawImage(rocket,x,y,null);
         
     }
 
@@ -884,3 +909,4 @@ int j;
     }
 
 }
+
