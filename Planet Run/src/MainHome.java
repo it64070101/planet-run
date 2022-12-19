@@ -10,6 +10,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.io.*;
+import java.util.HashMap;
 
 import javax.swing.*;
 
@@ -18,12 +19,15 @@ public class MainHome extends JPanel implements ActionListener {
     public static JFrame fr, fr1;
     private JPanel p1, p2, pName;
     private JLabel title1, nameLbl;
-    private JButton bStart, bConti, bHow, bExit;
+    private JButton bStart, bHighscore, bHow, bExit;
     private String name;
     private JTextField nameField;
     public static MainUI frame;
     public int ch;
     public static String str = "";
+    public static String titleMusic = "title.wav", playingMusic = "playing.wav";
+    public static MusicStuff musicplay = new MusicStuff();
+    public static HashMap<String, Integer> highScore;
 
     Image backgroundimg;
     Image ani1, ani2, ani3, ani4;
@@ -31,7 +35,11 @@ public class MainHome extends JPanel implements ActionListener {
     public int px = 0, py = 0;
 
     public MainHome(JFrame fr) {
-        try(FileReader fileReader = new FileReader("src/rules.txt");) {
+        highScore = new HashMap<String, Integer>();
+        highScore.put("Somchai", 9999);
+        highScore.put("Somsri", 9990);
+
+        try ( FileReader fileReader = new FileReader("src/rules.txt");) {
             while ((ch = fileReader.read()) != -1) {
                 str += (char) ch;
             }
@@ -44,7 +52,7 @@ public class MainHome extends JPanel implements ActionListener {
         p2 = new JPanel();
         p2.setLayout(new BorderLayout());
         bStart = new JButton("Start");
-        bConti = new JButton("Continue");
+        bHighscore = new JButton("High Score");
         bHow = new JButton("How to Play");
         bExit = new JButton("Exit");
         pName = new JPanel(new GridLayout(2, 1));
@@ -57,16 +65,16 @@ public class MainHome extends JPanel implements ActionListener {
         p2.setBackground(new Color(0, 0, 0, 0));
 
         bStart.setPreferredSize(new Dimension(450, 80));
-        bConti.setPreferredSize(new Dimension(450, 80));
+        bHighscore.setPreferredSize(new Dimension(450, 80));
         bHow.setPreferredSize(new Dimension(450, 80));
         bExit.setPreferredSize(new Dimension(450, 80));
 
         bStart.setFont(new Font("Ink Free", Font.BOLD, 25));
         bStart.setBackground(new Color(192, 96, 161));
         bStart.setForeground(new Color(255, 255, 255));
-        bConti.setFont(new Font("Ink Free", Font.BOLD, 25));
-        bConti.setBackground(new Color(192, 96, 161));
-        bConti.setForeground(new Color(255, 255, 255));
+        bHighscore.setFont(new Font("Ink Free", Font.BOLD, 25));
+        bHighscore.setBackground(new Color(192, 96, 161));
+        bHighscore.setForeground(new Color(255, 255, 255));
         bHow.setFont(new Font("Ink Free", Font.BOLD, 25));
         bHow.setBackground(new Color(192, 96, 161));
         bHow.setForeground(new Color(255, 255, 255));
@@ -75,8 +83,8 @@ public class MainHome extends JPanel implements ActionListener {
         bExit.setForeground(new Color(255, 255, 255));
 
         p1.add(bStart);
-//        p1.add(bConti);
         p1.add(bHow);
+        p1.add(bHighscore);
         p1.add(bExit);
         p1.add(new JLabel());
         p2.add(p1, BorderLayout.SOUTH);
@@ -89,14 +97,14 @@ public class MainHome extends JPanel implements ActionListener {
         add(new JLabel());
 
         bStart.addActionListener(this);
-        bConti.addActionListener(this);
+        bHighscore.addActionListener(this);
         bHow.addActionListener(this);
         bExit.addActionListener(this);
     }
     
     static String filepath = "maintest.wav";
     static String effect1 = "soundclick.wav";
-    private MusicStuff musicplay = new MusicStuff();
+//    private MusicStuff musicplay = new MusicStuff();
     
     public static void main(String[] args) {
 //        String filepath = "songtest.wav";
@@ -116,7 +124,7 @@ public class MainHome extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(bStart)) {
-            System.out.println(frame);
+//            System.out.println(frame);
 
 //            String filepath = "songtest.wav";
 //            MusicStuff musicplay = new MusicStuff();
@@ -149,6 +157,7 @@ public class MainHome extends JPanel implements ActionListener {
             fr1.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
             fr1.setResizable(false);
             fr1.add(frame);
+//            MainHome.musicplay.playMusic(MainHome.playingMusic);
             JOptionPane.showMessageDialog(null, "You start day " + MainUI.getDay() + " with " + Player.getEnergy() + " Energy.", "Day " + MainUI.getDay(), JOptionPane.PLAIN_MESSAGE);
 
 //            musicplay.stopMusic("songtest.wav");
@@ -158,8 +167,9 @@ public class MainHome extends JPanel implements ActionListener {
             n1.start();
 
             fr.dispose();
-        } else if (e.getSource().equals(bConti)) {
-            
+
+        } else if (e.getSource().equals(bHighscore)) {
+            highScore();
         } else if (e.getSource().equals(bHow)) {
             
 //            MusicStuff.stopMusic(filepath);
@@ -188,8 +198,7 @@ public class MainHome extends JPanel implements ActionListener {
     }
 
     public void howToPlay() {
-        
-        
+
         JPanel p = new JPanel();
 
         JTextArea ta = new JTextArea(str, 30, 100);
@@ -200,6 +209,24 @@ public class MainHome extends JPanel implements ActionListener {
         taScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         p.add(taScroll);
         JOptionPane.showMessageDialog(null, taScroll, "How to Play", JOptionPane.PLAIN_MESSAGE);
+    }
+
+    public void highScore() {
+        JPanel p = new JPanel();
+        String data[][] = new String[highScore.keySet().size()][2];
+        int index = 0;
+        for (String key : highScore.keySet()) {
+            data[index][0] = key;
+            data[index][1] = highScore.get(key)+"";
+            index++;
+        }
+        String column[] = {"NAME", "SCORE"};
+        JTable jt = new JTable(data, column);
+        jt.setEnabled(false);
+        jt.setBounds(30, 40, 200, 300);
+        JScrollPane sp = new JScrollPane(jt);
+        p.add(sp);
+        JOptionPane.showMessageDialog(null, p, "High Score", JOptionPane.PLAIN_MESSAGE);
     }
 
 }

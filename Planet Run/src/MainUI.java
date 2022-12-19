@@ -35,6 +35,8 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     private static int score;
     private static Animal[] huntingGround;
     private static Animal[] animalDeck;
+    
+    private static JLabel food, wood, rock, sand, star, energy, HP;
 
     public MainUI() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -150,7 +152,15 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         sector2 = new JButton("Explore (Easy+)", queSym);
         sector3 = new JButton("Explore (Easy+)", queSym);
         sector4 = new JButton("Explore (Easy+)", queSym);
-
+        
+        ImageIcon foodIcon = new ImageIcon(new ImageIcon("src/images/food.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+        ImageIcon woodIcon = new ImageIcon(new ImageIcon("src/images/wood.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+        ImageIcon rockIcon = new ImageIcon(new ImageIcon("src/images/rock.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+        ImageIcon sandIcon = new ImageIcon(new ImageIcon("src/images/sand.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+        ImageIcon starIcon = new ImageIcon(new ImageIcon("src/images/star.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+        ImageIcon HPIcon = new ImageIcon(new ImageIcon("src/images/star.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+        ImageIcon energyIcon = new ImageIcon(new ImageIcon("src/images/star.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+        
         setSector();
 
         rest = new JButton("Rest");
@@ -198,7 +208,13 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pHuntAll.setLayout(new FlowLayout());
         pHuntAll.add(pHuntingGround);
         pHuntAll.setBackground(new Color(0, 0, 0, 0));
-
+        
+        food = new JLabel("2", foodIcon, JLabel.CENTER);
+        wood = new JLabel("0", woodIcon, JLabel.CENTER);
+        sand = new JLabel("0", sandIcon, JLabel.CENTER);
+        rock = new JLabel("0", rockIcon, JLabel.CENTER);
+        star = new JLabel("0", starIcon, JLabel.CENTER);
+        
         dayTxt = new JTextField("Day: " + day);
         foodTxt = new JTextField("Food: " + Storage.getFood().getAmount());
         starTxt = new JTextField("Star: " + Storage.getStar().getAmount());
@@ -216,16 +232,26 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         slider.setPaintLabels(true);
         slider.setPaintTicks(true);
 
-        pLabel.add(name);
-        pLabel.add(dayTxt);
+        pLabel.add(food);
+        pLabel.add(wood);
+        pLabel.add(sand);
+        pLabel.add(rock);
+        pLabel.add(star);
         pLabel.add(HPTxt);
         pLabel.add(energyTxt);
-        pLabel.add(foodTxt);
-        pLabel.add(starTxt);
-        pLabel.add(triangleTxt);
-        pLabel.add(squareTxt);
-        pLabel.add(circleTxt);
         pLabel.setBackground(new Color(29, 48, 87));
+        
+        food.setForeground(new Color(245, 213, 174));
+        wood.setForeground(new Color(245, 213, 174));
+        sand.setForeground(new Color(245, 213, 174));
+        rock.setForeground(new Color(245, 213, 174));
+        star.setForeground(new Color(245, 213, 174));
+        
+        food.setFont(new Font("Tahoma", Font.BOLD, screenScale(32)));
+        wood.setFont(new Font("Tahoma", Font.BOLD, screenScale(32)));
+        sand.setFont(new Font("Tahoma", Font.BOLD, screenScale(32)));
+        rock.setFont(new Font("Tahoma", Font.BOLD, screenScale(32)));
+        star.setFont(new Font("Tahoma", Font.BOLD, screenScale(32)));
 
         dayTxt.setBackground(new Color(29, 48, 87));
         dayTxt.setForeground(new Color(245, 213, 174));
@@ -281,7 +307,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pRocket.setBounds(screenScale(500), screenScale(50), screenScale(650), screenScale(850));
         pHuntAll.setBounds(screenScale(500 + 700), screenScale(50), screenScale(500), screenScale(500));
         add(showclock);
-        showclock.setBounds(screenScale(500 + 350 - 150), screenScale(150), screenScale(250), screenScale(60));
+        showclock.setBounds(screenScale(640 - 150), screenScale(150), screenScale(200), screenScale(60));
         exit = new JButton("exit");
         exit.setBounds(screenScale(500 + 700 + 15 + 175), screenScale(825), screenScale(200), screenScale(75));
 
@@ -483,12 +509,13 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     }
 
     public static void update() {
-        dayTxt.setText("Day: " + day);
-        foodTxt.setText("Food: " + Storage.getFood().getAmount());
-        starTxt.setText("Star: " + Storage.getStar().getAmount());
-        triangleTxt.setText("Wood: " + Storage.getTriangle().getAmount());
-        squareTxt.setText("Rock: " + Storage.getSquare().getAmount());
-        circleTxt.setText("Sand: " + Storage.getCircle().getAmount());
+        
+//        dayTxt.setText("Day: " + day);
+        food.setText(": " + Storage.getFood().getAmount()+"  ");
+        star.setText(": " + Storage.getStar().getAmount()+"  ");
+        wood.setText(": " + Storage.getTriangle().getAmount()+"  ");
+        rock.setText(": " + Storage.getSquare().getAmount()+"  ");
+        sand.setText(": " + Storage.getCircle().getAmount()+"  ");
         title1.setText("Planet Run!");
         HPTxt.setText("HP: " + Player.getHP());
         energyTxt.setText("Energy: " + Player.getEnergy());
@@ -719,7 +746,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         if (Player.getHP() == 4) {
             total += 8;
         }
-        System.out.println(total + " , " + sec);
+//        System.out.println(total + " , " + sec);
         return (int) ((total / sec) * 1000);
     }
 
@@ -859,10 +886,11 @@ int j;
         backgroundimg = new ImageIcon("src/images/spacetest03.jpg").getImage();
         rocket = new ImageIcon("src/images/Player.png").getImage();
         g2D.drawImage(backgroundimg, 0, 0, null);
-        g2D.setFont(new Font("Ink Free", Font.BOLD, 20));
+        g2D.setFont(new Font("Ink Free", Font.BOLD, 32));
         g2D.setColor(new Color(255,239,235));
         g2D.drawString("Day"+day,screenScale(555),screenScale(120));
         j = screenScale(605);
+
         for(int i =0; i<day;i++){
             g2D.setColor(Color.yellow);
             g2D.fillOval(j, screenScale(100), 25, 25);

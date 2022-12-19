@@ -11,18 +11,17 @@ import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.swing.JOptionPane;
 
-
 public class MusicStuff {
-    
-    
-    public static void playMusic(String filepath){
+
+    public static void playMusic(String filepath) {
 //        InputStream music;
-        try{
+        try {
             File music1 = new File(filepath);
-            if(music1.exists()){
-                
+            if (music1.exists()) {
+
                 AudioInputStream audio = AudioSystem.getAudioInputStream(music1);
                 Clip clip = AudioSystem.getClip();
                 clip.open(audio);
@@ -37,7 +36,11 @@ public class MusicStuff {
 //                clip.start();
                 
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
-                
+                FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                double gain = 0.25;
+                float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
+                gainControl.setValue(dB);
+
 //                JOptionPane.showMessageDialog(null, "Pause");
 //                long clipTimePosition = clip.getMicrosecondPosition();
 //                clip.stop();
@@ -45,13 +48,11 @@ public class MusicStuff {
 //                JOptionPane.showMessageDialog(null, "Resume");
 //                clip.setMicrosecondPosition(clipTimePosition);
 //                clip.start();
-            }
-            else{
+            } else {
                 System.out.println("Peter");
             }
-            
-        }
-        catch(Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -64,6 +65,10 @@ public class MusicStuff {
                 AudioInputStream audio = AudioSystem.getAudioInputStream(music1);
                 Clip clip = AudioSystem.getClip();
                 clip.open(audio);
+                FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                double gain = 0.25;
+                float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
+                gainControl.setValue(dB);
 //                
 //                if(clip.isActive()){
                     clip.stop();
