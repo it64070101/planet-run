@@ -842,16 +842,16 @@ int j;
         g2D.drawImage(backgroundimg, 0, 0, null);
         g2D.setFont(new Font("Ink Free", Font.BOLD, 20));
         g2D.setColor(new Color(255,239,235));
-        g2D.drawString("Day"+day,555,120);
-        j = 605;
+        g2D.drawString("Day"+day,screenScale(555),screenScale(120));
+        j = screenScale(605);
         for(int i =0; i<day;i++){
             g2D.setColor(Color.yellow);
-            g2D.fillOval(j, 100, 25, 25);
+            g2D.fillOval(j, screenScale(100), 25, 25);
             j+=30;
         }
         for(int i =0; i<15-day;i++){
             g2D.setColor(Color.gray);
-            g2D.fillOval(j, 100, 25, 25);
+            g2D.fillOval(j, screenScale(100), 25, 25);
             j+=30;
         }
         
