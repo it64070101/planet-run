@@ -24,7 +24,7 @@ public class MainHome extends JPanel implements ActionListener {
     private String name;
     private JTextField nameField;
     public static MainUI frame;
-    private int ch;
+    
     private static String str = "";
     public static String titleMusic = "title.wav", playingMusic = "playing.wav";
     private static MusicStuff musicplay = new MusicStuff();
@@ -187,7 +187,8 @@ public class MainHome extends JPanel implements ActionListener {
         gString.drawString("Planet Run", 190, 180);
     }
 
-    public void howToPlay() {
+    public static void howToPlay() {
+        int ch;
         try ( FileReader fileReader = new FileReader("src/rules.txt");) {
             while ((ch = fileReader.read()) != -1) {
                 str += (char) ch;

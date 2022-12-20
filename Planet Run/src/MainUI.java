@@ -19,7 +19,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     private static JButton noseCone, shockcord, recoveryWadding, leftFin, rightFin;
     private static JButton sector1, sector2, sector3, sector4, rest, maketool;
     public static JButton huntingGround0, huntingGround1;
-    private static JButton exit;
+    private static JButton exit, howToPlay;
     private static JTextField title1;
     public static ImageIcon rockcone, rockleft, rockright, rockbase, rockbody, sec1, sec2, sec3, sec4, ani1, ani2, ani3, ani4, ani5, ani6, queSym;
     private static JLabel name, clockshow;
@@ -281,12 +281,17 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pHuntAll.setBounds(screenScale(500 + 700), screenScale(50), screenScale(500), screenScale(500));
         add(showclock);
         showclock.setBounds(screenScale(640 - 150), screenScale(190), screenScale(200), screenScale(60));
-        exit = new JButton("exit");
-        exit.setBounds(screenScale(500 + 700 + 15 + 175), screenScale(825), screenScale(200), screenScale(75));
+        exit = new JButton("EXIT");
+        exit.setBounds(screenScale(500 + 700 + 15 + 175), screenScale(850), screenScale(200), screenScale(75));
         exit.setFont(new Font("Pixellari", Font.BOLD, 25));
-
         exit.setBackground(btnColor);
         exit.setForeground(new Color(238, 238, 238));
+        
+        howToPlay = new JButton("How to Play");
+        howToPlay.setBounds(screenScale(500 + 700 + 15 + 175), screenScale(750), screenScale(200), screenScale(75));
+        howToPlay.setFont(new Font("Pixellari", Font.BOLD, 25));
+        howToPlay.setBackground(btnColor);
+        howToPlay.setForeground(new Color(238, 238, 238));
 
         // rocket panel
         pRocket.setLayout(new BorderLayout(screenScale(150), screenScale(180)));
@@ -301,6 +306,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         setSize(screenSize.width, screenSize.height);
         setLayout(null);
         add(exit);
+        add(howToPlay);
         add(pSec);
         add(pRocket);
         add(pHuntAll);
@@ -319,6 +325,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         leftFin.addActionListener(this);
         rightFin.addActionListener(this);
         exit.addActionListener(this);
+        howToPlay.addActionListener(this);
 
         pInput = new JPanel(new BorderLayout());
         pEnergy = new JPanel();
@@ -462,6 +469,8 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             }
         } else if (e.getSource().equals(exit)) {
             exitAsk();
+        } else if (e.getSource().equals(howToPlay)){
+            MainHome.howToPlay();
         }
         update();
         if (Player.getHP() < 1) {
