@@ -43,7 +43,7 @@ There are 5 phases in the game.
 
 - [EAT] During this phase you eat food you obtained from hunting. The amount of food you eat will get you that amount of Energy. 
 
-- [TURN] END Day counter increase by one. 
+- [TURN END] Day counter increase by one. 
 
 - [GAME OVER] You lose the game when your HP runs out. 
 
