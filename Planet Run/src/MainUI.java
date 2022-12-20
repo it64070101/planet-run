@@ -80,7 +80,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             } else if (huntingGround[0] instanceof Rhinocow) {
                 huntingGround0 = new JButton(huntingGround[0].getFoodDrop() + " Food " + huntingGround[0].getDifficulty(), ani6);
             }
-            huntingGround0.setToolTipText("Fight this animal");
+            
         }
         while (huntingGround[1] == null) {
             int redrawing = (int) (Math.random() * 10) % 6;
@@ -99,8 +99,10 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             } else if (huntingGround[1] instanceof Rhinocow) {
                 huntingGround1 = new JButton(huntingGround[1].getFoodDrop() + " Food " + huntingGround[1].getDifficulty(), ani6);
             }
-            huntingGround1.setToolTipText("Fight this animal");
+            
         }
+        huntingGround0.setToolTipText("Fight this animal");
+        huntingGround1.setToolTipText("Fight this animal");
 
         fr = new JFrame("Planet Run");
 
