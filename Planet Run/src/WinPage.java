@@ -50,40 +50,9 @@ public class WinPage extends JPanel implements ActionListener, Runnable {
 
         this.fr = fr;
         p1 = new JPanel();
-//        p1.setLayout(new GridLayout(5,1,5,10));
         p2 = new JPanel();
-//        p2.setLayout(new BorderLayout());
-
-//        p3 = new JPanel();
-//        p3.setSize(new Dimension(500,500));
-//        p3.setLayout(new GridLayout(12,2,0,2));
-//        p3.setPreferredSize(new Dimension(500,500));
         bRetry = new JButton("Retry");
         bExit = new JButton("Exit");
-
-//        hfixer = new JLabel("Fixer");
-//        hrocketeer = new JLabel("Rocketeering");
-//        htoolmaker = new JLabel("Toolmaker");
-//        hjack = new JLabel("Jack of all tools");
-//        hdis = new JLabel("Discover");
-//        hapex = new JLabel("Apex Predator");
-//        hbarely = new JLabel("Barely a Scratch");
-//        hunbreak = new JLabel("Unbreakable");
-//        htotal = new JLabel("Total Score");
-//        htime = new JLabel("Time Taken");
-//        hfinals = new JLabel("Final Score");
-//        
-//        dfixer = new JLabel(": 555555555555555555555555555");
-//        drocketeer = new JLabel(": ");
-//        dtoolmaker = new JLabel(": ");
-//        djack = new JLabel(": ");
-//        ddis = new JLabel(": ");
-//        dapex = new JLabel(": ");
-//        dbarely = new JLabel(": ");
-//        dunbreak = new JLabel(": ");
-//        dtotal = new JLabel(": ");
-//        dtime = new JLabel(": ");
-//        dfinals = new JLabel(": ");
         p1.setBackground(new Color(0, 0, 0, 0));
         p2.setBackground(new Color(0, 0, 0, 0));
 //        p3.setBackground(new Color(0,0,0,0));
@@ -94,51 +63,12 @@ public class WinPage extends JPanel implements ActionListener, Runnable {
         bExit.setFont(new Font("Pixellari", Font.BOLD, 25));
         bExit.setBackground(MainUI.btnColor);
         bExit.setForeground(new Color(255, 255, 255));
-
-//        p1.add(new JLabel());   p1.add(new JLabel());   
-//        p1.add(bRetry); 
         p2.add(bExit);
-//        p2.add(p1);
-
-//        p3.add(hfixer); p3.add(dfixer);
-//        p3.add(hrocketeer); p3.add(drocketeer);
-//        p3.add(htoolmaker); p3.add(dtoolmaker);
-//        p3.add(hjack); p3.add(djack);
-//        p3.add(hdis); p3.add(ddis);
-//        p3.add(hapex); p3.add(dapex);
-//        p3.add(hbarely); p3.add(dbarely);
-//        p3.add(hunbreak); p3.add(dunbreak);
-//        p3.add(htotal); p3.add(dtotal);
-//        p3.add(new JLabel()); p3.add(new JLabel());
-//        p3.add(htime); p3.add(dtime);
-//        p3.add(hfinals); p3.add(dfinals);
-//        timer = new Timer(1000, null);
-//        timer.start();
-//        setSize(512, 512);
-//        setOpaque(false);
         setLayout(null);
         add(p1);
         add(p2);
-//        add(p3);
         p1.setBounds(1450, 650, 110, 110);
         p2.setBounds(1450, 650, 110, 110);
-//        p3.setBounds(850,500, 110, 110);
-
-//        setLayout(new GridLayout(1,15));
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(p2);
-//        add(new JLabel());
         bRetry.addActionListener(this);
         bExit.addActionListener(this);
 
@@ -162,7 +92,6 @@ public class WinPage extends JPanel implements ActionListener, Runnable {
         Graphics2D g2D = (Graphics2D) g;
         Graphics2D gString = (Graphics2D) g;
         Graphics2D gRocket = (Graphics2D) g;
-//        Graphics2D gBorder = (Graphics2D) g;
 
         Graphics2D ghFixer = (Graphics2D) g;
         Graphics2D ghRocketeer = (Graphics2D) g;
@@ -201,10 +130,6 @@ public class WinPage extends JPanel implements ActionListener, Runnable {
         gString.setColor(new Color(255, 255, 255));
         gString.drawString("You Survived!", 750, 180);
 
-//        gBorder.setColor(new Color(0,0,0));
-//        gBorder.fillRect(127,140,475,525);
-//        gRocket.setColor(new Color(255,255,255));
-//        gRocket.fillRect(140,150,450,500);
         gRocket.drawImage(rocket, x, y, null);
 
 //        Header
@@ -323,7 +248,6 @@ public class WinPage extends JPanel implements ActionListener, Runnable {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(bRetry)) {
-//            new MainHome();
         } else if (e.getSource().equals(bExit)) {
             MainUI.exitAsk();
         }
@@ -348,13 +272,4 @@ public class WinPage extends JPanel implements ActionListener, Runnable {
             }
         }
     }
-//        if(x>=PANEL_WIDTH - rocket.getWidth(null) || x<0){
-//            xVelo = xVelo * -1;
-//        }
-//        if(y>=PANEL_HEIGHT - rocket.getHeight(null) || y<0){
-//            yVelo = yVelo * -1;
-//        }
-//        x = x + xVelo;
-//        y = y + yVelo;
-//        repaint();
 }

@@ -7,7 +7,6 @@ public class Maketool implements ActionListener, WindowListener {
 
     private JFrame fr;
     private JFrame toolBtn;
-    // private JLabel la1, la2, la3, la4, la5;
     private JPanel pGadget;
     private JButton gun, axe, hammer, pick, hook;
     private ImageIcon imgAxe, imgGun, imgHammer, imgPick, imgHook;
@@ -40,18 +39,15 @@ public class Maketool implements ActionListener, WindowListener {
         pGadget.add(hook);
 
         fr.setLayout(new FlowLayout());
-        // p.setBackground(Color.BLACK);
         fr.add(pGadget);
         pGadget.setBackground(new Color(40, 42, 58));
 
         fr.setVisible(true);
         fr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//        fr.setSize(300, 780);
         fr.pack();
         fr.setLocation((int) (screenSize.width - (screenSize.width / 5.5)), (int) (screenSize.height - (screenSize.height / 1.1)));
         fr.setResizable(false);
         fr.getContentPane().setBackground(new Color(40, 42, 58));
-//        fr.setUndecorated(true);
         gun.addActionListener(this);
         axe.addActionListener(this);
         hammer.addActionListener(this);
@@ -158,40 +154,30 @@ public class Maketool implements ActionListener, WindowListener {
 
     @Override
     public void windowOpened(WindowEvent e) {
-        MainHome.fr1.setEnabled(false);
-
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        MainHome.fr1.setEnabled(false);}
 
     @Override
     public void windowClosing(WindowEvent e) {
-        MainHome.fr1.setEnabled(true);
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        MainHome.fr1.setEnabled(true);}
 
     @Override
     public void windowClosed(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void windowIconified(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void windowActivated(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void windowDeactivated(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

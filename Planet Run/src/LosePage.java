@@ -36,46 +36,11 @@ public class LosePage extends JPanel implements ActionListener ,Runnable {
     public LosePage(JFrame fr){
         this.fr = fr;
         p1 = new JPanel();
-//        p1.setLayout(new GridLayout(5,1,5,10));
         p2 = new JPanel();
-//        p2.setLayout(new BorderLayout());
-
-//        p3 = new JPanel();
-//        p3.setSize(new Dimension(500,500));
-//        p3.setLayout(new GridLayout(12,2,0,2));
-//        p3.setPreferredSize(new Dimension(500,500));
-        
-        
         bRetry = new JButton("Retry");
         bExit = new JButton("Exit");
-        
-//        hfixer = new JLabel("Fixer");
-//        hrocketeer = new JLabel("Rocketeering");
-//        htoolmaker = new JLabel("Toolmaker");
-//        hjack = new JLabel("Jack of all tools");
-//        hdis = new JLabel("Discover");
-//        hapex = new JLabel("Apex Predator");
-//        hbarely = new JLabel("Barely a Scratch");
-//        hunbreak = new JLabel("Unbreakable");
-//        htotal = new JLabel("Total Score");
-//        htime = new JLabel("Time Taken");
-//        hfinals = new JLabel("Final Score");
-//        
-//        dfixer = new JLabel(": 555555555555555555555555555");
-//        drocketeer = new JLabel(": ");
-//        dtoolmaker = new JLabel(": ");
-//        djack = new JLabel(": ");
-//        ddis = new JLabel(": ");
-//        dapex = new JLabel(": ");
-//        dbarely = new JLabel(": ");
-//        dunbreak = new JLabel(": ");
-//        dtotal = new JLabel(": ");
-//        dtime = new JLabel(": ");
-//        dfinals = new JLabel(": ");
-
         p1.setBackground(new Color(0,0,0,0));
         p2.setBackground(new Color(0,0,0,0));
-//        p3.setBackground(new Color(0,0,0,0));
         
         bRetry.setPreferredSize(new Dimension(250,80));
         bExit.setPreferredSize(new Dimension(250,80));
@@ -84,55 +49,14 @@ public class LosePage extends JPanel implements ActionListener ,Runnable {
         bExit.setBackground(MainUI.btnColor);
         bExit.setForeground(new Color(255,255,255));
         
-//        p1.add(new JLabel());   p1.add(new JLabel());   
-//        p1.add(bRetry); 
         p2.add(bExit);
-//        p2.add(p1);
         
-        
-//        p3.add(hfixer); p3.add(dfixer);
-//        p3.add(hrocketeer); p3.add(drocketeer);
-//        p3.add(htoolmaker); p3.add(dtoolmaker);
-//        p3.add(hjack); p3.add(djack);
-//        p3.add(hdis); p3.add(ddis);
-//        p3.add(hapex); p3.add(dapex);
-//        p3.add(hbarely); p3.add(dbarely);
-//        p3.add(hunbreak); p3.add(dunbreak);
-//        p3.add(htotal); p3.add(dtotal);
-//        p3.add(new JLabel()); p3.add(new JLabel());
-//        p3.add(htime); p3.add(dtime);
-//        p3.add(hfinals); p3.add(dfinals);
-        
-//        timer = new Timer(1000, null);
-//        timer.start();
-        
-//        setSize(512, 512);
-//        setOpaque(false);
         setLayout(null);
         add(p1);
         add(p2);
-//        add(p3);
+
         p1.setBounds(screenScale(1450),screenScale(650), screenScale(110), screenScale(110));
         p2.setBounds(screenScale(1450),screenScale(750), screenScale(110), screenScale(110));
-//        p3.setBounds(850,500, 110, 110);
-        
-//        setLayout(new GridLayout(1,15));
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(new JLabel());
-//        add(p2);
-//        add(new JLabel());
-      
-        
         bExit.addActionListener(this);
 
         
@@ -247,14 +171,5 @@ public class LosePage extends JPanel implements ActionListener ,Runnable {
         double scaleTest = (double) 96 / screenDPI;
         return (int) (pixel * scaleTest);
     }
-//        if(x>=PANEL_WIDTH - rocket.getWidth(null) || x<0){
-//            xVelo = xVelo * -1;
-//        }
-//        if(y>=PANEL_HEIGHT - rocket.getHeight(null) || y<0){
-//            yVelo = yVelo * -1;
-//        }
-//        x = x + xVelo;
-//        y = y + yVelo;
-//        repaint();
-    }
+}
 

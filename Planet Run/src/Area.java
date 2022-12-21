@@ -17,7 +17,6 @@ public class Area {
 
     public Area() {
         areaExplored = 0;
-//        Sector areaDeck[] = {new Sector("Sector getA", 3, Storage.triangle), new Sector("Sector B", 3, Storage.circle), new Sector("Sector C", 3, Storage.square), new Sector("Sector D", 3, Storage.star)};
         areaDeck = new ArrayList<Sector>();
         areaDeck.add(new Sector("Forest", 3, Storage.getTriangle()));
         areaDeck.add(new Sector("Desert", 3, Storage.getCircle()));

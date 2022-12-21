@@ -79,14 +79,12 @@ public class Player {
     
     public static boolean fix(Part part){
         if (part.check()){
-//            System.out.println("Fix "+part.getName()+" Successful.");
             useEnergy(1);
             JOptionPane.showMessageDialog(null, "Success to fix "+part.getName()+".","",JOptionPane.PLAIN_MESSAGE);
             Ship.countFixed();
             return true;
         }
         else{
-//            System.out.println("Can't Fix "+part.getName());
             JOptionPane.showMessageDialog(null, "Resource not enough to fix "+part.getName()+".","",JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -129,7 +127,6 @@ public class Player {
         useEnergy(energy);
         JOptionPane.showMessageDialog(null, "You are rested ( HP +"+energy+" ).","Soundly Slept",JOptionPane.PLAIN_MESSAGE);
         heal(energy);
-//        System.out.println("You are rested");
     }
     
     public static int gadgetBonus(Gadget gadget){

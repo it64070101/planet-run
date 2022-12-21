@@ -96,8 +96,6 @@ public class MainHome extends JPanel implements ActionListener {
         bExit.addActionListener(this);
     }
     
-//    private MusicStuff musicplay = new MusicStuff();
-    
     public static void main(String[] args) {
 
         JFrame fr = new JFrame();
@@ -111,16 +109,7 @@ public class MainHome extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(bStart)) {
-//            System.out.println(frame);
-
-//            String filepath = "songtest.wav";
-//            MusicStuff musicplay = new MusicStuff();
-            
-            
-            SoundEffect ef = new SoundEffect();
-//            ef.playEffect(effect1);
-            
+        if (e.getSource().equals(bStart)) {          
             JOptionPane.showMessageDialog(null, pName, "What is your name ?", JOptionPane.PLAIN_MESSAGE);
             name = nameField.getText();
             if (nameField.getText().equals("") || nameField.getText() == null) {
@@ -152,11 +141,7 @@ public class MainHome extends JPanel implements ActionListener {
             fr1.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
             fr1.setResizable(false);
             fr1.add(frame);
-//            MainHome.musicplay.playMusic(MainHome.playingMusic);
             JOptionPane.showMessageDialog(null, "You start day " + MainUI.getDay() + " with " + Player.getEnergy() + " Energy.", "Day " + MainUI.getDay(), JOptionPane.PLAIN_MESSAGE);
-
-//            musicplay.stopMusic("songtest.wav");
-//            musicplay.playMusic("maintest.wav");
             
             Thread n1 = new Thread(frame);
             n1.start();

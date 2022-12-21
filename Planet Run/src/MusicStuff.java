@@ -69,25 +69,8 @@ public class MusicStuff {
                 float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
                 gainControl.setValue(dB);
                 clip.open(audio);
-                
-//                
-//                if(clip.isActive()){
-                    clip.stop();
-//                }
-//                else{
-//                    clip.start();
-//                }
-//                clip.start();
-                
-//                clip.loop(Clip.LOOP_CONTINUOUSLY);
-                
-//                JOptionPane.showMessageDialog(null, "Pause");
-//                long clipTimePosition = clip.getMicrosecondPosition();
-//                clip.stop();
-//                
-//                JOptionPane.showMessageDialog(null, "Resume");
-//                clip.setMicrosecondPosition(clipTimePosition);
-//                clip.start();
+                clip.stop();
+
             }
             else{
                 System.out.println("Peter");

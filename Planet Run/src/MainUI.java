@@ -217,16 +217,7 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         sand = new JLabel("0", sandIcon, JLabel.CENTER);
         rock = new JLabel("0", rockIcon, JLabel.CENTER);
         star = new JLabel("0", starIcon, JLabel.CENTER);
-
-//        dayTxt = new JTextField("Day: " + day);
-//        foodTxt = new JTextField("Food: " + Storage.getFood().getAmount());
-//        starTxt = new JTextField("Star: " + Storage.getStar().getAmount());
-//        triangleTxt = new JTextField("Wood: " + Storage.getTriangle().getAmount());
-//        squareTxt = new JTextField("Rock: " + Storage.getSquare().getAmount());
-//        circleTxt = new JTextField("Sand: " + Storage.getCircle().getAmount());
         title1 = new JTextField("Planet Run!");
-//        HPTxt = new JTextField("HP: " + Player.getHP());
-//        energyTxt = new JTextField("Energy: " + Player.getEnergy());
         name = new JLabel(Player.getName());
 
         slider = new JSlider(1, 6, 1);
@@ -240,8 +231,6 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         pLabel.add(sand);
         pLabel.add(rock);
         pLabel.add(star);
-//        pLabel.add(HPTxt);
-//        pLabel.add(energyTxt);
         pLabel.setBackground(btnColor);
 
         food.setForeground(Color.WHITE);
@@ -494,16 +483,12 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
     }
 
     public static void update() {
-
-//        dayTxt.setText("Day: " + day);
         food.setText(": " + Storage.getFood().getAmount() + "  ");
         star.setText(": " + Storage.getStar().getAmount() + "  ");
         wood.setText(": " + Storage.getTriangle().getAmount() + "  ");
         rock.setText(": " + Storage.getSquare().getAmount() + "  ");
         sand.setText(": " + Storage.getCircle().getAmount() + "  ");
         title1.setText("Planet Run!");
-//        HPTxt.setText("HP: " + Player.getHP());
-//        energyTxt.setText("Energy: " + Player.getEnergy());
         sectorDiscover(Area.getA(), sector1);
         sectorDiscover(Area.getB(), sector2);
         sectorDiscover(Area.getC(), sector3);
@@ -731,7 +716,6 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
         if (Player.getHP() == 4) {
             total += 8;
         }
-//        System.out.println(total + " , " + sec);
         MainUI.setScore((int)((total / sec) * 1000));
         return MainUI.getScore();
     }
@@ -763,7 +747,6 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
                 fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 t1.start();
                 MainHome.fr1.dispose();
-//                System.exit(0);
             } else {
                 String bonus = "";
                 if (ToolBox.getHook().isObtained() && Dice.rollAgainst(1, 2)) {
@@ -852,10 +835,6 @@ public class MainUI extends JPanel implements ActionListener, Runnable {
             }
         }
     }
-
-//    public void changeday(){
-//        repaint();
-//    }
     int j;
     Image backgroundimg, rocket, heart, bolt;
     int x = screenScale(1200);
